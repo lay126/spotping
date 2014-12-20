@@ -20,22 +20,6 @@ from django.contrib.auth.models import User, UserManager
 from sp_app.models import *
 
 
-@csrf_exempt
-def test_json_1(request):
-	callback = request.GET.get('callback')
-	page_title = 'test_json_1'
-
-	id_ = request.GET.get('user_id', False)
-	pwd_ = request.GET.get('user_pwd', False)
-
-	request.session['s_id'] = id_
-
-	# 데이터 저장
-	dump_ = DUMP(dump_id=id_, dump_pwd=pwd_)
-	dump_.save()
-
-	return HttpResponse('id is : %s' % request.session['s_id'])
-
 
 @csrf_exempt
 def test_json_2(request):
@@ -58,7 +42,7 @@ def test_photo_open(request):
 
 	return render_to_response('imgForm.html')
 
-# 안드로이드 -> 서버 
+# anroid -> server 
 @csrf_exempt
 def test_photo_upload(request):
 	page_title = 'test_photo_upload'
@@ -92,7 +76,7 @@ def test_photo_upload(request):
 
 
 
-# 안드로이드 <- 서버 
+# android <- server 
 def test_photo_download_1(request):
 	page_title = 'test_photo_download_1'
 
@@ -113,7 +97,7 @@ def test_photo_download_1(request):
 	
 	return HttpResponse(image_data_, mimetype="image/png")
 
-# 안드로이드 <- 서버 (photos)
+# android <- server (photos)
 def test_photo_download_s(request):
 	page_title = 'test_photo_download_s'
 
@@ -126,7 +110,7 @@ def test_photo_download_s(request):
 
 	return HttpResponse(images, mimetype="image/png")
 
-# 안드로이드 <- 서버 (base64)
+# android <- server (base64)
 def test_photo_download_2(request):
 	page_title = 'test_photo_download_2'
 
@@ -140,8 +124,7 @@ def test_photo_download_2(request):
 	return HttpResponse(images, mimetype='image/png')
 
 
-# seller join
-#----------------------------------------------------------------------------
+# seller join / login--------------------------------------------------------
 #----------------------------------------------------------------------------
 def join_page(request):
 	page_title = 'join_page'
@@ -185,8 +168,6 @@ def response_join_seller(request):
 
 	return HttpResponse('this page is : %s' % (page_title))
 
-# 상인 로그인
-#----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
 def login_page(request):
 	page_title = 'login_page'
@@ -246,8 +227,7 @@ def response_login_seller(request):
 	return HttpResponse('this page is : %s' % (page_title))
 
 
-# 상인 사용하는 모든 데이터
-#----------------------------------------------------------------------------
+# use by seller : all data---------------------------------------------------
 #----------------------------------------------------------------------------
 def request_allData_seller(request):
 	page_title = 'request_allData_seller'
@@ -260,8 +240,8 @@ def response_allData_seller(request):
 	return HttpResponse('this page is : %s' % (page_title))
 
 
-# 상인 쿠폰 관리
-#----------------------------------------------------------------------------
+
+# seller controll coupon-----------------------------------------------------
 #----------------------------------------------------------------------------
 def request_active_coupon(request):
 	page_title = 'request_active_coupon'
@@ -296,9 +276,7 @@ def response_inactive_coupon(request):
 	return HttpResponse('this page is : %s' % (page_title))
 
 
-# 상인 쿠폰 사용 관리
-#----------------------------------------------------------------------------
-#----------------------------------------------------------------------------
+# seller controll coupone *used*---------------------------------------------
 def request_stat_coupon(request):
 	page_title = 'request_stat_coupon'
 
@@ -312,8 +290,7 @@ def response_stat_coupon(request):
 
 
 
-# 사용자 회원가입
-#----------------------------------------------------------------------------
+# buyer join / login---------------------------------------------------------
 #----------------------------------------------------------------------------
 def request_join_buyer(request):
 	page_title = 'request_join_buyer'
@@ -325,9 +302,6 @@ def response_join_buyer(request):
 
 	return HttpResponse('this page is : %s' % (page_title))
 
-
-# 사용자 로그인
-#----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
 def request_login_buyer(request):
 	page_title = 'request_login_buyer'

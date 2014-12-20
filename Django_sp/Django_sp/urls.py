@@ -16,7 +16,6 @@ urlpatterns = patterns('',
 
     # 테스트 
     #----------------------------------------------------------------------------
-    url(r'^test/json/1/', 'sp_app.views.test_json_1'),
     url(r'^test/json/2/', 'sp_app.views.test_json_2'),
     url(r'^test/photo/upload', 'sp_app.views.test_photo_upload'),
     url(r'^test/photo/download/1/', 'sp_app.views.test_photo_download_1'),
@@ -25,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^test/photo/open', 'sp_app.views.test_photo_open'),
 
 
-    # 상인
+    # seller
     #----------------------------------------------------------------------------
     url(r'^join/page/', 'sp_app.views.join_page'),
     url(r'^login/page/', 'sp_app.views.login_page'),
@@ -48,7 +47,7 @@ urlpatterns = patterns('',
 	url(r'^response/stat/coupon/', 'sp_app.views.response_stat_coupon'),    
 
 
-	# 사용자 
+	# buyer 
 	#----------------------------------------------------------------------------
 	url(r'^request/join/buyer/', 'sp_app.views.request_join_buyer'),
     url(r'^response/join/buyer/', 'sp_app.views.response_join_buyer'),
