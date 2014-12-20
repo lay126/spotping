@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 
 
     # 테스트 
-    #----------------------------------------------------------------------------
+    #-------------------------------------------------------------------------------------------------------------------------
     url(r'^test/json/2/', 'sp_app.views.test_json_2'),
     url(r'^test/photo/upload', 'sp_app.views.test_photo_upload'),
     url(r'^test/photo/download/1/', 'sp_app.views.test_photo_download_1'),
@@ -25,9 +25,9 @@ urlpatterns = patterns('',
 
 
     # seller
-    #----------------------------------------------------------------------------
-    url(r'^join/page/', 'sp_app.views.join_page'),
-    url(r'^login/page/', 'sp_app.views.login_page'),
+    #-------------------------------------------------------------------------------------------------------------------------
+    url(r'^join/page/s/', 'sp_app.views.join_page_s'),
+    url(r'^login/page/s/', 'sp_app.views.login_page_s'),
     url(r'^request/join/seller/', 'sp_app.views.request_join_seller'),
     url(r'^response/join/seller/', 'sp_app.views.response_join_seller'),
     url(r'^request/login/seller/', 'sp_app.views.request_login_seller'),
@@ -48,7 +48,9 @@ urlpatterns = patterns('',
 
 
 	# buyer 
-	#----------------------------------------------------------------------------
+	#-------------------------------------------------------------------------------------------------------------------------
+    url(r'^join/page/b/', 'sp_app.views.join_page_b'),
+    url(r'^login/page/b/', 'sp_app.views.login_page_b'),
 	url(r'^request/join/buyer/', 'sp_app.views.request_join_buyer'),
     url(r'^response/join/buyer/', 'sp_app.views.response_join_buyer'),
 	url(r'^request/login/buyer/', 'sp_app.views.request_login_buyer'),

@@ -1,0 +1,27 @@
+ <!DOCTYPE html>
+
+<html>
+<head>
+	<title> login_page </title>
+</head>
+
+<body>
+<div id = "login">
+<form method="post" action="/request/login/buyer/">
+	{% csrf_token %}
+	<p><label for="buyer_id" ></label>
+		<input type="text" id="buyer_id" class="webfont" name="buyer_id" value="Id를 입력하세요." width="60%" height="10%" onclick="deletee(this);" />
+	</p>
+	<p><label for="buyer_pwd"></label>
+		<input type="password" id="buyer_pwd" name="buyer_pwd" value="비밀번호" width="60%" height="10%" onclick="deletee(this);"/>
+	</p>
+	<br />
+	<br />
+	<input type="hidden" name="next" value="/" />
+	<input TYPE="submit" id="button" value="login"  />
+	<input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+</body>
+
+</html>

@@ -8,6 +8,17 @@ from PIL import Image
 from django.contrib.auth.models import User
 
 
+
+'''
+***OMG!***********************
+
+seller/buyer distint index is 
+user_00000_photo_index
+
+seller : 0
+buyer  : 1
+
+'''
 #----------------------------------------------------------------------------
 class USER(models.Model):
 	class Meta:

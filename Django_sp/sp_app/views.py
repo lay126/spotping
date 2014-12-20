@@ -1,4 +1,5 @@
 # _*_ coding: utf-8 _*_
+# samsung sGen Club 2014.winter spopting project : yoonmijae, leeayoung
 
 import json
 import base64
@@ -18,7 +19,6 @@ from django.contrib.auth import *
 from django.contrib.auth.models import User, UserManager
 
 from sp_app.models import *
-
 
 
 @csrf_exempt
@@ -125,14 +125,14 @@ def test_photo_download_2(request):
 
 
 # seller join / login--------------------------------------------------------
-#----------------------------------------------------------------------------
-def join_page(request):
-	page_title = 'join_page'
+#-------------------------------------------------------------------------------------------------------------------------
+def join_page_s(request):
+	page_title = 'join_page_s'
 
 	ctx = Context({'page_title':page_title,})
 	ctx.update(csrf(request))
 
-	return render_to_response('join_page.html', ctx)
+	return render_to_response('join_page_s.html', ctx)
 
 @csrf_exempt
 def request_join_seller(request):
@@ -168,14 +168,14 @@ def response_join_seller(request):
 
 	return HttpResponse('this page is : %s' % (page_title))
 
-#----------------------------------------------------------------------------
-def login_page(request):
-	page_title = 'login_page'
+#-------------------------------------------------------------------------------------------------------------------------
+def login_page_s(request):
+	page_title = 'login_page_s'
 
 	ctx = Context({'page_title':page_title,})
 	ctx.update(csrf(request))
 
-	return render_to_response('login_page.html', ctx)
+	return render_to_response('login_page_s.html', ctx)
 
 @csrf_exempt
 def request_login_seller(request):
@@ -227,8 +227,9 @@ def response_login_seller(request):
 	return HttpResponse('this page is : %s' % (page_title))
 
 
+
 # use by seller : all data---------------------------------------------------
-#----------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
 def request_allData_seller(request):
 	page_title = 'request_allData_seller'
 
@@ -242,7 +243,7 @@ def response_allData_seller(request):
 
 
 # seller controll coupon-----------------------------------------------------
-#----------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
 def request_active_coupon(request):
 	page_title = 'request_active_coupon'
 
@@ -253,7 +254,7 @@ def response_active_coupon(request):
 
 	return HttpResponse('this page is : %s' % (page_title))
 
-#----------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
 def request_reservation_coupon(request):
 	page_title = 'request_reservation_coupon'
 
@@ -264,7 +265,7 @@ def response_reservation_coupon(request):
 
 	return HttpResponse('this page is : %s' % (page_title))
 
-#----------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
 def request_inactive_coupon(request):
 	page_title = 'request_inactive_coupon'
 
@@ -290,28 +291,105 @@ def response_stat_coupon(request):
 
 
 
+
+
 # buyer join / login---------------------------------------------------------
-#----------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+def join_page_b(request):
+	page_title = 'join_page_b'
+
+	ctx = Context({'page_title':page_title,})
+	ctx.update(csrf(request))
+
+	return render_to_response('join_page_b.html', ctx)
+
+@csrf_exempt
 def request_join_buyer(request):
+	callback = request.GET.get('callback')
 	page_title = 'request_join_buyer'
 
-	return HttpResponse('this page is : %s' % (page_title))
+	#id = username, firstname = name
+	join_buyer_id_ = request.POST.get('join_buyer_id', False)
+	join_buyer_pwd_ = request.POST.get('join_buyer_pwd', False)
+	join_buyer_name_ = request.POST.get('join_buyer_name', False)
+	join_buyer_email_ = request.POST.get('join_buyer_email', False)
+
+	join_buyer_photo_index_ = 1
+	join_buyer_address_ = request.POST.get('join_buyer_address', False)
+	join_buyer_phone_ = request.POST.get('join_buyer_phone', False)
+
+	join_buyer_ = User.objects.create_user(join_buyer_id_, join_buyer_email_, join_buyer_pwd_)
+	join_buyer_.first_name = join_buyer_name_
+	join_buyer_.is_staff = False
+
+	try:
+		join_buyer_.save()
+		join_buyer_info_ = USER_BUYER(user_buyer_id=join_buyer_, user_buyer_photo_index=join_buyer_photo_index_, user_buyer_address=join_buyer_address_, user_buyer_phone=join_buyer_phone_)
+		join_buyer_info_.save()
+	except:
+		return HttpResponse('fail join')
+
+	return HttpResponse('success join, %s' % join_buyer_id_)
+
 
 def response_join_buyer(request):
 	page_title = 'response_join_buyer'
 
 	return HttpResponse('this page is : %s' % (page_title))
 
-#----------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+def login_page_b(request):
+	page_title = 'login_page_b'
+
+	ctx = Context({'page_title':page_title,})
+	ctx.update(csrf(request))
+
+	return render_to_response('login_page_b.html', ctx)
+
+@csrf_exempt
 def request_login_buyer(request):
+	callback = request.GET.get('callback')
 	page_title = 'request_login_buyer'
 
-	return HttpResponse('this page is : %s' % (page_title))
+	login_buyer_id_ = request.POST.get('buyer_id', False)
+	login_buyer_pwd_ = request.POST.get('buyer_pwd', False)
+
+	login_buyer_ = authenticate(username=login_buyer_id_, password=login_buyer_pwd_)
+
+	if login_buyer_ is not None:
+		if login_buyer_.is_active:
+			login(request, login_buyer_)
+		else:
+			#disabled account
+			return HttpResponse('disabled account')
+	else:
+		#invaild login
+		return HttpResponse('invaild login %s, %s' %(login_buyer_id_, login_buyer_pwd_))
+
+	#get userInfo
+	user_buyer_ = User.objects.get(username=login_buyer_id_)
+	user_buyer_info_ = USER_BUYER.objects.get(user_buyer_id=user_buyer_)
+
+	#make session
+	request.session['sess_buyer_id'] = user_buyer_.username
+
+
+	datas = []
+	datas.append(user_buyer_.id) 			#index
+	datas.append(user_buyer_.username) 		#id
+	datas.append(user_buyer_.first_name) 	#name
+	datas.append(user_buyer_.email)
+	datas.append(user_buyer_info_.user_buyer_photo_index)
+	datas.append(user_buyer_info_.user_buyer_address)
+	datas.append(user_buyer_info_.user_buyer_phone)
+
+	json_data = json.dumps(datas, ensure_ascii=False)
+	return HttpResponse(json_data, content_type='application/json')
+
 
 def response_login_buyer(request):
 	page_title = 'response_login_buyer'
 
 	return HttpResponse('this page is : %s' % (page_title))
-
 
 

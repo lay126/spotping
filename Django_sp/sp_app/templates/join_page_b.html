@@ -1,0 +1,30 @@
+ <!DOCTYPE html>
+
+<html>
+<head>
+	<title> join_page </title>
+
+</head>
+
+<body>
+<form method="post" action="/request/join/buyer/">
+	{% csrf_token %}
+	<p><label for="join_buyer_id"></label>join_buyer_id<input type="text" class="webfont" id="join_buyer_id" name="join_buyer_id" value="" /></p>
+
+	<p><label for="join_buyer_pwd"></label>join_buyer_pwd<input type="password" id="join_buyer_pwd" name="join_buyer_pwd" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_buyer_email"></label>join_buyer_email<input type="text" class="webfont" id="join_buyer_email" name="join_buyer_email" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_buyer_name"></label>join_buyer_name<input type="text" class="webfont" id="join_buyer_name" name="join_buyer_name" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_buyer_address"></label>join_buyer_address<input type="text" class="webfont" id="join_buyer_address" name="join_buyer_address" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_buyer_phone"></label>join_buyer_phone<input type="text" class="webfont" id="join_buyer_phone" name="join_buyer_phone" value="" width="60%" height="10%"/></p>
+
+	<p><input type="submit" id="joinbutton" value="join!"/></p>
+</form>
+
+
+</div>
+</body>
+</html>
