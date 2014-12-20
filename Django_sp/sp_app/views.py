@@ -18,7 +18,6 @@ from sp_app.models import *
 
 # from db_file_storage.form_widgets import DBClearableFileInput
 
-# 테스트 run
 @csrf_exempt
 def test_json_1(request):
 	callback = request.GET.get('callback')
@@ -142,10 +141,45 @@ def test_photo_download_2(request):
 # 상인 로그인
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
+@csrf_exempt
 def request_login_seller(request):
+	callback = request.GET.get('callback')
+
 	page_title = 'request_login_seller'
 
-	return HttpResponse('this page is : %s' % (page_title))
+
+	login_seller_id_ = request.POST.get('seller_id')
+	login_seller_pwd_ = request.POST.get('seller_pwd')
+
+	login_seller_ = authenticate(username=login_seller_id_, password=login_seller_pwd_)
+
+	if login_seller_ is not None:
+		if login_seller_.is_active:
+			login(request, login_seller_)
+		else:
+			#disabled account
+			return HttpResponse('disabled account')
+	else:
+		#invaild login
+		return HttpResponse('invaild login %s' %(login_seller_id_))
+
+	#get userInfo
+	user_seller_ = User.objects.get(username=login_seller_id_)
+	user_seller_info_ = USER_SELLER.objects.get(user_seller_id=login_seller_id_)
+
+	#make session
+	request.session['sess_seller_id'] = user_seller_.user_name
+	request.session['sess_seller_marketname'] = user_seller_info_.user_seller_marketName
+
+	#encoding json
+	datas = []
+	for i in user_seller_info_:
+		data = model_to_dict(i)
+		datas.append(data)
+
+	json_data = json.dumps(datas, ensure_ascii=False)
+	return HttpResponse(json_data, content_type='application/json')
+
 
 def response_login_seller(request):
 	page_title = 'response_login_seller'
