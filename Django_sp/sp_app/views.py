@@ -18,7 +18,7 @@ from sp_app.models import *
 
 # from db_file_storage.form_widgets import DBClearableFileInput
 
-# 테스트 
+# 테스트 run
 @csrf_exempt
 def test_json_1(request):
 	callback = request.GET.get('callback')
