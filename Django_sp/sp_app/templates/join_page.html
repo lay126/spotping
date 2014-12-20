@@ -1,0 +1,32 @@
+ <!DOCTYPE html>
+
+<html>
+<head>
+	<title> join_page </title>
+
+</head>
+
+<body>
+<form method="post" action="/request/join/seller/">
+	{% csrf_token %}
+	<p><label for="join_seller_id"></label><input type="text" class="webfont" id="join_seller_id" name="join_seller_id" value="" /></p>
+
+	<p><label for="join_seller_pwd"></label><input type="password" id="join_seller_pwd" name="join_seller_pwd" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_seller_email"></label><input type="text" class="webfont" id="join_seller_email" name="join_seller_email" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_seller_name"></label><input type="text" class="webfont" id="join_seller_name" name="join_seller_name" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_seller_market_name"></label><input type="text" class="webfont" id="join_seller_market_name" name="join_seller_market_name" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_seller_address"></label><input type="text" class="webfont" id="join_seller_address" name="join_seller_address" value="" width="60%" height="10%"/></p>
+
+	<p><label for="join_seller_phone"></label><input type="text" class="webfont" id="join_seller_phone" name="join_seller_phone" value="" width="60%" height="10%"/></p>
+
+	<p><input type="IMAGE" src="/static/img_web/login.png" id="joinbutton" value=""/></p>
+</form>
+
+
+</div>
+</body>
+</html>

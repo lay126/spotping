@@ -27,6 +27,10 @@ urlpatterns = patterns('',
 
     # 상인
     #----------------------------------------------------------------------------
+    url(r'^join/page/', 'sp_app.views.join_page'),
+    url(r'^login/page/', 'sp_app.views.login_page'),
+    url(r'^request/join/seller/', 'sp_app.views.request_join_seller'),
+    url(r'^response/join/seller/', 'sp_app.views.response_join_seller'),
     url(r'^request/login/seller/', 'sp_app.views.request_login_seller'),
     url(r'^response/login/seller/', 'sp_app.views.response_login_seller'),
 

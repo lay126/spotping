@@ -8,15 +8,17 @@ from django.shortcuts import *
 from django.http import *
 from django.core.context_processors import *
 from django.forms.models import *
+from django.template import *
 from django.utils.simplejson import dumps, loads, JSONEncoder
 from django.core.files import File
 from django.core.context_processors import *
 from django.views.decorators.csrf import *
+
 from django.contrib.auth import *
+from django.contrib.auth.models import User, UserManager
 
 from sp_app.models import *
 
-# from db_file_storage.form_widgets import DBClearableFileInput
 
 @csrf_exempt
 def test_json_1(request):
@@ -138,18 +140,67 @@ def test_photo_download_2(request):
 	return HttpResponse(images, mimetype='image/png')
 
 
+# seller join
+#----------------------------------------------------------------------------
+#----------------------------------------------------------------------------
+def join_page(request):
+	page_title = 'join_page'
+
+	ctx = Context({'page_title':page_title,})
+	ctx.update(csrf(request))
+
+	return render_to_response('join_page.html', ctx)
+
+def request_join_seller(request):
+	page_title = 'request_join_seller'
+
+	#id = username, firstname = name
+	join_seller_id_ = request.POST.get('join_seller_id', False)
+	join_seller_pwd_ = request.POST.get('join_seller_pwd', False)
+	join_seller_name_ = request.POST.get('join_seller_name', False)
+	join_seller_email_ = request.POST.get('join_seller_email', False)
+
+	join_seller_photo_index_ = 0
+	join_seller_market_name_ = request.POST.get('join_seller_market_name', False)
+	join_seller_address_ = request.POST.get('join_seller_address', False)
+	join_seller_phone_ = request.POST.get('join_seller_phone', False)
+
+	join_seller_ = User.objects.create_user(join_seller_id_, join_seller_email_, join_seller_pwd_)
+	join_seller_.is_staff = False
+
+	try:
+		join_seller_.save()
+		join_seller_info_ = USER_SELLER(user_seller_id=join_seller_, user_seller_photo_index=join_seller_photo_index_, user_seller_market_name=join_seller_market_name_, user_seller_address=join_seller_address_, user_seller_phone=join_seller_phone_)
+		join_seller_info_.save()
+	except:
+		return HttpResponse('fail join')
+
+	return HttpResponse('success join, %s' % join_seller_id_)
+
+def response_join_seller(request):
+	page_title = 'response_join_seller'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
 # 상인 로그인
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
+def login_page(request):
+	page_title = 'login_page'
+
+	ctx = Context({'page_title':page_title,})
+	ctx.update(csrf(request))
+
+	return render_to_response('login_page.html', ctx)
+
 @csrf_exempt
 def request_login_seller(request):
 	callback = request.GET.get('callback')
-
 	page_title = 'request_login_seller'
 
 
-	login_seller_id_ = request.POST.get('seller_id')
-	login_seller_pwd_ = request.POST.get('seller_pwd')
+	login_seller_id_ = request.POST.get('seller_id', False)
+	login_seller_pwd_ = request.POST.get('seller_pwd', False)
 
 	login_seller_ = authenticate(username=login_seller_id_, password=login_seller_pwd_)
 
@@ -161,15 +212,15 @@ def request_login_seller(request):
 			return HttpResponse('disabled account')
 	else:
 		#invaild login
-		return HttpResponse('invaild login %s' %(login_seller_id_))
+		return HttpResponse('invaild login %s, %s' %(login_seller_id_, login_seller_pwd_))
 
 	#get userInfo
 	user_seller_ = User.objects.get(username=login_seller_id_)
-	user_seller_info_ = USER_SELLER.objects.get(user_seller_id=login_seller_id_)
+	user_seller_info_ = USER_SELLER.objects.get(user_seller_id=user_seller_)
 
 	#make session
-	request.session['sess_seller_id'] = user_seller_.user_name
-	request.session['sess_seller_marketname'] = user_seller_info_.user_seller_marketName
+	request.session['sess_seller_id'] = user_seller_.username
+	request.session['sess_seller_market_name'] = user_seller_info_.user_seller_market_name
 
 	#encoding json
 	datas = []

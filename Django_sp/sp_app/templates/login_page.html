@@ -1,0 +1,104 @@
+ <!DOCTYPE html>
+
+<html>
+<head>
+	<title> login_page </title>
+	<link rel=stylesheet type="text/css" href="/static/css/css_01.css">
+	
+	<style>
+	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	.webfont{
+		font-family: 'Nanum Gothic', serif;
+		border:0px;
+	}
+
+		body 
+		{
+			overflow: hidden;
+		    background-image: url(/static/img_web/login_back.png);
+		    background-size: 100%;
+		    background-repeat: no-repeat;
+		}
+		#login
+		{
+			position: absolute;
+			padding :0px;
+			margin :0px;
+			left: 20%;
+			top: 14%;
+			width: 100%;
+			height: 100%;
+		}
+		#login_username
+		{
+			position: absolute;
+			padding :0px;
+			margin :0px;
+			left: 2%;
+			top: 10%;
+			width: 60%;
+			height: 10%;
+			background-image: url('/static/img_web/base_qucik_map.png');
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		#login_password
+		{
+			border:0px;
+			position: absolute;
+			padding :0px;
+			margin :0px;
+			left: 2%;
+			top: 30%;
+			width: 60%;
+			height: 10%;
+			background-image: url('/static/img_web/base_qucik_map.png');/*font_back*/
+			background-size: cover;
+			background-repeat: no-repeat;
+
+		}
+		#button
+		{
+			position: absolute;
+			padding :0px;
+			margin :0px;
+			left: 45%;
+			top: 55%;
+			width: 20%;
+			height: 15%;
+			/*background-image: url('/static/img_web/login.png');
+			background-size: 100% 100%;
+			background-repeat: no-repeat;*/
+		}
+	</style>
+	<script type="text/javascript">
+		function change_to_login_l() {
+			top.top_frame.location="http://127.0.0.1:8000/top/frame/login";
+			top.change_all_pic(1,top.showexplain);
+		}
+		function deletee(what){
+			what.value="";	
+		}
+	</script>
+</head>
+
+<body>
+<div id = "login">
+<form method="post" action="/request/login/seller/">
+	{% csrf_token %}
+	<p><label for="seller_id" ></label>
+		<input type="text" id="seller_id" class="webfont" name="seller_id" value="Id를 입력하세요." width="60%" height="10%" onclick="deletee(this);" />
+	</p>
+	<p><label for="seller_pwd"></label>
+		<input type="password" id="seller_pwd" name="seller_pwd" value="비밀번호" width="60%" height="10%" onclick="deletee(this);"/>
+	</p>
+	<br />
+	<br />
+	<input type="hidden" name="next" value="/" />
+	<input TYPE="IMAGE" src="/static/img_web/login.png" id="button" value="" onclick="top.open_login_page(0);change_to_login_l();" />
+	<input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+</body>
+
+</html>
