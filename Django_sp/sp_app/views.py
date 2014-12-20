@@ -151,7 +151,9 @@ def join_page(request):
 
 	return render_to_response('join_page.html', ctx)
 
+@csrf_exempt
 def request_join_seller(request):
+	callback = request.GET.get('callback')
 	page_title = 'request_join_seller'
 
 	#id = username, firstname = name
@@ -166,6 +168,7 @@ def request_join_seller(request):
 	join_seller_phone_ = request.POST.get('join_seller_phone', False)
 
 	join_seller_ = User.objects.create_user(join_seller_id_, join_seller_email_, join_seller_pwd_)
+	join_seller_.first_name = join_seller_name_
 	join_seller_.is_staff = False
 
 	try:
@@ -222,11 +225,16 @@ def request_login_seller(request):
 	request.session['sess_seller_id'] = user_seller_.username
 	request.session['sess_seller_market_name'] = user_seller_info_.user_seller_market_name
 
-	#encoding json
+
 	datas = []
-	for i in user_seller_info_:
-		data = model_to_dict(i)
-		datas.append(data)
+	datas.append(user_seller_.id) 			#index
+	datas.append(user_seller_.username) 	#id
+	datas.append(user_seller_.first_name) 	#name
+	datas.append(user_seller_.email)
+	datas.append(user_seller_info_.user_seller_photo_index)
+	datas.append(user_seller_info_.user_seller_market_name)
+	datas.append(user_seller_info_.user_seller_address)
+	datas.append(user_seller_info_.user_seller_phone)
 
 	json_data = json.dumps(datas, ensure_ascii=False)
 	return HttpResponse(json_data, content_type='application/json')
