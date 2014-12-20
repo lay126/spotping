@@ -19,57 +19,13 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'password', 'email',)
 
 class USER_SELLERAdmin(admin.ModelAdmin):
-	list_display = ('user_seller_id','user_seller_photo_index,' 'user_seller_marketName', 'user_seller_address',)
+	list_display = ('user_seller_id','user_seller_photo_index', 'user_seller_marketName', 'user_seller_address',)
 
 class USER_BUYERAdmin(admin.ModelAdmin):
 	list_display = ('user_buyer_id','user_buyer_photo_index', 'user_buyer_address')
 
 class PRODUCTAdmin(admin.ModelAdmin):
-	list_display = ('product_index','product_photo_index' 'product_marketName', 'product_name', 'product_brand', 'product_unit' ,'product_category_seller', 'product_category_buyer', 'product_price', 'product_coupon_active', 'product_coupon_times',)
-
-
-#-사용자 DB-----------------------------------------------------------------
-class USER_FAVORITE_LIST(models.Model):
-      	class Meta:
-		verbose_name = u'USER_FAVORITE_LIST'
-		db_table = 'USER_FAVORITE_LIST_DB'
-	user_favorite_list_index = models.IntegerField(verbose_name=u'user_favorite_list_index', primary_key=True, unique=True, db_index=True,)
-	user_favorite_list_userid = models.CharField(verbose_name=u'user_favorite_list_userid', max_length='20',)
-	user_favorite_list_product_name = models.CharField(verbose_name=u'user_favorite_list_product_name', max_length='30',)
-	user_favorite_list_product_brand = models.CharField(verbose_name=u'user_favorite_list_product_brand', max_length='20',)
-	user_favorite_list_product_unit = models.CharField(verbose_name=u'user_favorite_list_product_unit',max_length='20',)
-	user_favorite_list_product_category = models.CharField(verbose_name=u'user_favorite_list_product_category',  max_length='20',)
-
-class USER_COUPON_USEDLIST(models.Model):
-      	class Meta:
-		verbose_name = u'USER_COUPON_USEDLIST'
-		db_table = 'USER_COUPON_USEDLIST_DB'
-	user_coupon_usedlist_index = models.IntegerField(verbose_name=u'user_coupon_usedlist_index', primary_key=True, unique=True, db_index=True,)
-	user_coupon_usedlist_userid = models.CharField(verbose_name=u'user_coupon_usedlist_userid', max_length='20',)
-	user_coupon_usedlist_product_name = models.CharField(verbose_name=u'user_coupon_usedlist_product_name', max_length='30',)
-	user_coupon_usedlist_product_brand = models.CharField(verbose_name=u'user_coupon_usedlist_product_brand', max_length='20',)
-	user_coupon_usedlist_product_unit = models.CharField(verbose_name=u'user_coupon_usedlist_product_unit',max_length='20',)
-	user_coupon_usedlist_product_category = models.CharField(verbose_name=u'user_coupon_usedlist_product_category',  max_length='20',)
-	user_coupon_usedlist_type = models.IntegerField(verbose_name=u'user_coupon_usedlist_type',null=False, default=0,)
-        
-
-#----------------------------------------------------------------------------
-class SP_PICTURE(models.Model):
-	class Meta:
-		verbose_name = u'SP_PICTURE'
-		db_table = 'SP_PICTURE_DB'
-	sp_photo_index = models.IntegerField(verbose_name=u'sp_photo_index', primary_key=True, unique=True, db_index=True,)
-	sp_name = models.CharField(verbose_name=u'sp_name', max_length=100)
-	sp_picture = models.ImageField(verbose_name=u'sp_picture', upload_to='/sp_app/sp_pictures/sp_pictures/', blank=True, null=True)
-
-
-class USER_PICTURE(models.Model):
-	class Meta:
-		verbose_name = u'USER_PICTURE'
-		db_table = 'USER_PICTURE_DB'
-	user_photo_index = models.IntegerField(verbose_name=u'user_photo_index', primary_key=True, unique=True, db_index=True,)
-	user_name = models.CharField(verbose_name=u'user_name', max_length=100)
-	user_picture = models.ImageField(verbose_name=u'user_picture', upload_to='sp_app/sp_pictures/sp_pictures/', blank=True, null=True)
+	list_display = ('product_index','product_photo_index', 'product_marketName', 'product_name', 'product_brand', 'product_unit' ,'product_category_seller', 'product_category_buyer', 'product_price', 'product_coupon_active', 'product_coupon_times',)
 
 
 #-product_list--------------------------------------------
@@ -128,11 +84,11 @@ class COUPON_SNACKAdmin(admin.ModelAdmin):
 
 #-user_buyer-------------------------------------------
 class USER_FAVORITE_LISTAdmin(admin.ModelAdmin):
-	list_display = ('user_favorite_list_index', 'user_favorite_list_userid', 'user_favorite_list_product_name', 'user_favorite_list_product_brand', 'user_favorite_list_product_unit','user_favorite_list_product_cate',)
+	list_display = ('user_favorite_list_index', 'user_favorite_list_userid', 'user_favorite_list_product_name', 'user_favorite_list_product_brand', 'user_favorite_list_product_unit','user_favorite_list_product_category',)
 
-class USER_COUPON_USELISTAdmin(admin.ModelAdmin):
-	list_display = ('user_coupon_uselist_index', 'user_coupon_uselist_userid', 'user_coupon_uselist_product_name', 'user_coupon_uselist_product_brand',
-                        'user_coupon_uselist_product_unit','user_coupon_uselist_product_cate','user_coupon_uselist_type',)
+class USER_COUPON_USEDLISTAdmin(admin.ModelAdmin):
+	list_display = ('user_coupon_usedlist_index', 'user_coupon_usedlist_userid', 'user_coupon_usedlist_product_name', 'user_coupon_usedlist_product_brand',
+                        'user_coupon_usedlist_product_unit','user_coupon_usedlist_product_category','user_coupon_usedlist_type',)
 		
 
 #-picture-------------------------------------------
@@ -168,7 +124,7 @@ admin.site.register(COUPON_BAKERY, COUPON_BAKERYAdmin)
 admin.site.register(COUPON_SNACK, COUPON_SNACKAdmin)
 
 admin.site.register(USER_FAVORITE_LIST, USER_FAVORITE_LISTAdmin)
-admin.site.register(USER_COUPON_USELIST, USER_COUPON_USELISTAdmin)
+admin.site.register(USER_COUPON_USEDLIST, USER_COUPON_USEDLISTAdmin)
 
 admin.site.register(SP_PICTURE, SP_PICTUREAdmin)
 admin.site.register(USER_PICTURE, USER_PICTUREAdmin)
