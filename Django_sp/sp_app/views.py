@@ -67,9 +67,13 @@ def test_photo_upload(request):
 
 		# use for android communication
 			# response_data=[{"success": "1"}]
-        	# return HttpResponse(simplejson.dumps(response_data), mimetype='application/json')
 
-        # use for test
+	
+		# return HttpResponse(simplejson.dumps(response_data), mimetype='application/json')
+
+
+	
+	# use for test
 			return HttpResponse('File Uploaded')
 
 	return HttpResponse('Failed to Upload File')
@@ -182,7 +186,6 @@ def request_login_seller(request):
 	callback = request.GET.get('callback')
 	page_title = 'request_login_seller'
 
-
 	login_seller_id_ = request.POST.get('seller_id', False)
 	login_seller_pwd_ = request.POST.get('seller_pwd', False)
 
@@ -230,82 +233,210 @@ def response_login_seller(request):
 
 # use by seller : all data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
-def request_data_all(request):
-		page_title = 'request_data_all'
+def request_coupon_all(request):
+	page_title = 'request_coupon_all'
 
-		return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse('this page is : %s' % (page_title))
 
-def response_data_all(request):
-		page_title = 'response_data_all'
+def response_coupon_all(request):
+	page_title = 'response_coupon_all'
 
-		return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse('this page is : %s' % (page_title))
 
 
 #-------------------------------------------------------------------------------------------------------------------------
-def request_data_daily(request):
-		page_title = 'request_data_daily'
+def request_coupon_daily(request):
+	page_title = 'request_coupon_daily'
 
-		return HttpResponse('this page is : %s' % (page_title))
+	coupon_data_= COUPON_DAILY.objects.all()
 
-def request_data_greens(request):
-		page_title = 'request_data_greens'
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
 
-		return HttpResponse('this page is : %s' % (page_title))
+	json_data = json.dumps(datas)
 
-def request_data_fish(request):
-		page_title = 'request_data_fish'
+	return HttpResponse(json_data, content_type='application/json')
 
-		return HttpResponse('this page is : %s' % (page_title))
 
-def request_data_rice(request):
-		page_title = 'request_data_rice'
+def request_coupon_greens(request):
+	page_title = 'request_coupon_greens'
 
-		return HttpResponse('this page is : %s' % (page_title))
+	coupon_data_= COUPON_GREENS.objects.all()
 
-def request_data_meat(request):
-		page_title = 'request_data_meat'
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
 
-		return HttpResponse('this page is : %s' % (page_title))
+	json_data = json.dumps(datas)
 
-def request_data_egg(request):
-		page_title = 'request_data_egg'
+	return HttpResponse('this page is : %s' % (page_title))
 
-		return HttpResponse('this page is : %s' % (page_title))
 
-def request_data_ham(request):
-		page_title = 'request_data_ham'
+def request_coupon_fish(request):
+	page_title = 'request_coupon_fish'
 
-		return HttpResponse('this page is : %s' % (page_title))
+	coupon_data_= COUPON_FISH.objects.all()
 
-def request_data_side(request):
-		page_title = 'request_data_side'
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
 
-		return HttpResponse('this page is : %s' % (page_title))
+	json_data = json.dumps(datas)
 
-def request_data_water(request):
-		page_title = 'request_data_water'
+	return HttpResponse('this page is : %s' % (page_title))
 
-		return HttpResponse('this page is : %s' % (page_title))
 
-def request_data_instant(request):
-		page_title = 'request_data_instant'
+def request_coupon_rice(request):
+	page_title = 'request_coupon_rice'
 
-		return HttpResponse('this page is : %s' % (page_title))
+	coupon_data_= COUPON_RICE.objects.all()
 
-def request_data_ice(request):
-		page_title = 'request_data_ice'
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
 
-		return HttpResponse('this page is : %s' % (page_title))
+	json_data = json.dumps(datas)
 
-def request_data_bakery(request):
-		page_title = 'request_data_bakery'
+	return HttpResponse('this page is : %s' % (page_title))
 
-		return HttpResponse('this page is : %s' % (page_title))
 
-def request_data_snack(request):
-		page_title = 'request_data_snack'
+def request_coupon_meat(request):
+	page_title = 'request_coupon_meat'
 
-		return HttpResponse('this page is : %s' % (page_title))
+	coupon_data_= COUPON_MEAT.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+
+def request_coupon_egg(request):
+	page_title = 'request_coupon_egg'
+
+	coupon_data_= COUPON_EGG.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+
+def request_coupon_ham(request):
+	page_title = 'request_coupon_ham'
+
+	coupon_data_= COUPON_HAM.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+
+def request_coupon_side(request):
+	page_title = 'request_coupon_side'
+
+	coupon_data_= COUPON_SIDE.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+
+def request_coupon_water(request):
+	page_title = 'request_coupon_water'
+
+	coupon_data_= COUPON_WATER.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+
+def request_coupon_instant(request):
+	page_title = 'request_coupon_instant'
+
+	coupon_data_= COUPON_INSTANT.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+
+def request_coupon_ice(request):
+	page_title = 'request_coupon_ice'
+
+	coupon_data_= COUPON_ICE.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+def request_coupon_bakery(request):
+	page_title = 'request_coupon_bakery'
+
+	coupon_data_= COUPON_BAKERY.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+
+def request_coupon_snack(request):
+	page_title = 'request_coupon_snack'
+
+	coupon_data_= COUPON_SNACK.objects.all()
+
+	datas = []
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+
+	return HttpResponse('this page is : %s' % (page_title))
 
 
 # seller controll coupon-----------------------------------------------------
