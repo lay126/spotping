@@ -230,16 +230,71 @@ def response_login_seller(request):
 
 # use by seller : all data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
-def request_allData_seller(request):
-	page_title = 'request_allData_seller'
+
+    def request_data_daily(request):
+	page_title = 'request_data_daily'
 
 	return HttpResponse('this page is : %s' % (page_title))
 
-def response_allData_seller(request):
-	page_title = 'response_allData_seller'
+	def request_data_greens(request):
+	page_title = 'request_data_greens'
 
 	return HttpResponse('this page is : %s' % (page_title))
 
+	def request_data_fish(request):
+	page_title = 'request_data_fish'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_rice(request):
+	page_title = 'request_data_rice'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_meat(request):
+	page_title = 'request_data_meat'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_egg(request):
+	page_title = 'request_data_egg'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_ham(request):
+	page_title = 'request_data_ham'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_side(request):
+	page_title = 'request_data_side'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_water(request):
+	page_title = 'request_data_water'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_instant(request):
+	page_title = 'request_data_instant'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_ice(request):
+	page_title = 'request_data_ice'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_bakery(request):
+	page_title = 'request_data_bakery'
+
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def request_data_snack(request):
+	page_title = 'request_data_snack'
+
+	return HttpResponse('this page is : %s' % (page_title))
 
 
 # seller controll coupon-----------------------------------------------------
