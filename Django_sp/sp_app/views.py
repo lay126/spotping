@@ -236,7 +236,75 @@ def response_login_seller(request):
 def request_coupon_all(request):
 	page_title = 'request_coupon_all'
 
-	return HttpResponse('this page is : %s' % (page_title))
+	datas = []
+
+	coupon_data_= COUPON_DAILY.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_GREENS.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_FISH.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_RICE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_MEAT.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_EGG.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_HAM.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SIDE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_WATER.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_INSTANT.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_ICE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_BAKERY.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SNACK.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
 
 def response_coupon_all(request):
 	page_title = 'response_coupon_all'
@@ -256,7 +324,6 @@ def request_coupon_daily(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse(json_data, content_type='application/json')
 
 
@@ -271,7 +338,6 @@ def request_coupon_greens(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -286,7 +352,6 @@ def request_coupon_fish(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -301,7 +366,6 @@ def request_coupon_rice(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -316,7 +380,6 @@ def request_coupon_meat(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -331,7 +394,6 @@ def request_coupon_egg(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -346,7 +408,6 @@ def request_coupon_ham(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -361,7 +422,6 @@ def request_coupon_side(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -376,7 +436,6 @@ def request_coupon_water(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -391,7 +450,6 @@ def request_coupon_instant(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -406,7 +464,6 @@ def request_coupon_ice(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 def request_coupon_bakery(request):
@@ -420,7 +477,6 @@ def request_coupon_bakery(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
@@ -435,7 +491,6 @@ def request_coupon_snack(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-
 	return HttpResponse('this page is : %s' % (page_title))
 
 
