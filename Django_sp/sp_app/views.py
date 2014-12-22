@@ -230,7 +230,16 @@ def response_login_seller(request):
 
 # use by seller : all data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+	def request_data_all(request):
+	page_title = 'request_data_all'
 
+	return HttpResponse('this page is : %s' % (page_title))
+
+	def response_data_all(request):
+	page_title = 'response_data_all'
+
+
+#-------------------------------------------------------------------------------------------------------------------------
     def request_data_daily(request):
 	page_title = 'request_data_daily'
 

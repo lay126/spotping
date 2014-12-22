@@ -50,7 +50,6 @@ urlpatterns = patterns('',
     url(r'^request/data/bakery/', 'sp_app.views.request_data_bakery'),
     url(r'^request/data/snack/', 'sp_app.views.request_data_snack'),
 
-
     url(r'^request/active/coupon/', 'sp_app.views.request_active_coupon'),
     url(r'^response/active/coupon/', 'sp_app.views.response_active_coupon'),
     url(r'^request/reservation/coupon/', 'sp_app.views.request_reservation_coupon'),
