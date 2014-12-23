@@ -21,22 +21,6 @@ from django.contrib.auth.models import User, UserManager
 from sp_app.models import *
 
 
-@csrf_exempt
-def test_json_2(request):
-	callback = request.GET.get('callback')
-
-	product_index_ = 1
-	product_ = PRODUCT.objects.all()
-
-	datas = []
-	for i in product_:
-		data = model_to_dict(i)
-		datas.append(data)
-
-	json_data = json.dumps(datas, ensure_ascii=False)
-	return HttpResponse(json_data, content_type='application/json')
-
-
 def test_photo_open(request):
 	page_title = 'test_photo_open'
 
@@ -54,10 +38,15 @@ def test_photo_upload(request):
 			file_day_ = request.POST.get('file_day', '00000')
 			filename = file_name_ + '_' + file_day_
 
-			pic_ = SP_PICTURE()
-			pic_.sp_name = filename
-			pic_.sp_picture.save(filename+'.jpg', File(file), save=True)
+			try:
+				pic_ = SP_PICTURE()
+				# pic_.sp_photo_index = 1
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+			except:
+				return HttpResponse(404)		
 			pic_.save()
+
 
 			# path = '/Users/ayoung/Documents/develope/Django_SP/Django_sp/sp_app/imges'
 			# fp = open('%s/%s' % (path, filename+'.jpg') , 'wb')
@@ -65,15 +54,11 @@ def test_photo_upload(request):
 			# 	fp.write(chunk)
 			# fp.close()
 
-		# use for android communication
+			# use for android communication
 			# response_data=[{"success": "1"}]
-
-	
 		# return HttpResponse(simplejson.dumps(response_data), mimetype='application/json')
-
-
 	
-	# use for test
+			# use for test
 			return HttpResponse('File Uploaded')
 
 	return HttpResponse('Failed to Upload File')

@@ -11,13 +11,12 @@ from django.contrib.auth.models import User
 
 '''
 ***OMG!***********************
-
 seller/buyer distint index is 
 user_00000_photo_index
 
 seller : 0
 buyer  : 1
-
+******************************
 '''
 #----------------------------------------------------------------------------
 class USER(models.Model):
@@ -322,6 +321,7 @@ class SP_PICTURE(models.Model):
 	class Meta:
 		verbose_name = u'SP_PICTURE'
 		db_table = 'SP_PICTURE_DB'
+	#db_index : indexing by computer
 	sp_photo_index = models.IntegerField(verbose_name=u'sp_photo_index', primary_key=True, unique=True, db_index=True,)
 	sp_name = models.CharField(verbose_name=u'sp_name', max_length=100)
 	sp_picture = models.ImageField(verbose_name=u'sp_picture', upload_to='/sp_app/sp_pictures/sp_pictures/', blank=True, null=True)

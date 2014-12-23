@@ -17,12 +17,11 @@ urlpatterns = patterns('',
 
 	# 테스트 
 	#-------------------------------------------------------------------------------------------------------------------------
-	url(r'^test/json/2/', 'sp_app.views.test_json_2'),
-	url(r'^test/photo/upload', 'sp_app.views.test_photo_upload'),
+	url(r'^test/photo/upload/', 'sp_app.views.test_photo_upload'),
 	url(r'^test/photo/download/1/', 'sp_app.views.test_photo_download_1'),
 	url(r'^test/photo/download/s/', 'sp_app.views.test_photo_download_s'),
 	url(r'^test/photo/download/2/', 'sp_app.views.test_photo_download_2'),
-	url(r'^test/photo/open', 'sp_app.views.test_photo_open'),
+	url(r'^test/photo/open/', 'sp_app.views.test_photo_open'),
 
 
 	# seller
