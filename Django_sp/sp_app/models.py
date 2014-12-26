@@ -70,6 +70,7 @@ class COUPON_DAILY(models.Model):
 		verbose_name = u'COUPON_DAILY'
 		db_table = 'COUPON_DAILY_DB'
 	coupon_daily_index = models.IntegerField(verbose_name=u'coupon_daily_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_daily_product_index = models.IntegerField(verbose_name=u'coupon_daily_product_index', null=False,)
 	coupon_daily_photo_index = models.IntegerField(verbose_name=u'coupon_daily_photo_index', null=False,)
 	coupon_daily_market_name =  models.CharField(verbose_name=u'coupon_daily_market_name', max_length='20',)
 	coupon_daily_name = models.CharField(verbose_name=u'coupon_daily_name', unique=True, max_length='40',)
@@ -87,6 +88,7 @@ class COUPON_GREENS(models.Model):
 		verbose_name = u'COUPON_GREENS'
 		db_table = 'COUPON_GREENS_DB'
 	coupon_greens_index = models.IntegerField(verbose_name=u'coupon_greens_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_greens_product_index = models.IntegerField(verbose_name=u'coupon_greens_product_index', null=False,)
 	coupon_greens_photo_index = models.IntegerField(verbose_name=u'coupon_greens_photo_index', null=False,)
 	coupon_greens_market_name =  models.CharField(verbose_name=u'coupon_greens_market_name', max_length='20',)
 	coupon_greens_name = models.CharField(verbose_name=u'coupon_greens_name', max_length='40',)
@@ -105,6 +107,7 @@ class COUPON_FISH(models.Model):
 		verbose_name = u'COUPON_FISH'
 		db_table = 'COUPON_FISH_DB'
 	coupon_fish_index = models.IntegerField(verbose_name=u'coupon_fish_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_fish_product_index = models.IntegerField(verbose_name=u'coupon_fish_product_index', null=False,)
 	coupon_fish_photo_index = models.IntegerField(verbose_name=u'coupon_fish_photo_index', null=False,)
 	coupon_fish_market_name =  models.CharField(verbose_name=u'coupon_fish_market_name', max_length='20',)
 	coupon_fish_name = models.CharField(verbose_name=u'coupon_fish_name', max_length='40',)
@@ -123,6 +126,7 @@ class COUPON_RICE(models.Model):
 		verbose_name = u'COUPON_RICE'
 		db_table = 'COUPON_RICE_DB'
 	coupon_rice_index = models.IntegerField(verbose_name=u'coupon_rice_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_rice_product_index = models.IntegerField(verbose_name=u'coupon_rice_product_index', null=False,)
 	coupon_rice_photo_index = models.IntegerField(verbose_name=u'coupon_rice_photo_index', null=False,)
 	coupon_rice_market_name =  models.CharField(verbose_name=u'coupon_rice_market_name', max_length='20',)
 	coupon_rice_name = models.CharField(verbose_name=u'coupon_rice_name',  max_length='40',)
@@ -141,6 +145,7 @@ class COUPON_MEAT(models.Model):
 		verbose_name = u'COUPON_MEAT'
 		db_table = 'COUPON_MEAT_DB'
 	coupon_meat_index = models.IntegerField(verbose_name=u'coupon_meat_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_meat_product_index = models.IntegerField(verbose_name=u'coupon_meat_product_index', null=False,)
 	coupon_meat_photo_index = models.IntegerField(verbose_name=u'coupon_meat_photo_index', null=False,)
 	coupon_meat_market_name =  models.CharField(verbose_name=u'coupon_meat_market_name', max_length='20',)
 	coupon_meat_name = models.CharField(verbose_name=u'coupon_meat_name', max_length='40',)
@@ -159,6 +164,7 @@ class COUPON_EGG(models.Model):
 		verbose_name = u'COUPON_EGG'
 		db_table = 'COUPON_EGG_DB'
 	coupon_egg_index = models.IntegerField(verbose_name=u'coupon_egg_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_egg_product_index = models.IntegerField(verbose_name=u'coupon_egg_product_index', null=False,)
 	coupon_egg_photo_index = models.IntegerField(verbose_name=u'coupon_egg_photo_index', null=False,)
 	coupon_egg_market_name =  models.CharField(verbose_name=u'coupon_egg_market_name', max_length='20',)
 	coupon_egg_name = models.CharField(verbose_name=u'coupon_egg_name', max_length='40',)
@@ -177,6 +183,7 @@ class COUPON_HAM(models.Model):
 		verbose_name = u'COUPON_HAM'
 		db_table = 'COUPON_HAM_DB'
 	coupon_ham_index = models.IntegerField(verbose_name=u'coupon_ham_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_ham_product_index = models.IntegerField(verbose_name=u'coupon_ham_product_index', null=False,)
 	coupon_ham_photo_index = models.IntegerField(verbose_name=u'coupon_ham_photo_index', null=False,)
 	coupon_ham_market_name =  models.CharField(verbose_name=u'coupon_ham_market_name', max_length='20',)
 	coupon_ham_name = models.CharField(verbose_name=u'coupon_ham_name', unique=True, max_length='40',)
@@ -194,6 +201,7 @@ class COUPON_SIDE(models.Model):
 		verbose_name = u'COUPON_SIDE'
 		db_table = 'COUPON_SIDE_DB'
 	coupon_side_index = models.IntegerField(verbose_name=u'coupon_side_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_side_product_index = models.IntegerField(verbose_name=u'coupon_side_product_index', null=False,)
 	coupon_side_photo_index = models.IntegerField(verbose_name=u'coupon_side_photo_index', null=False,)
 	coupon_side_market_name =  models.CharField(verbose_name=u'coupon_side_market_name', max_length='20',)
 	coupon_side_name = models.CharField(verbose_name=u'coupon_side_name', unique=True, max_length='40',)
@@ -211,6 +219,7 @@ class COUPON_WATER(models.Model):
 		verbose_name = u'COUPON_WATER'
 		db_table = 'COUPON_WATER_DB'
 	coupon_water_index = models.IntegerField(verbose_name=u'coupon_water_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_water_product_index = models.IntegerField(verbose_name=u'coupon_water_product_index', null=False,)
 	coupon_water_photo_index = models.IntegerField(verbose_name=u'coupon_water_photo_index', null=False,)
 	coupon_water_market_name =  models.CharField(verbose_name=u'coupon_water_market_name', max_length='20',)
 	coupon_water_name = models.CharField(verbose_name=u'coupon_water_name', unique=True, max_length='40',)
@@ -228,6 +237,7 @@ class COUPON_INSTANT(models.Model):
 		verbose_name = u'COUPON_INSTANT'
 		db_table = 'COUPON_INSTANT_DB'
 	coupon_instant_index = models.IntegerField(verbose_name=u'coupon_instant_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_instant_product_index = models.IntegerField(verbose_name=u'coupon_instant_product_index', null=False,)
 	coupon_instant_photo_index = models.IntegerField(verbose_name=u'coupon_instant_photo_index', null=False,)
 	coupon_instant_market_name =  models.CharField(verbose_name=u'coupon_instant_market_name', max_length='20',)
 	coupon_instant_name = models.CharField(verbose_name=u'coupon_instant_name', unique=True, max_length='40',)
@@ -245,6 +255,7 @@ class COUPON_ICE(models.Model):
 		verbose_name = u'COUPON_ICE'
 		db_table = 'COUPON_ICE_DB'
 	coupon_ice_index = models.IntegerField(verbose_name=u'coupon_ice_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_ice_product_index = models.IntegerField(verbose_name=u'coupon_ice_product_index', null=False,)
 	coupon_ice_photo_index = models.IntegerField(verbose_name=u'coupon_ice_photo_index', null=False,)
 	coupon_ice_market_name =  models.CharField(verbose_name=u'coupon_ice_market_name', max_length='20',)
 	coupon_ice_name = models.CharField(verbose_name=u'coupon_ice_name', unique=True, max_length='40',)
@@ -262,6 +273,7 @@ class COUPON_BAKERY(models.Model):
 		verbose_name = u'COUPON_BAKERY'
 		db_table = 'COUPON_BAKERY_DB'
 	coupon_bakery_index = models.IntegerField(verbose_name=u'coupon_bakery_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_bakery_product_index = models.IntegerField(verbose_name=u'coupon_bakery_product_index', null=False,)
 	coupon_bakery_photo_index = models.IntegerField(verbose_name=u'coupon_bakery_photo_index', null=False,)
 	coupon_bakery_market_name =  models.CharField(verbose_name=u'coupon_bakery_market_name', max_length='20',)
 	coupon_bakery_name = models.CharField(verbose_name=u'coupon_bakery_name', unique=True, max_length='40',)
@@ -279,6 +291,7 @@ class COUPON_SNACK(models.Model):
 		verbose_name = u'COUPON_SNACK'
 		db_table = 'COUPON_SNACK_DB'
 	coupon_snack_index = models.IntegerField(verbose_name=u'coupon_snack_index', primary_key=True, unique=True, db_index=True,)
+	# coupon_snack_product_index = models.IntegerField(verbose_name=u'coupon_snack_product_index', null=False,)
 	coupon_snack_photo_index = models.IntegerField(verbose_name=u'coupon_snack_photo_index', null=False,)
 	coupon_snack_market_name =  models.CharField(verbose_name=u'coupon_snack_market_name', max_length='20',)
 	coupon_snack_name = models.CharField(verbose_name=u'coupon_snack_name', unique=True, max_length='40',)

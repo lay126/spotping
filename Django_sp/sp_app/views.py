@@ -484,12 +484,18 @@ def request_coupon_snack(request):
 def request_active_coupon(request):
 	page_title = 'request_active_coupon'
 
-	active_coupon_ = PRODUCT.objects.filter(product_coupon_active=1)
-
 	datas = []
-	for d in active_coupon_:
+
+	active_coupon_p_ = PRODUCT.objects.filter(product_coupon_active=1)
+	for d in active_coupon_p_:
 		data = model_to_dict(d)
 		datas.append(data)
+
+	for d in active_coupon_p_:
+		product_name_ = d.product_name
+		# active_coupon_d_ = COUPON_DAILY.objects.get(coupon_daily_name=product_name_)
+		# data_d = model_to_dict(active_coupon_d_)
+		datas.append(product_name_)
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
