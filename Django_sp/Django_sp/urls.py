@@ -57,8 +57,8 @@ urlpatterns = patterns('',
 	url(r'^response/reservation/coupon/', 'sp_app.views.response_reservation_coupon'),
 	url(r'^request/inactive/coupon/', 'sp_app.views.request_inactive_coupon'),
 	url(r'^response/inactive/coupon/', 'sp_app.views.response_inactive_coupon'),
-	url(r'^request/stat/coupon/', 'sp_app.views.request_stat_coupon'),
-	url(r'^response/stat/coupon/', 'sp_app.views.response_stat_coupon'),
+	url(r'^request/used/coupon/', 'sp_app.views.request_used_coupon'),
+	url(r'^response/used/coupon/', 'sp_app.views.response_used_coupon'),
 	
 
 	# buyer 
