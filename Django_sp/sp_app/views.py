@@ -323,7 +323,7 @@ def request_coupon_greens(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_fish(request):
@@ -337,7 +337,7 @@ def request_coupon_fish(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_rice(request):
@@ -351,7 +351,7 @@ def request_coupon_rice(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_meat(request):
@@ -365,7 +365,7 @@ def request_coupon_meat(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_egg(request):
@@ -379,7 +379,7 @@ def request_coupon_egg(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_ham(request):
@@ -393,7 +393,7 @@ def request_coupon_ham(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_side(request):
@@ -407,7 +407,7 @@ def request_coupon_side(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_water(request):
@@ -421,7 +421,7 @@ def request_coupon_water(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_instant(request):
@@ -435,7 +435,7 @@ def request_coupon_instant(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_ice(request):
@@ -449,7 +449,7 @@ def request_coupon_ice(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 def request_coupon_bakery(request):
 	page_title = 'request_coupon_bakery'
@@ -462,7 +462,7 @@ def request_coupon_bakery(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 def request_coupon_snack(request):
@@ -476,7 +476,7 @@ def request_coupon_snack(request):
 		datas.append(data)
 
 	json_data = json.dumps(datas)
-	return HttpResponse('this page is : %s' % (page_title))
+	return HttpResponse(json_data, content_type='application/json')
 
 
 # seller controll coupon-----------------------------------------------------
@@ -484,7 +484,15 @@ def request_coupon_snack(request):
 def request_active_coupon(request):
 	page_title = 'request_active_coupon'
 
-	return HttpResponse('this page is : %s' % (page_title))
+	active_coupon_ = PRODUCT.objects.filter(product_coupon_active=1)
+
+	datas = []
+	for d in active_coupon_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
 
 def response_active_coupon(request):
 	page_title = 'response_active_coupon'
