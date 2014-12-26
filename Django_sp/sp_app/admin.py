@@ -30,83 +30,43 @@ class PRODUCTAdmin(admin.ModelAdmin):
 
 #-product_list--------------------------------------------
 class COUPON_DAILYAdmin(admin.ModelAdmin):
-	list_display = ('coupon_daily_index', 'coupon_daily_photo_index','coupon_daily_market_name','coupon_daily_name', 'coupon_daily_brand', 'coupon_daily_unit', 'coupon_daily_price','coupon_daily_start','coupon_daily_finish','coupon_daily_times','coupon_daily_type',)
+	list_display = ('coupon_daily_index', 'coupon_daily_product_index', 'coupon_daily_photo_index','coupon_daily_market_name','coupon_daily_name', 'coupon_daily_brand', 'coupon_daily_unit', 'coupon_daily_price','coupon_daily_start','coupon_daily_finish','coupon_daily_times','coupon_daily_type', 'coupon_daily_detail')
 
 class COUPON_GREENSAdmin(admin.ModelAdmin):
-	list_display = ('coupon_greens_index','coupon_greens_photo_index','coupon_greens_market_name', 'coupon_greens_name', 'coupon_greens_brand', 'coupon_greens_unit', 'coupon_greens_area', 'coupon_greens_price','coupon_greens_start','coupon_greens_finish','coupon_greens_times','coupon_greens_type',)
+	list_display = ('coupon_greens_index', 'coupon_greens_product_index', 'coupon_greens_photo_index','coupon_greens_market_name', 'coupon_greens_name', 'coupon_greens_brand', 'coupon_greens_unit', 'coupon_greens_area', 'coupon_greens_price','coupon_greens_start','coupon_greens_finish','coupon_greens_times','coupon_greens_type', 'coupon_greens_detail')
 
 class COUPON_FISHAdmin(admin.ModelAdmin):
-	list_display = ('coupon_fish_index','coupon_fish_photo_index','coupon_fish_market_name', 'coupon_fish_name', 'coupon_fish_brand', 'coupon_fish_unit', 'coupon_fish_area', 'coupon_fish_price','coupon_fish_start','coupon_fish_finish','coupon_fish_times','coupon_fish_type',)
+	list_display = ('coupon_fish_index', 'coupon_fish_product_index', 'coupon_fish_photo_index','coupon_fish_market_name', 'coupon_fish_name', 'coupon_fish_brand', 'coupon_fish_unit', 'coupon_fish_area', 'coupon_fish_price','coupon_fish_start','coupon_fish_finish','coupon_fish_times','coupon_fish_type',)
 	  
 class COUPON_RICEAdmin(admin.ModelAdmin):
-	list_display = ('coupon_rice_index','coupon_rice_photo_index','coupon_rice_market_name','coupon_rice_name', 'coupon_rice_brand', 'coupon_rice_unit', 'coupon_rice_area', 'coupon_rice_price','coupon_rice_start','coupon_rice_finish','coupon_rice_times','coupon_rice_type',)
+	list_display = ('coupon_rice_index', 'coupon_rice_product_index', 'coupon_rice_photo_index','coupon_rice_market_name','coupon_rice_name', 'coupon_rice_brand', 'coupon_rice_unit', 'coupon_rice_area', 'coupon_rice_price','coupon_rice_start','coupon_rice_finish','coupon_rice_times','coupon_rice_type', 'coupon_rice_detail')
 
 class COUPON_MEATAdmin(admin.ModelAdmin):
-	list_display = ('coupon_meat_index','coupon_meat_photo_index', 'coupon_meat_market_name','coupon_meat_name', 'coupon_meat_brand', 'coupon_meat_unit', 'coupon_meat_area', 'coupon_meat_price','coupon_meat_start','coupon_meat_finish','coupon_meat_times','coupon_meat_type',)
+	list_display = ('coupon_meat_index', 'coupon_meat_product_index', 'coupon_meat_photo_index', 'coupon_meat_market_name','coupon_meat_name', 'coupon_meat_brand', 'coupon_meat_unit', 'coupon_meat_area', 'coupon_meat_price','coupon_meat_start','coupon_meat_finish','coupon_meat_times','coupon_meat_type',)
 
 class COUPON_EGGAdmin(admin.ModelAdmin):
-	list_display = ('coupon_egg_index','coupon_egg_photo_index', 'coupon_egg_market_name','coupon_egg_name', 'coupon_egg_brand', 'coupon_egg_unit', 'coupon_egg_area', 'coupon_egg_price','coupon_egg_start','coupon_egg_finish','coupon_egg_times','coupon_egg_type',)
+	list_display = ('coupon_egg_index', 'coupon_egg_product_index', 'coupon_egg_photo_index', 'coupon_egg_market_name','coupon_egg_name', 'coupon_egg_brand', 'coupon_egg_unit', 'coupon_egg_area', 'coupon_egg_price','coupon_egg_start','coupon_egg_finish','coupon_egg_times','coupon_egg_type', 'coupon_egg_detail')
 
 class COUPON_HAMAdmin(admin.ModelAdmin):
-	list_display = ('coupon_ham_index','coupon_ham_photo_index', 'coupon_ham_market_name','coupon_ham_name', 'coupon_ham_brand', 'coupon_ham_unit', 'coupon_ham_price', 	'coupon_ham_start','coupon_ham_finish','coupon_ham_times','coupon_ham_type',)
+	list_display = ('coupon_ham_index', 'coupon_ham_product_index', 'coupon_ham_photo_index', 'coupon_ham_market_name','coupon_ham_name', 'coupon_ham_brand', 'coupon_ham_unit', 'coupon_ham_price', 	'coupon_ham_start','coupon_ham_finish','coupon_ham_times','coupon_ham_type', 'coupon_ham_detail')
 
 class COUPON_SIDEAdmin(admin.ModelAdmin):
-	list_display = ('coupon_side_index','coupon_side_photo_index', 'coupon_side_market_name','coupon_side_name', 'coupon_side_brand', 'coupon_side_unit', 'coupon_side_price', 'coupon_side_start','coupon_side_finish','coupon_side_times','coupon_side_type',)
+	list_display = ('coupon_side_index', 'coupon_side_product_index', 'coupon_side_photo_index', 'coupon_side_market_name','coupon_side_name', 'coupon_side_brand', 'coupon_side_unit', 'coupon_side_price', 'coupon_side_start','coupon_side_finish','coupon_side_times','coupon_side_type',)
 
 class COUPON_WATERAdmin(admin.ModelAdmin):
-	list_display = ('coupon_water_index','coupon_water_photo_index', 'coupon_water_market_name','coupon_water_name', 'coupon_water_brand', 'coupon_water_unit', 'coupon_water_price', 'coupon_water_start','coupon_water_finish','coupon_water_times','coupon_water_type',)
+	list_display = ('coupon_water_index', 'coupon_water_product_index', 'coupon_water_photo_index', 'coupon_water_market_name','coupon_water_name', 'coupon_water_brand', 'coupon_water_unit', 'coupon_water_price', 'coupon_water_start','coupon_water_finish','coupon_water_times','coupon_water_type', 'coupon_water_detail')
 
 class COUPON_INSTANTAdmin(admin.ModelAdmin):
-	list_display = ('coupon_instant_index','coupon_instant_photo_index','coupon_instant_market_name' ,'coupon_instant_name', 'coupon_instant_brand', 'coupon_instant_unit', 'coupon_instant_price', 'coupon_instant_start','coupon_instant_finish','coupon_instant_times','coupon_instant_type',)
+	list_display = ('coupon_instant_index', 'coupon_instant_product_index', 'coupon_instant_photo_index','coupon_instant_market_name' ,'coupon_instant_name', 'coupon_instant_brand', 'coupon_instant_unit', 'coupon_instant_price', 'coupon_instant_start','coupon_instant_finish','coupon_instant_times','coupon_instant_type', 'coupon_instant_detail')
 
 class COUPON_ICEAdmin(admin.ModelAdmin):
-	list_display = ('coupon_ice_index','coupon_ice_photo_index', 'coupon_ice_market_name','coupon_ice_name', 'coupon_ice_brand', 'coupon_ice_unit', 'coupon_ice_price', 'coupon_ice_start','coupon_ice_finish','coupon_ice_times','coupon_ice_type',)
+	list_display = ('coupon_ice_index', 'coupon_ice_product_index', 'coupon_ice_photo_index', 'coupon_ice_market_name','coupon_ice_name', 'coupon_ice_brand', 'coupon_ice_unit', 'coupon_ice_price', 'coupon_ice_start','coupon_ice_finish','coupon_ice_times','coupon_ice_type', 'coupon_ice_detail')
 
 class COUPON_BAKERYAdmin(admin.ModelAdmin):
-	list_display = ('coupon_bakery_index','coupon_bakery_photo_index', 'coupon_bakery_market_name','coupon_bakery_name', 'coupon_bakery_brand', 'coupon_bakery_unit', 'coupon_bakery_price', 'coupon_bakery_start','coupon_bakery_finish','coupon_bakery_times','coupon_bakery_type',)
+	list_display = ('coupon_bakery_index', 'coupon_bakery_product_index', 'coupon_bakery_photo_index', 'coupon_bakery_market_name','coupon_bakery_name', 'coupon_bakery_brand', 'coupon_bakery_unit', 'coupon_bakery_price', 'coupon_bakery_start','coupon_bakery_finish','coupon_bakery_times','coupon_bakery_type', 'coupon_bakery_detail')
 
 class COUPON_SNACKAdmin(admin.ModelAdmin):
-	list_display = ('coupon_snack_index','coupon_snack_photo_index', 'coupon_snack_market_name','coupon_snack_name', 'coupon_snack_brand', 'coupon_snack_unit', 'coupon_snack_price', 'coupon_snack_start','coupon_snack_finish','coupon_snack_times','coupon_snack_type',)
-
-
-# class COUPON_DAILYAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_daily_index', 'coupon_daily_product_index', 'coupon_daily_photo_index','coupon_daily_market_name','coupon_daily_name', 'coupon_daily_brand', 'coupon_daily_unit', 'coupon_daily_price','coupon_daily_start','coupon_daily_finish','coupon_daily_times','coupon_daily_type',)
-
-# class COUPON_GREENSAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_greens_index', 'coupon_greens_product_index', 'coupon_greens_photo_index','coupon_greens_market_name', 'coupon_greens_name', 'coupon_greens_brand', 'coupon_greens_unit', 'coupon_greens_area', 'coupon_greens_price','coupon_greens_start','coupon_greens_finish','coupon_greens_times','coupon_greens_type',)
-
-# class COUPON_FISHAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_fish_index', 'coupon_fish_product_index', 'coupon_fish_photo_index','coupon_fish_market_name', 'coupon_fish_name', 'coupon_fish_brand', 'coupon_fish_unit', 'coupon_fish_area', 'coupon_fish_price','coupon_fish_start','coupon_fish_finish','coupon_fish_times','coupon_fish_type',)
-	  
-# class COUPON_RICEAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_rice_index', 'coupon_rice_product_index', 'coupon_rice_photo_index','coupon_rice_market_name','coupon_rice_name', 'coupon_rice_brand', 'coupon_rice_unit', 'coupon_rice_area', 'coupon_rice_price','coupon_rice_start','coupon_rice_finish','coupon_rice_times','coupon_rice_type',)
-
-# class COUPON_MEATAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_meat_index', 'coupon_meat_product_index', 'coupon_meat_photo_index', 'coupon_meat_market_name','coupon_meat_name', 'coupon_meat_brand', 'coupon_meat_unit', 'coupon_meat_area', 'coupon_meat_price','coupon_meat_start','coupon_meat_finish','coupon_meat_times','coupon_meat_type',)
-
-# class COUPON_EGGAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_egg_index', 'coupon_egg_product_index', 'coupon_egg_photo_index', 'coupon_egg_market_name','coupon_egg_name', 'coupon_egg_brand', 'coupon_egg_unit', 'coupon_egg_area', 'coupon_egg_price','coupon_egg_start','coupon_egg_finish','coupon_egg_times','coupon_egg_type',)
-
-# class COUPON_HAMAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_ham_index', 'coupon_ham_product_index', 'coupon_ham_photo_index', 'coupon_ham_market_name','coupon_ham_name', 'coupon_ham_brand', 'coupon_ham_unit', 'coupon_ham_price', 	'coupon_ham_start','coupon_ham_finish','coupon_ham_times','coupon_ham_type',)
-
-# class COUPON_SIDEAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_side_index', 'coupon_side_product_index', 'coupon_side_photo_index', 'coupon_side_market_name','coupon_side_name', 'coupon_side_brand', 'coupon_side_unit', 'coupon_side_price', 'coupon_side_start','coupon_side_finish','coupon_side_times','coupon_side_type',)
-
-# class COUPON_WATERAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_water_index', 'coupon_water_product_index', 'coupon_water_photo_index', 'coupon_water_market_name','coupon_water_name', 'coupon_water_brand', 'coupon_water_unit', 'coupon_water_price', 'coupon_water_start','coupon_water_finish','coupon_water_times','coupon_water_type',)
-
-# class COUPON_INSTANTAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_instant_index', 'coupon_instant_product_index', 'coupon_instant_photo_index','coupon_instant_market_name' ,'coupon_instant_name', 'coupon_instant_brand', 'coupon_instant_unit', 'coupon_instant_price', 'coupon_instant_start','coupon_instant_finish','coupon_instant_times','coupon_instant_type',)
-
-# class COUPON_ICEAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_ice_index', 'coupon_ice_product_index', 'coupon_ice_photo_index', 'coupon_ice_market_name','coupon_ice_name', 'coupon_ice_brand', 'coupon_ice_unit', 'coupon_ice_price', 'coupon_ice_start','coupon_ice_finish','coupon_ice_times','coupon_ice_type',)
-
-# class COUPON_BAKERYAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_bakery_index', 'coupon_bakert_product_index', 'coupon_bakery_photo_index', 'coupon_bakery_market_name','coupon_bakery_name', 'coupon_bakery_brand', 'coupon_bakery_unit', 'coupon_bakery_price', 'coupon_bakery_start','coupon_bakery_finish','coupon_bakery_times','coupon_bakery_type',)
-
-# class COUPON_SNACKAdmin(admin.ModelAdmin):
-# 	list_display = ('coupon_snack_index', 'coupon_snack_product_index', 'coupon_snack_photo_index', 'coupon_snack_market_name','coupon_snack_name', 'coupon_snack_brand', 'coupon_snack_unit', 'coupon_snack_price', 'coupon_snack_start','coupon_snack_finish','coupon_snack_times','coupon_snack_type',)
+	list_display = ('coupon_snack_index', 'coupon_snackㅏ_product_index', 'coupon_snack_photo_index', 'coupon_snack_market_name','coupon_snack_name', 'coupon_snack_brand', 'coupon_snack_unit', 'coupon_snack_price', 'coupon_snack_start','coupon_snack_finish','coupon_snack_times','coupon_snack_type',)
 
 
 #-user_buyer-------------------------------------------
