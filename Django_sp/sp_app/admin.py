@@ -19,10 +19,10 @@ class UserAdmin(admin.ModelAdmin):
 	list_display = ('id', 'username', 'password', 'email',)
 
 class USER_SELLERAdmin(admin.ModelAdmin):
-	list_display = ('user_seller_id','user_seller_photo_index', 'user_seller_market_name', 'user_seller_address', 'user_seller_phone',)
+	list_display = ('user_seller_id', 'user_seller_register_id', 'user_seller_photo_index', 'user_seller_market_name', 'user_seller_address', 'user_seller_phone',)
 
 class USER_BUYERAdmin(admin.ModelAdmin):
-	list_display = ('user_buyer_id','user_buyer_photo_index', 'user_buyer_address', 'user_buyer_phone',)
+	list_display = ('user_buyer_id', 'user_buyer_register_id' ,'user_buyer_photo_index', 'user_buyer_address', 'user_buyer_phone',)
 
 class PRODUCTAdmin(admin.ModelAdmin):
 	list_display = ('product_index','product_photo_index', 'product_market_name', 'product_name', 'product_brand', 'product_unit' ,'product_category_seller', 'product_category_buyer', 'product_price', 'product_coupon_active', 'product_coupon_times',)
@@ -66,7 +66,7 @@ class COUPON_BAKERYAdmin(admin.ModelAdmin):
 	list_display = ('coupon_bakery_index', 'coupon_bakery_product_index', 'coupon_bakery_photo_index', 'coupon_bakery_market_name','coupon_bakery_name', 'coupon_bakery_brand', 'coupon_bakery_unit', 'coupon_bakery_price', 'coupon_bakery_start','coupon_bakery_finish','coupon_bakery_times','coupon_bakery_type', 'coupon_bakery_detail')
 
 class COUPON_SNACKAdmin(admin.ModelAdmin):
-	list_display = ('coupon_snack_index', 'coupon_snackㅏ_product_index', 'coupon_snack_photo_index', 'coupon_snack_market_name','coupon_snack_name', 'coupon_snack_brand', 'coupon_snack_unit', 'coupon_snack_price', 'coupon_snack_start','coupon_snack_finish','coupon_snack_times','coupon_snack_type',)
+	list_display = ('coupon_snack_index', 'coupon_snack_product_index', 'coupon_snack_photo_index', 'coupon_snack_market_name','coupon_snack_name', 'coupon_snack_brand', 'coupon_snack_unit', 'coupon_snack_price', 'coupon_snack_start','coupon_snack_finish','coupon_snack_times','coupon_snack_type',)
 
 
 #-user_buyer-------------------------------------------

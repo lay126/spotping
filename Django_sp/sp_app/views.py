@@ -194,7 +194,6 @@ def request_login_seller(request):
 	request.session['sess_seller_id'] = user_seller_.username
 	request.session['sess_seller_market_name'] = user_seller_info_.user_seller_market_name
 
-
 	datas = []
 	datas.append(user_seller_.id) 			#index
 	datas.append(user_seller_.username) 	#id
@@ -477,6 +476,189 @@ def request_coupon_snack(request):
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
+
+#-------------------------------------------------------------------------------------------------------------------------
+
+def request_make_daily(request):
+	page_title = 'request_make_daily'
+
+	make_data_= COUPON_DAILY.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_greens(request):
+	page_title = 'request_make_greens'
+
+	make_data_= COUPON_GREENS.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_fish(request):
+	page_title = 'request_make_fish'
+
+	make_data_= COUPON_FISH.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_rice(request):
+	page_title = 'request_make_rice'
+
+	make_data_= COUPON_RICE.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_meat(request):
+	page_title = 'request_make_meat'
+
+	make_data_= COUPON_MEAT.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_egg(request):
+	page_title = 'request_make_egg'
+
+	make_data_= COUPON_EGG.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_ham(request):
+	page_title = 'request_make_ham'
+
+	make_data_= COUPON_HAM.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_side(request):
+	page_title = 'request_make_side'
+
+	make_data_= COUPON_SIDE.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_water(request):
+	page_title = 'request_make_water'
+
+	make_data_= COUPON_WATER.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_instant(request):
+	page_title = 'request_make_instant'
+
+	make_data_= COUPON_INSTANT.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_ice(request):
+	page_title = 'request_make_ice'
+
+	make_data_= COUPON_ICE.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+def request_make_bakery(request):
+	page_title = 'request_make_bakery'
+
+	make_data_= COUPON_BAKERY.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+def request_make_snack(request):
+	page_title = 'request_make_snack'
+
+	make_data_= COUPON_SNACK.objects.all()
+
+	datas = []
+	for d in make_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
 
 
 # seller controll coupon-----------------------------------------------------
@@ -874,7 +1056,6 @@ def request_login_buyer(request):
 
 	#make session
 	request.session['sess_buyer_id'] = user_buyer_.username
-
 
 	datas = []
 	datas.append(user_buyer_.id) 			#index
