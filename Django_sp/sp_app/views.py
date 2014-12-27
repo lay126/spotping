@@ -21,10 +21,15 @@ from django.contrib.auth.models import User, UserManager
 from sp_app.models import *
 
 
-def test_photo_open(request):
-	page_title = 'test_photo_open'
+def test_photo_open_t(request):
+	page_title = 'test_photo_open_t'
 
-	return render_to_response('imgForm.html')
+	return render_to_response('imgForm_t.html')
+
+def test_photo_open_c(request):
+	page_title = 'test_photo_open_c'
+
+	return render_to_response('imgForm_c.html')
 
 # anroid -> server 
 @csrf_exempt
@@ -520,7 +525,6 @@ def request_make_daily(request):
 		product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
 		coupon_daily_photo_index_ = product_.product_photo_index
 
-	return HttpResponse('Failed to Upload File')
 
 	coupon_daily = COUPON_DAILY(coupon_daily_product_index = coupon_daily_product_index_, coupon_daily_photo_index = coupon_daily_photo_index_, coupon_daily_market_name = coupon_daily_market_name_, coupon_daily_name = coupon_daily_name_, coupon_daily_brand = coupon_daily_brand_, coupon_daily_unit = coupon_daily_unit_, coupon_daily_price = coupon_daily_price_, coupon_daily_start = coupon_daily_start_, coupon_daily_finish = coupon_daily_finish_, coupon_daily_times = coupon_daily_times_, coupon_daily_detail = coupon_daily_detail_, coupon_daily_type = coupon_daily_type_,)
 	coupon_daily.save()

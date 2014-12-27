@@ -21,7 +21,8 @@ urlpatterns = patterns('',
 	url(r'^test/photo/download/1/', 'sp_app.views.test_photo_download_1'),
 	url(r'^test/photo/download/s/', 'sp_app.views.test_photo_download_s'),
 	url(r'^test/photo/download/2/', 'sp_app.views.test_photo_download_2'),
-	url(r'^test/photo/open/', 'sp_app.views.test_photo_open'),
+	url(r'^test/photo/open/t/', 'sp_app.views.test_photo_open_t'),
+	url(r'^test/photo/open/c/', 'sp_app.views.test_photo_open_c'),
 
 
 	# seller
