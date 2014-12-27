@@ -352,7 +352,7 @@ class SP_PICTURE(models.Model):
 	#db_index : indexing by computer
 	sp_photo_index = models.AutoField(verbose_name=u'sp_photo_index', primary_key=True, unique=True, db_index=True,)
 	sp_name = models.CharField(verbose_name=u'sp_name', max_length=100)
-	sp_picture = models.ImageField(verbose_name=u'sp_picture', upload_to='/sp_app/sp_pictures/sp_pictures/', blank=True, null=True)
+	sp_picture = models.ImageField(verbose_name=u'sp_picture', upload_to='sp_app/sp_pictures/sp_pictures/', blank=True, null=True)
 
 
 class USER_PICTURE(models.Model):
@@ -361,7 +361,7 @@ class USER_PICTURE(models.Model):
 		db_table = 'USER_PICTURE_DB'
 	user_photo_index = models.IntegerField(verbose_name=u'user_photo_index', primary_key=True, unique=True, db_index=True,)
 	user_name = models.CharField(verbose_name=u'user_name', max_length=100)
-	user_picture = models.ImageField(verbose_name=u'user_picture', upload_to='sp_app/sp_pictures/sp_pictures/', blank=True, null=True)
+	user_picture = models.ImageField(verbose_name=u'user_picture', upload_to='sp_app/sp_pictures/user_picture/', blank=True, null=True)
 
 
 

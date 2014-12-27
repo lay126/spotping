@@ -477,19 +477,55 @@ def request_coupon_snack(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
-#-------------------------------------------------------------------------------------------------------------------------
 
+# make coupon-----------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_make_daily(request):
 	page_title = 'request_make_daily'
 
-	make_data_= COUPON_DAILY.objects.all()
+	# /request/make/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_type=0
 
-	datas = []
-	for d in make_data_:
-		data = model_to_dict(d)
-		datas.append(data)
+	coupon_daily_product_index_ = request.GET.get('coupon_daily_product_index')
+	# not change: 0 / change: 1
+	coupon_daily_photo_index_ = request.GET.get('coupon_daily_photo_index')
+	coupon_daily_market_name_ =  request.GET.get('coupon_daily_market_name')
+	coupon_daily_name_ = request.GET.get('coupon_daily_name')
+	coupon_daily_brand_ = request.GET.get('coupon_daily_brand')
+	coupon_daily_unit_ = request.GET.get('coupon_daily_unit')
+	coupon_daily_price_ = request.GET.get('coupon_daily_price')
+	coupon_daily_start_ = request.GET.get('coupon_daily_start')
+	coupon_daily_finish_ = request.GET.get('coupon_daily_finish')
+	coupon_daily_times_ = request.GET.get('coupon_daily_times')
+	coupon_daily_detail_ = request.GET.get('coupon_daily_detail')
+	coupon_daily_type_ = request.GET.get('coupon_daily_type')
 
-	json_data = json.dumps(datas)
+	if coupon_daily_photo_index_ == 1:
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = coupon_daily_market_name_ + '_' + coupon_daily_name_ + '_' + coupon_daily_type_
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+				except:
+					return HttpResponse(404)		
+				pic_.save()
+
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_daily_photo_index_ = pic_now.coupon_daily_photo_index
+	else:
+		product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+		coupon_daily_photo_index_ = product_.product_photo_index
+
+	return HttpResponse('Failed to Upload File')
+
+	coupon_daily = COUPON_DAILY(coupon_daily_product_index = coupon_daily_product_index_, coupon_daily_photo_index = coupon_daily_photo_index_, coupon_daily_market_name = coupon_daily_market_name_, coupon_daily_name = coupon_daily_name_, coupon_daily_brand = coupon_daily_brand_, coupon_daily_unit = coupon_daily_unit_, coupon_daily_price = coupon_daily_price_, coupon_daily_start = coupon_daily_start_, coupon_daily_finish = coupon_daily_finish_, coupon_daily_times = coupon_daily_times_, coupon_daily_detail = coupon_daily_detail_, coupon_daily_type = coupon_daily_type_,)
+	coupon_daily.save()
+
+	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
 
 
