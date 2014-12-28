@@ -981,15 +981,61 @@ def request_make_side(request):
 
 def request_make_water(request):
 	page_title = 'request_make_water'
+	# /request/make/water/?coupon_water_product_index=0&coupon_water_photo_index=1&coupon_water_market_name=nabak&coupon_water_name=milk&coupon_water_brand=pul&coupon_water_unit=0&coupon_water_pwater=100&coupon_water_start=0&coupon_water_finish=0&coupon_water_times=0&coupon_water_detail=0&coupon_water_type=0
 
-	make_data_= COUPON_WATER.objects.all()
+	coupon_water_product_index_ = request.POST.get('coupon_water_product_index')
+	# not change: 0 / change: 1
+	coupon_water_photo_index_ = request.POST.get('coupon_water_photo_index')
+	coupon_water_market_name_ =  request.POST.get('coupon_water_market_name')
+	coupon_water_name_ = request.POST.get('coupon_water_name')
+	coupon_water_brand_ = request.POST.get('coupon_water_brand')
+	coupon_water_unit_ = request.POST.get('coupon_water_unit')
+	coupon_water_price_ = request.POST.get('coupon_water_price')
+	coupon_water_start_ = request.POST.get('coupon_water_start')
+	coupon_water_finish_ = request.POST.get('coupon_water_finish')
+	coupon_water_times_ = request.POST.get('coupon_water_times')
+	coupon_water_detail_ = request.POST.get('coupon_water_detail')
+	coupon_water_type_ = request.POST.get('coupon_water_type')
 
-	datas = []
-	for d in make_data_:
-		data = model_to_dict(d)
-		datas.append(data)
+	# make coupon
+	coupon_water = COUPON_WATER(coupon_water_product_index = coupon_water_product_index_, coupon_water_photo_index = coupon_water_photo_index_, coupon_water_market_name = coupon_water_market_name_, coupon_water_name = coupon_water_name_, coupon_water_brand = coupon_water_brand_, coupon_water_unit = coupon_water_unit_, coupon_water_price = coupon_water_price_, coupon_water_start = coupon_water_start_, coupon_water_finish = coupon_water_finish_, coupon_water_times = coupon_water_times_, coupon_water_detail = coupon_water_detail_, coupon_water_type = coupon_water_type_,)
+	coupon_water.save()
 
-	json_data = json.dumps(datas)
+	coupon_ = COUPON_WATER.objects.get(coupon_water_name=coupon_water_name_)
+	coupon_water_index_ = coupon_.coupon_water_index
+
+	# have to change photo
+	if coupon_water_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_water' + '_' + str(coupon_water_product_index_ )+ '_' + str(coupon_water_index_) + '_' + coupon_water_name_
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps(1)
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_water_photo_index_ = pic_now.sp_photo_index
+	# dont have to change photo
+	elif coupon_water_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_water_product_index_)
+		coupon_water_photo_index_ = product_.product_photo_index	
+
+	# swich coupon photo index
+	coupon_.coupon_water_photo_index = coupon_water_photo_index_
+	coupon_.save()
+
+	# code0 : success
+	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
 
 
