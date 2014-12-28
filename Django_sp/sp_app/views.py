@@ -851,19 +851,62 @@ def request_make_egg(request):
 
 def request_make_ham(request):
 	page_title = 'request_make_ham'
-	coupon_ham_index = models.AutoField(verbose_name=u'coupon_ham_index', primary_key=True, unique=True, db_index=True,)
-	coupon_ham_product_index = models.IntegerField(verbose_name=u'coupon_ham_product_index', null=False,)
-	coupon_ham_photo_index = models.IntegerField(verbose_name=u'coupon_ham_photo_index', null=False,)
-	coupon_ham_market_name =  models.CharField(verbose_name=u'coupon_ham_market_name', max_length='20',)
-	coupon_ham_name = models.CharField(verbose_name=u'coupon_ham_name', unique=True, max_length='40',)
-	coupon_ham_brand = models.CharField(verbose_name=u'coupon_ham_brand', max_length='20',)
-	coupon_ham_unit = models.CharField(verbose_name=u'coupon_ham_unit', max_length='20',)
-	coupon_ham_price = models.IntegerField(verbose_name=u'coupon_ham_price', null=False, default=0,)
-	coupon_ham_start = models.CharField(verbose_name=u'coupon_ham_start',  max_length='30',)
-	coupon_ham_finish = models.CharField(verbose_name=u'coupon_ham_finish', max_length='30',)
-	coupon_ham_times = models.IntegerField(verbose_name=u'coupon_ham_times', null=False, default=0,)
-	coupon_ham_detail = models.IntegerField(verbose_name=u'coupon_ham_detail', null=False, default=0,)
-	coupon_ham_type = models.
+	# /request/make/ham/?coupon_ham_product_index=0&coupon_ham_photo_index=1&coupon_ham_market_name=nabak&coupon_ham_name=milk&coupon_ham_brand=pul&coupon_ham_unit=0&coupon_ham_pham=100&coupon_ham_start=0&coupon_ham_finish=0&coupon_ham_times=0&coupon_ham_detail=0&coupon_ham_type=0
+
+	coupon_ham_product_index_ = request.POST.get('coupon_ham_product_index')
+	# not change: 0 / change: 1
+	coupon_ham_photo_index_ = request.POST.get('coupon_ham_photo_index')
+	coupon_ham_market_name_ =  request.POST.get('coupon_ham_market_name')
+	coupon_ham_name_ = request.POST.get('coupon_ham_name')
+	coupon_ham_brand_ = request.POST.get('coupon_ham_brand')
+	coupon_ham_unit_ = request.POST.get('coupon_ham_unit')
+	coupon_ham_price_ = request.POST.get('coupon_ham_price')
+	coupon_ham_start_ = request.POST.get('coupon_ham_start')
+	coupon_ham_finish_ = request.POST.get('coupon_ham_finish')
+	coupon_ham_times_ = request.POST.get('coupon_ham_times')
+	coupon_ham_detail_ = request.POST.get('coupon_ham_detail')
+	coupon_ham_type_ = request.POST.get('coupon_ham_type')
+
+	# make coupon
+	coupon_ham = COUPON_HAM(coupon_ham_product_index = coupon_ham_product_index_, coupon_ham_photo_index = coupon_ham_photo_index_, coupon_ham_market_name = coupon_ham_market_name_, coupon_ham_name = coupon_ham_name_, coupon_ham_brand = coupon_ham_brand_, coupon_ham_unit = coupon_ham_unit_, coupon_ham_price = coupon_ham_price_, coupon_ham_start = coupon_ham_start_, coupon_ham_finish = coupon_ham_finish_, coupon_ham_times = coupon_ham_times_, coupon_ham_detail = coupon_ham_detail_, coupon_ham_type = coupon_ham_type_,)
+	coupon_ham.save()
+
+	coupon_ = COUPON_HAM.objects.get(coupon_ham_name=coupon_ham_name_)
+	coupon_ham_index_ = coupon_.coupon_ham_index
+
+	# have to change photo
+	if coupon_ham_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_ham' + '_' + str(coupon_ham_product_index_ )+ '_' + str(coupon_ham_index_) + '_' + coupon_ham_name_
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps(1)
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_ham_photo_index_ = pic_now.sp_photo_index
+	# dont have to change photo
+	elif coupon_ham_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_ham_product_index_)
+		coupon_ham_photo_index_ = product_.product_photo_index	
+
+	# swich coupon photo index
+	coupon_.coupon_ham_photo_index = coupon_ham_photo_index_
+	coupon_.save()
+
+	# code0 : success
+	json_data = json.dumps(0)
+	return HttpResponse(json_data, content_type='application/json')
 
 
 	make_data_= COUPON_HAM.objects.all()
@@ -879,15 +922,60 @@ def request_make_ham(request):
 
 def request_make_side(request):
 	page_title = 'request_make_side'
+	# /request/make/side/?coupon_side_product_index=0&coupon_side_photo_index=1&coupon_side_market_name=nabak&coupon_side_name=milk&coupon_side_brand=pul&coupon_side_unit=0&coupon_side_pside=100&coupon_side_start=0&coupon_side_finish=0&coupon_side_times=0&coupon_side_detail=0&coupon_side_type=0
 
-	make_data_= COUPON_SIDE.objects.all()
+	coupon_side_product_index_ = request.POST.get('coupon_side_product_index')
+	# not change: 0 / change: 1
+	coupon_side_photo_index_ = request.POST.get('coupon_side_photo_index')
+	coupon_side_market_name_ =  request.POST.get('coupon_side_market_name')
+	coupon_side_name_ = request.POST.get('coupon_side_name')
+	coupon_side_brand_ = request.POST.get('coupon_side_brand')
+	coupon_side_unit_ = request.POST.get('coupon_side_unit')
+	coupon_side_price_ = request.POST.get('coupon_side_price')
+	coupon_side_start_ = request.POST.get('coupon_side_start')
+	coupon_side_finish_ = request.POST.get('coupon_side_finish')
+	coupon_side_times_ = request.POST.get('coupon_side_times')
+	coupon_side_type_ = request.POST.get('coupon_side_type')
 
-	datas = []
-	for d in make_data_:
-		data = model_to_dict(d)
-		datas.append(data)
+	# make coupon
+	coupon_side = COUPON_SIDE(coupon_side_product_index = coupon_side_product_index_, coupon_side_photo_index = coupon_side_photo_index_, coupon_side_market_name = coupon_side_market_name_, coupon_side_name = coupon_side_name_, coupon_side_brand = coupon_side_brand_, coupon_side_unit = coupon_side_unit_, coupon_side_price = coupon_side_price_, coupon_side_start = coupon_side_start_, coupon_side_finish = coupon_side_finish_, coupon_side_times = coupon_side_times_, coupon_side_type = coupon_side_type_,)
+	coupon_side.save()
 
-	json_data = json.dumps(datas)
+	coupon_ = COUPON_SIDE.objects.get(coupon_side_name=coupon_side_name_)
+	coupon_side_index_ = coupon_.coupon_side_index
+
+	# have to change photo
+	if coupon_side_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_side' + '_' + str(coupon_side_product_index_ )+ '_' + str(coupon_side_index_) + '_' + coupon_side_name_
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps(1)
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_side_photo_index_ = pic_now.sp_photo_index
+	# dont have to change photo
+	elif coupon_side_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_side_product_index_)
+		coupon_side_photo_index_ = product_.product_photo_index	
+
+	# swich coupon photo index
+	coupon_.coupon_side_photo_index = coupon_side_photo_index_
+	coupon_.save()
+
+	# code0 : success
+	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
 
 
