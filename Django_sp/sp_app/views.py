@@ -612,14 +612,61 @@ def request_make_greens(request):
 def request_make_fish(request):
 	page_title = 'request_make_fish'
 
-	make_data_= COUPON_FISH.objects.all()
+	# /request/make/fish/?coupon_fish_product_index=0&coupon_fish_photo_index=1&coupon_fish_market_name=nabak&coupon_fish_name=milk&coupon_fish_brand=pul&coupon_fish_unit=0&coupon_fish_price=100&coupon_fish_start=0&coupon_fish_finish=0&coupon_fish_times=0&coupon_fish_detail=0&coupon_fish_type=0
 
-	datas = []
-	for d in make_data_:
-		data = model_to_dict(d)
-		datas.append(data)
+	coupon_fish_product_index_ = request.POST.get('coupon_fish_product_index')
+	# not change: 0 / change: 1
+	coupon_fish_photo_index_ = request.POST.get('coupon_fish_photo_index')
+	coupon_fish_market_name_ =  request.POST.get('coupon_fish_market_name')
+	coupon_fish_name_ = request.POST.get('coupon_fish_name')
+	coupon_fish_brand_ = request.POST.get('coupon_fish_brand')
+	coupon_fish_unit_ = request.POST.get('coupon_fish_unit')
+	coupon_fish_area_ =  request.POST.get('coupon_fish_area')
+	coupon_fish_price_ = request.POST.get('coupon_fish_price')
+	coupon_fish_start_ = request.POST.get('coupon_fish_start')
+	coupon_fish_finish_ = request.POST.get('coupon_fish_finish')
+	coupon_fish_times_ = request.POST.get('coupon_fish_times')
+	coupon_fish_type_ = request.POST.get('coupon_fish_type')
 
-	json_data = json.dumps(datas)
+	# make coupon
+	coupon_fish = COUPON_FISH(coupon_fish_product_index = coupon_fish_product_index_, coupon_fish_photo_index = coupon_fish_photo_index_, coupon_fish_market_name = coupon_fish_market_name_, coupon_fish_name = coupon_fish_name_, coupon_fish_brand = coupon_fish_brand_, coupon_fish_unit = coupon_fish_unit_, coupon_fish_area=coupon_fish_area_, coupon_fish_price = coupon_fish_price_, coupon_fish_start = coupon_fish_start_, coupon_fish_finish = coupon_fish_finish_, coupon_fish_times = coupon_fish_times_, coupon_fish_type = coupon_fish_type_,)
+	coupon_fish.save()
+
+	coupon_ = COUPON_FISH.objects.get(coupon_fish_name=coupon_fish_name_)
+	coupon_fish_index_ = coupon_.coupon_fish_index
+
+	# have to change photo
+	if coupon_fish_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_fish' + '_' + str(coupon_fish_product_index_ )+ '_' + str(coupon_fish_index_) + '_' + coupon_fish_name_
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps(1)
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_fish_photo_index_ = pic_now.sp_photo_index
+	# dont have to change photo
+	elif coupon_fish_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_fish_product_index_)
+		coupon_fish_photo_index_ = product_.product_photo_index	
+
+	# swich coupon photo index
+	coupon_.coupon_fish_photo_index = coupon_fish_photo_index_
+	coupon_.save()
+
+	# code0 : success
+	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
 
 
