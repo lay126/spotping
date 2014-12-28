@@ -491,25 +491,25 @@ def request_make_daily(request):
 
 	# /request/make/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_type=0
 
-	coupon_daily_product_index_ = request.GET.get('coupon_daily_product_index')
+	coupon_daily_product_index_ = request.POST.get('coupon_daily_product_index')
 	# not change: 0 / change: 1
-	coupon_daily_photo_index_ = request.GET.get('coupon_daily_photo_index')
-	coupon_daily_market_name_ =  request.GET.get('coupon_daily_market_name')
-	coupon_daily_name_ = request.GET.get('coupon_daily_name')
-	coupon_daily_brand_ = request.GET.get('coupon_daily_brand')
-	coupon_daily_unit_ = request.GET.get('coupon_daily_unit')
-	coupon_daily_price_ = request.GET.get('coupon_daily_price')
-	coupon_daily_start_ = request.GET.get('coupon_daily_start')
-	coupon_daily_finish_ = request.GET.get('coupon_daily_finish')
-	coupon_daily_times_ = request.GET.get('coupon_daily_times')
-	coupon_daily_detail_ = request.GET.get('coupon_daily_detail')
-	coupon_daily_type_ = request.GET.get('coupon_daily_type')
+	coupon_daily_photo_index_ = request.POST.get('coupon_daily_photo_index')
+	coupon_daily_market_name_ =  request.POST.get('coupon_daily_market_name')
+	coupon_daily_name_ = request.POST.get('coupon_daily_name')
+	coupon_daily_brand_ = request.POST.get('coupon_daily_brand')
+	coupon_daily_unit_ = request.POST.get('coupon_daily_unit')
+	coupon_daily_price_ = request.POST.get('coupon_daily_price')
+	coupon_daily_start_ = request.POST.get('coupon_daily_start')
+	coupon_daily_finish_ = request.POST.get('coupon_daily_finish')
+	coupon_daily_times_ = request.POST.get('coupon_daily_times')
+	coupon_daily_detail_ = request.POST.get('coupon_daily_detail')
+	coupon_daily_type_ = request.POST.get('coupon_daily_type')
 
-	if coupon_daily_photo_index_ == 1:
+	if coupon_daily_photo_index_ == '1':
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = coupon_daily_market_name_ + '_' + coupon_daily_name_ + '_' + coupon_daily_type_
+				filename = coupon_daily_market_name_ + '_' + coupon_daily_name_ + '_' + coupon_daily_start_ + '_' + coupon_daily_type_
 
 				try:
 					pic_ = SP_PICTURE()
@@ -520,7 +520,7 @@ def request_make_daily(request):
 				pic_.save()
 
 				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_daily_photo_index_ = pic_now.coupon_daily_photo_index
+				coupon_daily_photo_index_ = pic_now.sp_photo_index
 	else:
 		product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
 		coupon_daily_photo_index_ = product_.product_photo_index
