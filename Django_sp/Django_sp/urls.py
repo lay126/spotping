@@ -70,6 +70,14 @@ urlpatterns = patterns('',
 	url(r'^request/used/coupon/', 'sp_app.views.request_used_coupon'),
 
 
+	# give coupon
+	#-------------------------------------------------------------------------------------------------------------------------
+	url(r'^request/make/favorite/', 'sp_app.views.request_make_favorite'),
+	url(r'^request/remake/favorite/', 'sp_app.views.request_remake_favorite'),
+	url(r'^request/delete/favorite/', 'sp_app.views.request_delete_favorite'),
+
+
+
 	# seller
 	#-------------------------------------------------------------------------------------------------------------------------
 	url(r'^join/page/s/', 'sp_app.views.join_page_s'),

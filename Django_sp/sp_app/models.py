@@ -94,7 +94,6 @@ class COUPON_DAILY(models.Model):
 	coupon_daily_type = models.IntegerField(verbose_name=u'coupon_daily_type',null=False, default=0,)
 	coupon_daily_active = models.IntegerField(verbose_name=u'coupon_daily_active', null=False, default=0,)
 
-        
 # 야채 
 class COUPON_GREENS(models.Model):
 	class Meta:

@@ -2171,7 +2171,6 @@ def request_reservation_change(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
-
 # seller controll coupon *used*---------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_used_coupon(request):
@@ -2183,6 +2182,37 @@ def request_used_coupon(request):
 	for d in used_coupon_:
 		data = model_to_dict(d)
 		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+# controll favorite---------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+def request_list_favorite(request):
+	page_title = 'request_list_favorite'
+
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+def request_make_favorite(request):
+	page_title = 'request_make_favorite'
+
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+def request_remake_favorite(request):
+	page_title = 'request_remake_favorite'
+
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+def request_remake_favorite(request):
+	page_title = 'request_remake_favorite'
+
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
