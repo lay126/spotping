@@ -28,7 +28,6 @@ urlpatterns = patterns('',
 	# product & coupon
 	#-------------------------------------------------------------------------------------------------------------------------
 	url(r'^request/coupon/all/', 'sp_app.views.request_coupon_all'),
-	url(r'^response/coupon/all/', 'sp_app.views.request_coupon_all'),
 
 	url(r'^request/coupon/daily/', 'sp_app.views.request_coupon_daily'),
 	url(r'^request/coupon/greens/', 'sp_app.views.request_coupon_greens'),
@@ -59,13 +58,14 @@ urlpatterns = patterns('',
     url(r'^request/make/snack/', 'sp_app.views.request_make_snack'),
 
 	url(r'^request/inactive/coupon/', 'sp_app.views.request_inactive_coupon'),
-	url(r'^response/inactive/coupon/', 'sp_app.views.response_inactive_coupon'),
 	url(r'^request/active/coupon/', 'sp_app.views.request_active_coupon'),
-	url(r'^response/active/coupon/', 'sp_app.views.response_active_coupon'),
 	url(r'^request/reservation/coupon/', 'sp_app.views.request_reservation_coupon'),
-	url(r'^response/reservation/coupon/', 'sp_app.views.response_reservation_coupon'),
+
+	url(r'^request/inactive/change/', 'sp_app.views.request_inactive_change'),
+	url(r'^request/active/change/', 'sp_app.views.request_active_change'),
+	url(r'^request/reservation/change/', 'sp_app.views.request_reservation_change'),
+
 	url(r'^request/used/coupon/', 'sp_app.views.request_used_coupon'),
-	url(r'^response/used/coupon/', 'sp_app.views.response_used_coupon'),
 
 
 	# seller
@@ -74,9 +74,7 @@ urlpatterns = patterns('',
 	url(r'^login/page/s/', 'sp_app.views.login_page_s'),
 
 	url(r'^request/join/seller/', 'sp_app.views.request_join_seller'),
-	url(r'^response/join/seller/', 'sp_app.views.response_join_seller'),
 	url(r'^request/login/seller/', 'sp_app.views.request_login_seller'),
-	url(r'^response/login/seller/', 'sp_app.views.response_login_seller'),
 	
 
 	# buyer 
@@ -84,8 +82,8 @@ urlpatterns = patterns('',
 	url(r'^join/page/b/', 'sp_app.views.join_page_b'),
 	url(r'^login/page/b/', 'sp_app.views.login_page_b'),
 	url(r'^request/join/buyer/', 'sp_app.views.request_join_buyer'),
-	url(r'^response/join/buyer/', 'sp_app.views.response_join_buyer'),
 	url(r'^request/login/buyer/', 'sp_app.views.request_login_buyer'),
-	url(r'^response/login/buyer/', 'sp_app.views.response_login_buyer'),
+
+	# url(r'^request/make/favorite/', 'sp_app.views.request_make_favorite'),
 
 )

@@ -68,8 +68,6 @@ def test_photo_upload(request):
 
 	return HttpResponse('Failed to Upload File')
 
-
-
 # android <- server 
 def test_photo_download_1(request):
 	page_title = 'test_photo_download_1'
@@ -157,10 +155,6 @@ def request_join_seller(request):
 
 	return HttpResponse('success join, %s' % join_seller_id_)
 
-def response_join_seller(request):
-	page_title = 'response_join_seller'
-
-	return HttpResponse('this page is : %s' % (page_title))
 
 #-------------------------------------------------------------------------------------------------------------------------
 def login_page_s(request):
@@ -213,14 +207,8 @@ def request_login_seller(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
-def response_login_seller(request):
-	page_title = 'response_login_seller'
-
-	return HttpResponse('this page is : %s' % (page_title))
-
-
-
-# use by seller : all data---------------------------------------------------
+# controll coupon-----------------------------------------------------
+# all coupon data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_coupon_all(request):
 	page_title = 'request_coupon_all'
@@ -295,12 +283,8 @@ def request_coupon_all(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
-def response_coupon_all(request):
-	page_title = 'response_coupon_all'
 
-	return HttpResponse('this page is : %s' % (page_title))
-
-
+# each coupon data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_coupon_daily(request):
 	page_title = 'request_coupon_daily'
@@ -454,6 +438,7 @@ def request_coupon_ice(request):
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
+
 
 def request_coupon_bakery(request):
 	page_title = 'request_coupon_bakery'
@@ -1158,6 +1143,7 @@ def request_make_ice(request):
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
 
+
 def request_make_bakery(request):
 	page_title = 'request_make_bakery'
 	# /request/make/bakery/?coupon_bakery_product_index=0&coupon_bakery_photo_index=1&coupon_bakery_market_name=nabak&coupon_bakery_name=milk&coupon_bakery_brand=pul&coupon_bakery_unit=0&coupon_bakery_pbakery=100&coupon_bakery_start=0&coupon_bakery_finish=0&coupon_bakery_times=0&coupon_bakery_detail=0&coupon_bakery_type=0
@@ -1277,8 +1263,9 @@ def request_make_snack(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
-
-# seller controll coupon-----------------------------------------------------
+# controll coupon-----------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+# get coupones by state-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_active_coupon(request):
 	page_title = 'request_active_coupon'
@@ -1371,11 +1358,6 @@ def request_active_coupon(request):
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
-
-def response_active_coupon(request):
-	page_title = 'response_active_coupon'
-
-	return HttpResponse('this page is : %s' % (page_title))
 
 #-------------------------------------------------------------------------------------------------------------------------
 def request_reservation_coupon(request):
@@ -1470,11 +1452,6 @@ def request_reservation_coupon(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
-def response_reservation_coupon(request):
-	page_title = 'response_reservation_coupon'
-
-	return HttpResponse('this page is : %s' % (page_title))
-
 #-------------------------------------------------------------------------------------------------------------------------
 def request_inactive_coupon(request):
 	page_title = 'request_inactive_coupon'
@@ -1568,13 +1545,184 @@ def request_inactive_coupon(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
-def response_inactive_coupon(request):
-	page_title = 'response_inactive_coupon'
 
-	return HttpResponse('this page is : %s' % (page_title))
+# chanage coupones state-----------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+def request_inactive_change(request):
+	page_title = 'request_inactive_change'
+
+	inactive_coupon_category_ = request.GET.get('inactive_coupon_category')
+	inactive_coupon_index_ = request.GET.get('inactive_coupon_index')
+
+	if inactive_coupon_category_ == '1':
+		inactive_coupon_category = 'daily'
+		inactive_coupon_ = COUPON_DAILY.objects.get(coupon_daily_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_daily_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '2':
+		inactive_coupon_category = 'greens'
+		inactive_coupon_ = COUPON_GREENS.objects.get(coupon_greens_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_greens_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '3':
+		inactive_coupon_category = 'fish'
+		inactive_coupon_ = COUPON_FISH.objects.get(coupon_fish_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_fish_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '4':
+		inactive_coupon_category = 'rice'
+		inactive_coupon_ = COUPON_RICE.objects.get(coupon_rice_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_rice_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '5':
+		inactive_coupon_category = 'meat'
+		inactive_coupon_ = COUPON_MEAT.objects.get(coupon_meat_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_meat_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '6':
+		inactive_coupon_category = 'egg'
+		inactive_coupon_ = COUPON_EGG.objects.get(coupon_egg_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_egg_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '7':
+		inactive_coupon_category = 'ham'
+		inactive_coupon_ = COUPON_HAM.objects.get(coupon_ham_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_ham_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '8':
+		inactive_coupon_category = 'side'
+		inactive_coupon_ = COUPON_SIDE.objects.get(coupon_side_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_side_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '9':
+		inactive_coupon_category = 'water'
+		inactive_coupon_ = COUPON_WATER.objects.get(coupon_water_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_water_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '10':
+		inactive_coupon_category = 'instant'
+		inactive_coupon_ = COUPON_INSTANT.objects.get(coupon_instant_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_instant_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '11':
+		inactive_coupon_category = 'ice'
+		inactive_coupon_ = COUPON_ICE.objects.get(coupon_ice_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_ice_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '12':
+		inactive_coupon_category = 'bakery'
+		inactive_coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_bakery_active = 0
+		inactive_coupon_.save()
+
+	elif inactive_coupon_category_ == '13':
+		inactive_coupon_category = 'snack'
+		inactive_coupon_ = COUPON_SNACK.objects.get(coupon_snack_index=inactive_coupon_index_)
+		inactive_coupon_.coupon_snack_active = 0
+		inactive_coupon_.save()
+
+	# give again coupon data
+	datas = []
+
+	coupon_data_= COUPON_DAILY.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_GREENS.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_FISH.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_RICE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_MEAT.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_EGG.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_HAM.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SIDE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_WATER.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_INSTANT.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_ICE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_BAKERY.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SNACK.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+	
+#-------------------------------------------------------------------------------------------------------------------------
+def request_active_change(request):
+	page_title = 'request_active_change'
 
 
-# seller controll coupone *used*---------------------------------------------
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+#-------------------------------------------------------------------------------------------------------------------------
+def request_reservation_change(request):
+	page_title = 'request_reservation_change'
+
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+
+# seller controll coupon *used*---------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
 def request_used_coupon(request):
 	page_title = 'request_used_coupon'
 
@@ -1587,11 +1735,6 @@ def request_used_coupon(request):
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
-
-def response_used_coupon(request):
-	page_title = 'response_used_coupon'
-
-	return HttpResponse('this page is : %s' % (page_title))
 
 
 # buyer join / login---------------------------------------------------------
@@ -1631,12 +1774,6 @@ def request_join_buyer(request):
 		return HttpResponse('fail join')
 
 	return HttpResponse('success join, %s' % join_buyer_id_)
-
-
-def response_join_buyer(request):
-	page_title = 'response_join_buyer'
-
-	return HttpResponse('this page is : %s' % (page_title))
 
 #-------------------------------------------------------------------------------------------------------------------------
 def login_page_b(request):
@@ -1686,10 +1823,5 @@ def request_login_buyer(request):
 	json_data = json.dumps(datas, ensure_ascii=False)
 	return HttpResponse(json_data, content_type='application/json')
 
-
-def response_login_buyer(request):
-	page_title = 'response_login_buyer'
-
-	return HttpResponse('this page is : %s' % (page_title))
 
 
