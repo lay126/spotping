@@ -341,6 +341,7 @@ class USER_FAVORITE_LIST(models.Model):
       	class Meta:
 		verbose_name = u'USER_FAVORITE_LIST'
 		db_table = 'USER_FAVORITE_LIST_DB'
+		unique_together = ('user_favorite_list_userid', 'user_favorite_list_product_index',)
 	user_favorite_list_index = models.AutoField(verbose_name=u'user_favorite_list_index', primary_key=True, unique=True, db_index=True,)
 	user_favorite_list_userid = models.CharField(verbose_name=u'user_favorite_list_userid', max_length='20',)
 	user_favorite_list_product_index = models.CharField(verbose_name=u'user_favorite_list_product_index', max_length='30',)
