@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 
 
-	# 테스트 
+	# test 
 	#-------------------------------------------------------------------------------------------------------------------------
 	url(r'^test/photo/upload/', 'sp_app.views.test_photo_upload'),
 	url(r'^test/photo/download/1/', 'sp_app.views.test_photo_download_1'),
@@ -25,16 +25,8 @@ urlpatterns = patterns('',
 	url(r'^test/photo/open/c/', 'sp_app.views.test_photo_open_c'),
 
 
-	# seller
+	# product & coupon
 	#-------------------------------------------------------------------------------------------------------------------------
-	url(r'^join/page/s/', 'sp_app.views.join_page_s'),
-	url(r'^login/page/s/', 'sp_app.views.login_page_s'),
-
-	url(r'^request/join/seller/', 'sp_app.views.request_join_seller'),
-	url(r'^response/join/seller/', 'sp_app.views.response_join_seller'),
-	url(r'^request/login/seller/', 'sp_app.views.request_login_seller'),
-	url(r'^response/login/seller/', 'sp_app.views.response_login_seller'),
-
 	url(r'^request/coupon/all/', 'sp_app.views.request_coupon_all'),
 	url(r'^response/coupon/all/', 'sp_app.views.request_coupon_all'),
 
@@ -66,19 +58,29 @@ urlpatterns = patterns('',
     url(r'^request/make/bakery/', 'sp_app.views.request_make_bakery'),
     url(r'^request/make/snack/', 'sp_app.views.request_make_snack'),
 
+	url(r'^request/inactive/coupon/', 'sp_app.views.request_inactive_coupon'),
+	url(r'^response/inactive/coupon/', 'sp_app.views.response_inactive_coupon'),
 	url(r'^request/active/coupon/', 'sp_app.views.request_active_coupon'),
 	url(r'^response/active/coupon/', 'sp_app.views.response_active_coupon'),
 	url(r'^request/reservation/coupon/', 'sp_app.views.request_reservation_coupon'),
 	url(r'^response/reservation/coupon/', 'sp_app.views.response_reservation_coupon'),
-	url(r'^request/inactive/coupon/', 'sp_app.views.request_inactive_coupon'),
-	url(r'^response/inactive/coupon/', 'sp_app.views.response_inactive_coupon'),
 	url(r'^request/used/coupon/', 'sp_app.views.request_used_coupon'),
 	url(r'^response/used/coupon/', 'sp_app.views.response_used_coupon'),
+
+
+	# seller
+	#-------------------------------------------------------------------------------------------------------------------------
+	url(r'^join/page/s/', 'sp_app.views.join_page_s'),
+	url(r'^login/page/s/', 'sp_app.views.login_page_s'),
+
+	url(r'^request/join/seller/', 'sp_app.views.request_join_seller'),
+	url(r'^response/join/seller/', 'sp_app.views.response_join_seller'),
+	url(r'^request/login/seller/', 'sp_app.views.request_login_seller'),
+	url(r'^response/login/seller/', 'sp_app.views.response_login_seller'),
 	
 
 	# buyer 
 	#-------------------------------------------------------------------------------------------------------------------------
-
 	url(r'^join/page/b/', 'sp_app.views.join_page_b'),
 	url(r'^login/page/b/', 'sp_app.views.login_page_b'),
 	url(r'^request/join/buyer/', 'sp_app.views.request_join_buyer'),
