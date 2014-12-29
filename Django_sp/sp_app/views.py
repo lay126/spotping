@@ -1264,7 +1264,6 @@ def request_make_snack(request):
 
 
 # controll coupon-----------------------------------------------------
-#-------------------------------------------------------------------------------------------------------------------------
 # get coupones by state-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_active_coupon(request):
@@ -1541,6 +1540,162 @@ def request_inactive_coupon(request):
 		for d_d in active_coupon_s_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+#-------------------------------------------------------------------------------------------------------------------------
+def request_delete_coupon(request):
+	page_title = 'request_delete_coupon'
+
+	delete_coupon_category_ = request.GET.get('delete_coupon_category')
+	delete_coupon_index_ = request.GET.get('delete_coupon_index')
+
+	if delete_coupon_category_ == '1':
+		delete_coupon_category = 'daily'
+		delete_coupon_ = COUPON_DAILY.objects.get(coupon_daily_index=delete_coupon_index_)
+		delete_coupon_.coupon_daily_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '2':
+		delete_coupon_category = 'greens'
+		delete_coupon_ = COUPON_GREENS.objects.get(coupon_greens_index=delete_coupon_index_)
+		delete_coupon_.coupon_greens_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '3':
+		delete_coupon_category = 'fish'
+		delete_coupon_ = COUPON_FISH.objects.get(coupon_fish_index=delete_coupon_index_)
+		delete_coupon_.coupon_fish_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '4':
+		delete_coupon_category = 'rice'
+		delete_coupon_ = COUPON_RICE.objects.get(coupon_rice_index=delete_coupon_index_)
+		delete_coupon_.coupon_rice_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '5':
+		delete_coupon_category = 'meat'
+		delete_coupon_ = COUPON_MEAT.objects.get(coupon_meat_index=delete_coupon_index_)
+		delete_coupon_.coupon_meat_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '6':
+		delete_coupon_category = 'egg'
+		delete_coupon_ = COUPON_EGG.objects.get(coupon_egg_index=delete_coupon_index_)
+		delete_coupon_.coupon_egg_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '7':
+		delete_coupon_category = 'ham'
+		delete_coupon_ = COUPON_HAM.objects.get(coupon_ham_index=delete_coupon_index_)
+		delete_coupon_.coupon_ham_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '8':
+		delete_coupon_category = 'side'
+		delete_coupon_ = COUPON_SIDE.objects.get(coupon_side_index=delete_coupon_index_)
+		delete_coupon_.coupon_side_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '9':
+		delete_coupon_category = 'water'
+		delete_coupon_ = COUPON_WATER.objects.get(coupon_water_index=delete_coupon_index_)
+		delete_coupon_.coupon_water_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '10':
+		delete_coupon_category = 'instant'
+		delete_coupon_ = COUPON_INSTANT.objects.get(coupon_instant_index=delete_coupon_index_)
+		delete_coupon_.coupon_instant_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '11':
+		delete_coupon_category = 'ice'
+		delete_coupon_ = COUPON_ICE.objects.get(coupon_ice_index=delete_coupon_index_)
+		delete_coupon_.coupon_ice_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '12':
+		delete_coupon_category = 'bakery'
+		delete_coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_index=delete_coupon_index_)
+		delete_coupon_.coupon_bakery_active = 0
+		delete_coupon_.delete()
+
+	elif delete_coupon_category_ == '13':
+		delete_coupon_category = 'snack'
+		delete_coupon_ = COUPON_SNACK.objects.get(coupon_snack_index=delete_coupon_index_)
+		delete_coupon_.coupon_snack_active = 0
+		delete_coupon_.delete()
+
+	# give again coupon data
+	datas = []
+
+	coupon_data_= COUPON_DAILY.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_GREENS.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_FISH.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_RICE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_MEAT.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_EGG.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_HAM.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SIDE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_WATER.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_INSTANT.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_ICE.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_BAKERY.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SNACK.objects.all()
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')

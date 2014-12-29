@@ -57,6 +57,8 @@ urlpatterns = patterns('',
     url(r'^request/make/bakery/', 'sp_app.views.request_make_bakery'),
     url(r'^request/make/snack/', 'sp_app.views.request_make_snack'),
 
+    url(r'^request/delete/coupon/', 'sp_app.views.request_delete_coupon'),
+
 	url(r'^request/inactive/coupon/', 'sp_app.views.request_inactive_coupon'),
 	url(r'^request/active/coupon/', 'sp_app.views.request_active_coupon'),
 	url(r'^request/reservation/coupon/', 'sp_app.views.request_reservation_coupon'),
