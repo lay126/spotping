@@ -1041,15 +1041,61 @@ def request_make_water(request):
 
 def request_make_instant(request):
 	page_title = 'request_make_instant'
+	# /request/make/instant/?coupon_instant_product_index=0&coupon_instant_photo_index=1&coupon_instant_market_name=nabak&coupon_instant_name=milk&coupon_instant_brand=pul&coupon_instant_unit=0&coupon_instant_pinstant=100&coupon_instant_start=0&coupon_instant_finish=0&coupon_instant_times=0&coupon_instant_detail=0&coupon_instant_type=0
 
-	make_data_= COUPON_INSTANT.objects.all()
+	coupon_instant_product_index_ = request.POST.get('coupon_instant_product_index')
+	# not change: 0 / change: 1
+	coupon_instant_photo_index_ = request.POST.get('coupon_instant_photo_index')
+	coupon_instant_market_name_ =  request.POST.get('coupon_instant_market_name')
+	coupon_instant_name_ = request.POST.get('coupon_instant_name')
+	coupon_instant_brand_ = request.POST.get('coupon_instant_brand')
+	coupon_instant_unit_ = request.POST.get('coupon_instant_unit')
+	coupon_instant_price_ = request.POST.get('coupon_instant_price')
+	coupon_instant_start_ = request.POST.get('coupon_instant_start')
+	coupon_instant_finish_ = request.POST.get('coupon_instant_finish')
+	coupon_instant_times_ = request.POST.get('coupon_instant_times')
+	coupon_instant_detail_ = request.POST.get('coupon_instant_detail')
+	coupon_instant_type_ = request.POST.get('coupon_instant_type')
 
-	datas = []
-	for d in make_data_:
-		data = model_to_dict(d)
-		datas.append(data)
+	# make coupon
+	coupon_instant = COUPON_INSTANT(coupon_instant_product_index = coupon_instant_product_index_, coupon_instant_photo_index = coupon_instant_photo_index_, coupon_instant_market_name = coupon_instant_market_name_, coupon_instant_name = coupon_instant_name_, coupon_instant_brand = coupon_instant_brand_, coupon_instant_unit = coupon_instant_unit_, coupon_instant_price = coupon_instant_price_, coupon_instant_start = coupon_instant_start_, coupon_instant_finish = coupon_instant_finish_, coupon_instant_times = coupon_instant_times_, coupon_instant_detail = coupon_instant_detail_, coupon_instant_type = coupon_instant_type_,)
+	coupon_instant.save()
 
-	json_data = json.dumps(datas)
+	coupon_ = COUPON_INSTANT.objects.get(coupon_instant_name=coupon_instant_name_)
+	coupon_instant_index_ = coupon_.coupon_instant_index
+
+	# have to change photo
+	if coupon_instant_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_instant' + '_' + str(coupon_instant_product_index_ )+ '_' + str(coupon_instant_index_) + '_' + coupon_instant_name_
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps(1)
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_instant_photo_index_ = pic_now.sp_photo_index
+	# dont have to change photo
+	elif coupon_instant_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_instant_product_index_)
+		coupon_instant_photo_index_ = product_.product_photo_index	
+
+	# swich coupon photo index
+	coupon_.coupon_instant_photo_index = coupon_instant_photo_index_
+	coupon_.save()
+
+	# code0 : success
+	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
 
 
