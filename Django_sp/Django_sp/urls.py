@@ -24,6 +24,10 @@ urlpatterns = patterns('',
 	url(r'^test/photo/open/t/', 'sp_app.views.test_photo_open_t'),
 	url(r'^test/photo/open/c/', 'sp_app.views.test_photo_open_c'),
 
+	# product & coupon
+	#-------------------------------------------------------------------------------------------------------------------------
+	url(r'^request/photo/upload/', 'sp_app.views.request_photo_upload'),
+	url(r'^request/photo/update/', 'sp_app.views.request_photo_update'),
 
 	# product & coupon
 	#-------------------------------------------------------------------------------------------------------------------------

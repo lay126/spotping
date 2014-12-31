@@ -209,7 +209,75 @@ def request_login_seller(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
-# controll coupon-----------------------------------------------------
+# photo upload/update [post]---------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
+def request_photo_upload(request):
+	page_title = 'test_photo_upload'
+
+	coupon_daily_product_index_ = request.POST.get('coupon_daily_product_index')
+	coupon_daily_photo_index_ = request.POST.get('coupon_daily_photo_index')
+	coupon_daily_name_ = request.POST.get('coupon_daily_name')
+
+	# have to change photo
+	if request.method == 'POST':
+		if 'file' in request.FILES:
+			file = request.FILES['file']
+			filename = 'm_daily' + '_' + str(coupon_daily_product_index_ )+ '_' + str(coupon_daily_index_) + '_' + coupon_daily_name_
+
+			try:
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+			except:
+				# code1 : save photo fail
+				json_data = json.dumps('save photo fail')
+				return HttpResponse(json_data, content_type='application/json')	
+			pic_.save()
+
+			# get make photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_daily_photo_index_ = pic_now.sp_photo_index
+
+	# get coupon
+	coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_daily_name_)
+	coupon_daily_index_ = coupon_.coupon_daily_index
+
+	# swich coupon photo index
+	coupon_.coupon_daily_photo_index = coupon_daily_photo_index_
+	coupon_.save()
+
+	json_data = json.dumps('success save photo')
+	return HttpResponse(json_data, content_type='application/json')	
+
+
+#not yet
+@csrf_exempt
+def request_photo_update(request):
+	page_title = 'request_photo_update'
+
+	if request.method == 'POST':
+		if 'file' in request.FILES:
+			file = request.FILES['file']
+			file_name_ = request.POST.get('file_name', 'False')
+			file_day_ = request.POST.get('file_day', '00000')
+			filename = file_name_ + '_' + file_day_
+
+			try:
+				pic_ = SP_PICTURE()
+				# pic_.sp_photo_index = 1
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+			except:
+				return HttpResponse(404)		
+			pic_.save()
+
+			# use for test
+			return HttpResponse('File Update')
+
+	return HttpResponse('Failed to Update File')
+
+
 # all coupon data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_coupon_all(request):
@@ -478,7 +546,6 @@ def request_make_daily(request):
 	# /request/make/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_type=0
 
 	coupon_daily_product_index_ = request.POST.get('coupon_daily_product_index')
-	# not change: 0 / change: 1
 	coupon_daily_photo_index_ = request.POST.get('coupon_daily_photo_index')
 	coupon_daily_market_name_ =  request.POST.get('coupon_daily_market_name')
 	coupon_daily_name_ = request.POST.get('coupon_daily_name')
@@ -497,32 +564,10 @@ def request_make_daily(request):
 
 	coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_daily_name_)
 	coupon_daily_index_ = coupon_.coupon_daily_index
-
-	# have to change photo
-	if coupon_daily_photo_index_ == '1':
-		if request.method == 'POST':
-			if 'file' in request.FILES:
-				file = request.FILES['file']
-				filename = 'm_daily' + '_' + str(coupon_daily_product_index_ )+ '_' + str(coupon_daily_index_) + '_' + coupon_daily_name_
-
-				try:
-					pic_ = SP_PICTURE()
-					pic_.sp_name = filename
-					pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
-				except:
-					# code1 : save photo fail
-					json_data = json.dumps(1)
-					return HttpResponse(json_data, content_type='application/json')	
-				pic_.save()
-
-				# get make photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_daily_photo_index_ = pic_now.sp_photo_index
-	# dont have to change photo
-	elif coupon_daily_photo_index_ == '0':
-		# get default photo index
-		product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
-		coupon_daily_photo_index_ = product_.product_photo_index	
+	
+	# get default photo index
+	product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+	coupon_daily_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_daily_photo_index = coupon_daily_photo_index_
