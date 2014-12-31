@@ -632,10 +632,11 @@ def request_make_fish(request):
 	coupon_fish_start_ = request.POST.get('coupon_fish_start')
 	coupon_fish_finish_ = request.POST.get('coupon_fish_finish')
 	coupon_fish_times_ = request.POST.get('coupon_fish_times')
+	coupon_fish_detail_ = request.POST.get('coupon_fish_detail')
 	coupon_fish_type_ = request.POST.get('coupon_fish_type')
 
 	# make coupon
-	coupon_fish = COUPON_FISH(coupon_fish_product_index = coupon_fish_product_index_, coupon_fish_photo_index = coupon_fish_photo_index_, coupon_fish_market_name = coupon_fish_market_name_, coupon_fish_name = coupon_fish_name_, coupon_fish_brand = coupon_fish_brand_, coupon_fish_unit = coupon_fish_unit_, coupon_fish_area=coupon_fish_area_, coupon_fish_price = coupon_fish_price_, coupon_fish_start = coupon_fish_start_, coupon_fish_finish = coupon_fish_finish_, coupon_fish_times = coupon_fish_times_, coupon_fish_type = coupon_fish_type_,)
+	coupon_fish = COUPON_FISH(coupon_fish_product_index = coupon_fish_product_index_, coupon_fish_photo_index = coupon_fish_photo_index_, coupon_fish_market_name = coupon_fish_market_name_, coupon_fish_name = coupon_fish_name_, coupon_fish_brand = coupon_fish_brand_, coupon_fish_unit = coupon_fish_unit_, coupon_fish_area=coupon_fish_area_, coupon_fish_price = coupon_fish_price_, coupon_fish_start = coupon_fish_start_, coupon_fish_finish = coupon_fish_finish_, coupon_fish_times = coupon_fish_times_, coupon_fish_detail=coupon_fish_detail_, coupon_fish_type = coupon_fish_type_,)
 	coupon_fish.save()
 
 	coupon_ = COUPON_FISH.objects.get(coupon_fish_name=coupon_fish_name_)
@@ -706,10 +707,11 @@ def request_make_meat(request):
 	coupon_meat_start_ = request.POST.get('coupon_meat_start')
 	coupon_meat_finish_ = request.POST.get('coupon_meat_finish')
 	coupon_meat_times_ = request.POST.get('coupon_meat_times')
+	coupon_meat_detail_ = request.POST.get('coupon_meat_detail')
 	coupon_meat_type_ = request.POST.get('coupon_meat_type')
 
 	# make coupon
-	coupon_meat = COUPON_MEAT(coupon_meat_product_index = coupon_meat_product_index_, coupon_meat_photo_index = coupon_meat_photo_index_, coupon_meat_market_name = coupon_meat_market_name_, coupon_meat_name = coupon_meat_name_, coupon_meat_brand = coupon_meat_brand_, coupon_meat_unit = coupon_meat_unit_, coupon_meat_area=coupon_meat_area_, coupon_meat_price = coupon_meat_price_, coupon_meat_start = coupon_meat_start_, coupon_meat_finish = coupon_meat_finish_, coupon_meat_times = coupon_meat_times_, coupon_meat_type = coupon_meat_type_,)
+	coupon_meat = COUPON_MEAT(coupon_meat_product_index = coupon_meat_product_index_, coupon_meat_photo_index = coupon_meat_photo_index_, coupon_meat_market_name = coupon_meat_market_name_, coupon_meat_name = coupon_meat_name_, coupon_meat_brand = coupon_meat_brand_, coupon_meat_unit = coupon_meat_unit_, coupon_meat_area=coupon_meat_area_, coupon_meat_price = coupon_meat_price_, coupon_meat_start = coupon_meat_start_, coupon_meat_finish = coupon_meat_finish_, coupon_meat_times = coupon_meat_times_, coupon_meat_detail=coupon_meat_detail_, coupon_meat_type = coupon_meat_type_,)
 	coupon_meat.save()
 
 	coupon_ = COUPON_MEAT.objects.get(coupon_meat_name=coupon_meat_name_)
@@ -820,10 +822,11 @@ def request_make_side(request):
 	coupon_side_start_ = request.POST.get('coupon_side_start')
 	coupon_side_finish_ = request.POST.get('coupon_side_finish')
 	coupon_side_times_ = request.POST.get('coupon_side_times')
+	coupon_side_detail_ = request.POST.get('coupon_side_detail')
 	coupon_side_type_ = request.POST.get('coupon_side_type')
 
 	# make coupon
-	coupon_side = COUPON_SIDE(coupon_side_product_index = coupon_side_product_index_, coupon_side_photo_index = coupon_side_photo_index_, coupon_side_market_name = coupon_side_market_name_, coupon_side_name = coupon_side_name_, coupon_side_brand = coupon_side_brand_, coupon_side_unit = coupon_side_unit_, coupon_side_price = coupon_side_price_, coupon_side_start = coupon_side_start_, coupon_side_finish = coupon_side_finish_, coupon_side_times = coupon_side_times_, coupon_side_type = coupon_side_type_,)
+	coupon_side = COUPON_SIDE(coupon_side_product_index = coupon_side_product_index_, coupon_side_photo_index = coupon_side_photo_index_, coupon_side_market_name = coupon_side_market_name_, coupon_side_name = coupon_side_name_, coupon_side_brand = coupon_side_brand_, coupon_side_unit = coupon_side_unit_, coupon_side_price = coupon_side_price_, coupon_side_start = coupon_side_start_, coupon_side_finish = coupon_side_finish_, coupon_side_times = coupon_side_times_, coupon_side_detail=coupon_side_detail_, coupon_side_type = coupon_side_type_,)
 	coupon_side.save()
 
 	coupon_ = COUPON_SIDE.objects.get(coupon_side_name=coupon_side_name_)
@@ -1009,10 +1012,11 @@ def request_make_snack(request):
 	coupon_snack_start_ = request.POST.get('coupon_snack_start')
 	coupon_snack_finish_ = request.POST.get('coupon_snack_finish')
 	coupon_snack_times_ = request.POST.get('coupon_snack_times')
+	coupon_snack_detail_ = request.POST.get('coupon_snack_detail')
 	coupon_snack_type_ = request.POST.get('coupon_snack_type')
 
 	# make coupon
-	coupon_snack = COUPON_SNACK(coupon_snack_product_index = coupon_snack_product_index_, coupon_snack_photo_index = coupon_snack_photo_index_, coupon_snack_market_name = coupon_snack_market_name_, coupon_snack_name = coupon_snack_name_, coupon_snack_brand = coupon_snack_brand_, coupon_snack_unit = coupon_snack_unit_, coupon_snack_prsnack = coupon_snack_prsnack_, coupon_snack_start = coupon_snack_start_, coupon_snack_finish = coupon_snack_finish_, coupon_snack_times = coupon_snack_times_, coupon_snack_type = coupon_snack_type_,)
+	coupon_snack = COUPON_SNACK(coupon_snack_product_index = coupon_snack_product_index_, coupon_snack_photo_index = coupon_snack_photo_index_, coupon_snack_market_name = coupon_snack_market_name_, coupon_snack_name = coupon_snack_name_, coupon_snack_brand = coupon_snack_brand_, coupon_snack_unit = coupon_snack_unit_, coupon_snack_prsnack = coupon_snack_prsnack_, coupon_snack_start = coupon_snack_start_, coupon_snack_finish = coupon_snack_finish_, coupon_snack_times = coupon_snack_times_, coupon_snack_detail=coupon_snack_detail_, coupon_snack_type = coupon_snack_type_,)
 	coupon_snack.save()
 
 	coupon_ = COUPON_SNACK.objects.get(coupon_snack_name=coupon_snack_name_)
