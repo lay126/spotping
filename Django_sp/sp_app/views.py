@@ -311,8 +311,10 @@ def request_photo_update(request):
 
 	coupon_category_index_ = request.POST.get('coupon_category_index')
 	coupon_product_index_ = request.POST.get('coupon_product_index')
-	coupon_index_ = request.session['s_coupon_index'] 
+	coupon_daily_name_ = request.POST.get('coupon_daily_name')
 
+	coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_daily_name_)
+	coupon_.coupon_daily_index = coupon_index_
 
 	if coupon_category_index_ == '1':
 		coupon_category_index_k_ = 'm_daily'
