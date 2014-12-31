@@ -194,37 +194,73 @@ def request_photo_upload(request):
 
 	coupon_category_index_ = request.POST.get('coupon_category_index')
 	coupon_product_index_ = request.POST.get('coupon_product_index')
-	coupon_daily_name_ = request.POST.get('coupon_daily_name')
-
-	coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_daily_name_)
-	coupon_.coupon_daily_index = coupon_index_
+	coupon_name_ = request.POST.get('coupon_index')
 
 	if coupon_category_index_ == '1':
 		coupon_category_index_k_ = 'm_daily'
+		coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_daily_index
+
 	elif coupon_category_index_ == '2':
 		coupon_category_index_k_ = 'm_greens'
+		coupon_ = COUPON_GREENS.objects.get(coupon_greens_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_greens_index
+
 	elif coupon_category_index_ == '3':
 		coupon_category_index_k_ = 'm_fish'
+		coupon_ = COUPON_FISH.objects.get(coupon_fish_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_fish_index
+
 	elif coupon_category_index_ == '4':
 		coupon_category_index_k_ = 'm_rice'
+		coupon_ = COUPON_RICE.objects.get(coupon_rice_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_rice_index
+
 	elif coupon_category_index_ == '5':
 		coupon_category_index_k_ = 'm_meat'
+		coupon_ = COUPON_MEAT.objects.get(coupon_meat_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_meat_index
+
 	elif coupon_category_index_ == '6':
 		coupon_category_index_k_ = 'm_egg'
+		coupon_ = COUPON_egg.objects.get(coupon_egg_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_egg_index
+
 	elif coupon_category_index_ == '7':
 		coupon_category_index_k_ = 'm_ham'
+		coupon_ = COUPON_HAM.objects.get(coupon_ham_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_ham_index
+
 	elif coupon_category_index_ == '8':
 		coupon_category_index_k_ = 'm_side'
+		coupon_ = COUPON_SIDE.objects.get(coupon_side_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_side_index
+
 	elif coupon_category_index_ == '9':
 		coupon_category_index_k_ = 'm_water'
+		coupon_ = COUPON_WATER.objects.get(coupon_water_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_water_index
+
 	elif coupon_category_index_ == '10':
 		coupon_category_index_k_ = 'm_instant'
+		coupon_ = COUPON_INSTANT.objects.get(coupon_instant_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_instant_index
+
 	elif coupon_category_index_ == '11':
 		coupon_category_index_k_ = 'm_ice'
+		coupon_ = COUPON_ICE.objects.get(coupon_ice_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_ice_index
+
 	elif coupon_category_index_ == '12':
 		coupon_category_index_k_ = 'm_bakery'
+		coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_bakery_index
+
 	elif coupon_category_index_ == '13':
 		coupon_category_index_k_ = 'm_snack'
+		coupon_ = COUPON_SNACK.objects.get(coupon_snack_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_snack_index
+
 
 	# have to change photo
 	if request.method == 'POST':
@@ -311,37 +347,72 @@ def request_photo_update(request):
 
 	coupon_category_index_ = request.POST.get('coupon_category_index')
 	coupon_product_index_ = request.POST.get('coupon_product_index')
-	coupon_daily_name_ = request.POST.get('coupon_daily_name')
-
-	coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_daily_name_)
-	coupon_.coupon_daily_index = coupon_index_
+	coupon_name_ = request.POST.get('coupon_index')
 
 	if coupon_category_index_ == '1':
 		coupon_category_index_k_ = 'm_daily'
+		coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_daily_index
+
 	elif coupon_category_index_ == '2':
 		coupon_category_index_k_ = 'm_greens'
+		coupon_ = COUPON_GREENS.objects.get(coupon_greens_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_greens_index
+
 	elif coupon_category_index_ == '3':
 		coupon_category_index_k_ = 'm_fish'
+		coupon_ = COUPON_FISH.objects.get(coupon_fish_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_fish_index
+
 	elif coupon_category_index_ == '4':
 		coupon_category_index_k_ = 'm_rice'
+		coupon_ = COUPON_RICE.objects.get(coupon_rice_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_rice_index
+
 	elif coupon_category_index_ == '5':
 		coupon_category_index_k_ = 'm_meat'
+		coupon_ = COUPON_MEAT.objects.get(coupon_meat_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_meat_index
+
 	elif coupon_category_index_ == '6':
 		coupon_category_index_k_ = 'm_egg'
+		coupon_ = COUPON_egg.objects.get(coupon_egg_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_egg_index
+
 	elif coupon_category_index_ == '7':
 		coupon_category_index_k_ = 'm_ham'
+		coupon_ = COUPON_HAM.objects.get(coupon_ham_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_ham_index
+
 	elif coupon_category_index_ == '8':
 		coupon_category_index_k_ = 'm_side'
+		coupon_ = COUPON_SIDE.objects.get(coupon_side_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_side_index
+
 	elif coupon_category_index_ == '9':
 		coupon_category_index_k_ = 'm_water'
+		coupon_ = COUPON_WATER.objects.get(coupon_water_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_water_index
+
 	elif coupon_category_index_ == '10':
 		coupon_category_index_k_ = 'm_instant'
+		coupon_ = COUPON_INSTANT.objects.get(coupon_instant_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_instant_index
+
 	elif coupon_category_index_ == '11':
 		coupon_category_index_k_ = 'm_ice'
+		coupon_ = COUPON_ICE.objects.get(coupon_ice_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_ice_index
+
 	elif coupon_category_index_ == '12':
 		coupon_category_index_k_ = 'm_bakery'
+		coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_bakery_index
+
 	elif coupon_category_index_ == '13':
 		coupon_category_index_k_ = 'm_snack'
+		coupon_ = COUPON_SNACK.objects.get(coupon_snack_name=coupon_name_)
+		coupon_index_ = coupon_.coupon_snack_index
 
 	# have to change photo
 	if request.method == 'POST':
