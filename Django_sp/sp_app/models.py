@@ -43,6 +43,8 @@ class USER_SELLER(models.Model):
 	user_seller_photo_index = models.IntegerField(verbose_name=u'user_seller_photo_index', null=False, default=0,)
 	user_seller_market_name = models.CharField(verbose_name=u'user_seller_market_name',max_length='40', null=False,)
 	user_seller_address = models.CharField(verbose_name=u'user_seller_address', max_length='200', null=False,)
+	user_seller_latitude = models.FloatField(verbose_name=u'user_seller_latitude', null=False, default=0,)
+	user_seller_longitude = models.FloatField(verbose_name=u'user_seller_longitude', null=False, default=0,)
 	user_seller_phone = models.CharField(verbose_name=u'user_seller_phone', max_length='100', null=False,)
 
 class USER_BUYER(models.Model):

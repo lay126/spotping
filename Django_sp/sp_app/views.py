@@ -2189,15 +2189,6 @@ def request_used_coupon(request):
 
 # controll favorite---------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
-	user_favorite_list_index = models.AutoField(verbose_name=u'user_favorite_list_index', primary_key=True, unique=True, db_index=True,)
-	user_favorite_list_userid = models.CharField(verbose_name=u'user_favorite_list_userid', max_length='20',)
-	user_favorite_list_product_index = models.CharField(verbose_name=u'user_favorite_list_product_index', max_length='30',)
-	user_favorite_list_product_name = models.CharField(verbose_name=u'user_favorite_list_product_name', max_length='30',)
-	user_favorite_list_product_brand = models.CharField(verbose_name=u'user_favorite_list_product_brand', max_length='20',)
-	user_favorite_list_product_unit = models.CharField(verbose_name=u'user_favorite_list_product_unit',max_length='20',)
-	user_favorite_list_product_category = models.IntegerField(verbose_name=u'user_favorite_list_product_category', null=False, default=0,)
-
-
 def request_list_favorite(request):
 	page_title = 'request_list_favorite'
 
@@ -2225,7 +2216,12 @@ def request_make_favorite(request):
 	list_favorite_product_category_ = request.GET.get('list_favorite_product_category', False)
 
 	favorite_product_ = USER_FAVORITE_LIST(user_favorite_list_userid=list_favorite_userid_, user_favorite_list_product_index=list_favorite_product_index_, user_favorite_list_product_name=list_favorite_product_name_, user_favorite_list_product_brand=list_favorite_product_brand_, user_favorite_list_product_unit=list_favorite_product_unit_, user_favorite_list_product_category=list_favorite_product_category_)
-	favorite_product_.save()
+	
+	try:
+		favorite_product_.save()
+	except:
+		json_data = json.dumps('buyer have this product already')
+		return HttpResponse(json_data, content_type='application/json')
 
 	datas = []
 	list_favorite_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_)
@@ -2239,7 +2235,39 @@ def request_make_favorite(request):
 
 def request_remake_favorite(request):
 	page_title = 'request_remake_favorite'
+	# /request/remake/favorite/?list_favorite_userid=spotping&list_favorite_product_index_b=1&list_favorite_product_index_n=10&list_favorite_product_name=aaa&list_favorite_product_brand=kk&list_favorite_product_unit=df&list_favorite_product_category=0
 
+	# have to get 'before product index', 'new product index'
+	list_favorite_userid_ = request.GET.get('list_favorite_userid', False)
+	list_favorite_product_index_b_ = request.GET.get('list_favorite_product_index_b', False)
+	list_favorite_product_index_n_ = request.GET.get('list_favorite_product_index_n', False)
+	list_favorite_product_name_ = request.GET.get('list_favorite_product_name', False)
+	list_favorite_product_brand_ = request.GET.get('list_favorite_product_brand', False)
+	list_favorite_product_unit_ = request.GET.get('list_favorite_product_unit', False)
+	list_favorite_product_category_ = request.GET.get('list_favorite_product_category', False)
+
+	favorite_product_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_).filter(user_favorite_list_product_index=1)
+
+	# favorite_product_.user_favorite_list_product_index = list_favorite_product_index_n_
+	# favorite_product_.user_favorite_list_product_name = list_favorite_product_name_
+	# favorite_product_.user_favorite_list_product_brand = list_favorite_product_brand_
+	# favorite_product_.user_favorite_list_product_unit = list_favorite_product_unit_
+	# favorite_product_.user_favorite_list_product_category = list_favorite_product_category_
+
+	favorite_product_.update()
+
+	# try:
+	# 	favorite_product_.save()
+	# except:
+	# 	json_data = json.dumps('fail update coupon')
+	# 	return HttpResponse(json_data, content_type='application/json')
+
+	datas = []
+	list_favorite_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_)
+
+	for d in list_favorite_:
+		data = model_to_dict(d)
+		datas.append(data)
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
