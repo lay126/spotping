@@ -1,7 +1,7 @@
 <html> 
-    <head><title>Upload Test</title></head> 
-    <body> 
-        <form action="/test/photo/upload/"
+    <head><title>Update Test</title></head> 
+    <body bgcolor='#ffe4e1' align='center'>
+        <form action="/request/photo/update/"
               method="post"
               enctype="multipart/form-data"> 
             File:
@@ -9,10 +9,10 @@
                    name="file"
                    id="id_file" />
 
-            <input type="text" id="file_name" name="file_name"></td>
-            <input type="text" id="file_day" name="file_day"></td>
-
-            <input type="submit" value="UPLOAD" /> 
+            <p>coupon_category_index<input type="text" id="coupon_category_index" name="coupon_category_index"></td></p>
+            <p>coupon_product_index<input type="text" id="coupon_product_index" name="coupon_product_index"></td></p>
+            <p>coupon_index<input type="text" id="coupon_daily_market_name" name="coupon_index"></td></p>
+            <input type="submit" value="사진 업로드" /> 
         </form> 
     </body> 
 </html> 

@@ -349,13 +349,11 @@ def request_photo_update(request):
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
-				image_name = 'm_daily' + '_' +product_index_+ '_' +coupon_index_
-
-				link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
 			except:
 				# code1 : save photo fail
-				json_data = json.dumps('delete photo fail')
+				json_data = json.dumps(filename)
 				return HttpResponse(json_data, content_type='application/json')	
 
 			try:
