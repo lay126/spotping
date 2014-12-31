@@ -140,6 +140,8 @@ def request_join_seller(request):
 	join_seller_photo_index_ = 0
 	join_seller_market_name_ = request.POST.get('join_seller_market_name', False)
 	join_seller_address_ = request.POST.get('join_seller_address', False)
+	user_seller_latitude_ = request.POST.get('user_seller_latitude', False)
+	user_seller_longitude_ = request.POST.get('user_seller_longitude', False)
 	join_seller_phone_ = request.POST.get('join_seller_phone', False)
 
 	join_seller_ = User.objects.create_user(join_seller_id_, join_seller_email_, join_seller_pwd_)
@@ -148,7 +150,7 @@ def request_join_seller(request):
 
 	try:
 		join_seller_.save()
-		join_seller_info_ = USER_SELLER(user_seller_id=join_seller_, user_seller_photo_index=join_seller_photo_index_, user_seller_market_name=join_seller_market_name_, user_seller_address=join_seller_address_, user_seller_phone=join_seller_phone_)
+		join_seller_info_ = USER_SELLER(user_seller_id=join_seller_, user_seller_photo_index=join_seller_photo_index_, user_seller_market_name=join_seller_market_name_, user_seller_address=join_seller_address_, user_seller_latitude=user_seller_latitude_, user_seller_longitude=user_seller_longitude_, user_seller_phone=join_seller_phone_)
 		join_seller_info_.save()
 	except:
 		return HttpResponse('fail join')
