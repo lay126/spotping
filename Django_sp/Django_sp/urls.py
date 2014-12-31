@@ -18,9 +18,7 @@ urlpatterns = patterns('',
 	# test 
 	#-------------------------------------------------------------------------------------------------------------------------
 	url(r'^test/photo/upload/', 'sp_app.views.test_photo_upload'),
-	url(r'^test/photo/download/1/', 'sp_app.views.test_photo_download_1'),
 	url(r'^test/photo/download/s/', 'sp_app.views.test_photo_download_s'),
-	url(r'^test/photo/download/2/', 'sp_app.views.test_photo_download_2'),
 	url(r'^test/photo/open/t/', 'sp_app.views.test_photo_open_t'),
 	url(r'^test/photo/open/c/', 'sp_app.views.test_photo_open_c'),
 
@@ -28,6 +26,22 @@ urlpatterns = patterns('',
 	#-------------------------------------------------------------------------------------------------------------------------
 	url(r'^request/photo/upload/', 'sp_app.views.request_photo_upload'),
 	url(r'^request/photo/update/', 'sp_app.views.request_photo_update'),
+
+	url(r'^request/photo/download/daily/', 'sp_app.views.request_photo_download_daily'),
+	url(r'^request/photo/download/greens/', 'sp_app.views.request_photo_download_greens'),
+	url(r'^request/photo/download/fish/', 'sp_app.views.request_photo_download_fish'),
+	url(r'^request/photo/download/rice/', 'sp_app.views.request_photo_download_rice'),
+	url(r'^request/photo/download/meat/', 'sp_app.views.request_photo_download_meat'),
+	url(r'^request/photo/download/egg/', 'sp_app.views.request_photo_download_egg'),
+	url(r'^request/photo/download/ham/', 'sp_app.views.request_photo_download_ham'),
+	url(r'^request/photo/download/side/', 'sp_app.views.request_photo_download_side'),
+	url(r'^request/photo/download/water/', 'sp_app.views.request_photo_download_water'),
+	url(r'^request/photo/download/instant/', 'sp_app.views.request_photo_download_instant'),
+	url(r'^request/photo/download/ice/', 'sp_app.views.request_photo_download_ice'),
+	url(r'^request/photo/download/bakery/', 'sp_app.views.request_photo_download_bakery'),
+	url(r'^request/photo/download/snack/', 'sp_app.views.request_photo_download_snack'),
+
+	request_photo_download_daily
 
 	# product & coupon
 	#-------------------------------------------------------------------------------------------------------------------------

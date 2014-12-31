@@ -21,6 +21,14 @@ from django.contrib.auth.models import User, UserManager
 from sp_app.models import *
 
 
+"""
+과일 : 1, 채소 : 2, 두부 : 3, 콩나물 : 4, 달걀 : 5, 
+수산 : 6 ,정육 : 7, 햄 : 8, 어묵 : 9 , 반찬 : 10,
+생수 : 11, 음료 : 12, 우유 : 13, 요구르트 : 14, 라면 : 15, 
+통조림 : 16, 즉석식품 : 17, 냉동식품 : 18, 빙과 : 19, 과자 : 20          
+"""
+
+
 def test_photo_open_t(request):
 	page_title = 'test_photo_open_t'
 
@@ -68,52 +76,19 @@ def test_photo_upload(request):
 
 	return HttpResponse('Failed to Upload File')
 
-# android <- server 
-def test_photo_download_1(request):
-	page_title = 'test_photo_download_1'
-
-	# pic_ = SP_PICTURE.objects.filter(sp_name='sgenay_2014')
-
-	# datas = []
-	# for i in pic_:
-	# 	data = model_to_dict(i)
-	# 	datas.append(data)
-
-	# json_data = json.dumps(datas)
-	# return HttpResponse(json_data, content_type='image/jpg')
-
-	# image_ = base64.decodestring(json.dumps(pic_))
-	# return HttpResponse(image_, content_type='image/jpg')
-
-	image_data_ = open("sp_app/sp_pictures/sp_pictures/mung_3.jpg", "rb").read()
-	
-	return HttpResponse(image_data_, mimetype="image/png")
-
 # android <- server (photos)
 def test_photo_download_s(request):
 	page_title = 'test_photo_download_s'
 
-	image_data_1 = open("sp_app/sp_pictures/sp_pictures/mung_2.jpg", "rb").read()
-	image_data_2 = open("sp_app/sp_pictures/sp_pictures/mung_1.jpg", "rb").read()
+	image_name = request.GET.get('image_name')
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + 'daily' + image_name + '.png'
 
 	images = []
+	image_data_2 = open(link, "rb").read()
 	images.append(image_data_2)
-	images.append(image_data_1)
 
-	return HttpResponse(images, mimetype="image/png")
-
-# android <- server (base64)
-def test_photo_download_2(request):
-	page_title = 'test_photo_download_2'
-
-	pic_1 = SP_PICTURE.objects.get(sp_name='mung_4')
-	pic_2 = SP_PICTURE.objects.get(sp_name='mung_3')
-
-	images = []
-	images.append(pic_1.sp_picture)
-	images.append(pic_2.sp_picture) 
-
-	return HttpResponse(images, mimetype='image/png')
+	return HttpResponse(images, content_type="image/png")
 
 
 # seller join / login--------------------------------------------------------
@@ -223,7 +198,7 @@ def request_photo_upload(request):
 	if request.method == 'POST':
 		if 'file' in request.FILES:
 			file = request.FILES['file']
-			filename = 'm_daily' + '_' + str(coupon_daily_product_index_ )+ '_' + str(coupon_daily_index_) + '_' + coupon_daily_name_
+			filename = '' + str(coupon_daily_product_index_ )+ '_' + str(coupon_daily_index_) + '_' + coupon_daily_name_
 
 			try:
 				pic_ = SP_PICTURE()
@@ -275,6 +250,217 @@ def request_photo_update(request):
 			return HttpResponse('File Update')
 
 	return HttpResponse('Failed to Update File')
+
+
+# photo download---------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------
+def request_photo_download_daily(request):
+	page_title = 'request_photo_download_daily'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_daily' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_greens(request):
+	page_title = 'request_photo_download_greens'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_greens' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_fish(request):
+	page_title = 'request_photo_download_fish'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_fish' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_rice(request):
+	page_title = 'request_photo_download_rice'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_rice' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_meat(request):
+	page_title = 'request_photo_download_meat'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_meat' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_egg(request):
+	page_title = 'request_photo_download_egg'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_egg' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_ham(request):
+	page_title = 'request_photo_download_ham'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_ham' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_side(request):
+	page_title = 'request_photo_download_side'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_side' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_water(request):
+	page_title = 'request_photo_download_water'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_water' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_instant(request):
+	page_title = 'request_photo_download_instant'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_instant' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_ice(request):
+	page_title = 'request_photo_download_ice'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_ice' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_bakery(request):
+	page_title = 'request_photo_download_bakery'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_bakery' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
+
+def request_photo_download_snack(request):
+	page_title = 'request_photo_download_snack'
+
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
+
+	image_name = 'm_snack' + '_' +product_index_+ '_' +coupon_index_
+
+	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+
+	images = []
+	image = open(link, "rb").read()
+	images.append(image)
+
+	return HttpResponse(images, content_type="image/png")
 
 
 # all coupon data---------------------------------------------------
