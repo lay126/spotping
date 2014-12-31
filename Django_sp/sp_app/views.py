@@ -2269,8 +2269,21 @@ def request_remake_favorite(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 def request_delete_favorite(request):
-	page_title = 'request_delete_favorite'
+	# page_ti127.0.0.1:8000/request/delete/favorite/?list_favorite_userid=spotping&list_favorite_product_index=2
 
+	# have to get 'before product index', 'new product index'
+	list_favorite_userid_ = request.GET.get('list_favorite_userid', False)
+	list_favorite_product_index_ = request.GET.get('list_favorite_product_index_', False)
+
+	favorite_product_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_).filter(user_favorite_list_product_index=list_favorite_product_index_)
+	favorite_product_.delete()
+
+	datas = []
+	list_favorite_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_)
+
+	for d in list_favorite_:
+		data = model_to_dict(d)
+		datas.append(data)
 
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
