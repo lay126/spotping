@@ -1265,7 +1265,7 @@ def request_make_snack(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
-# controll coupon-----------------------------------------------------
+# coupon-----------------------------------------------------
 # get coupones by state-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_active_coupon(request):
@@ -1546,6 +1546,8 @@ def request_inactive_coupon(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
+
+# controll coupones-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_delete_coupon(request):
 	page_title = 'request_delete_coupon'
@@ -2237,7 +2239,7 @@ def request_make_favorite(request):
 
 def request_remake_favorite(request):
 	page_title = 'request_remake_favorite'
-	# /request/remake/favorite/?list_favorite_userid=spotping&list_favorite_product_index_b=1&list_favorite_product_index_n=10&list_favorite_product_name=aaa&list_favorite_product_brand=kk&list_favorite_product_unit=df&list_favorite_product_category=0
+	# 127.0.0.1:8000/request/remake/favorite/?list_favorite_userid=spotping&list_favorite_product_index_b=1&list_favorite_product_index_n=10&list_favorite_product_name=milk&list_favorite_product_brand=kkk&list_favorite_product_unit=df&list_favorite_product_category=0
 
 	# have to get 'before product index', 'new product index'
 	list_favorite_userid_ = request.GET.get('list_favorite_userid', False)
@@ -2248,21 +2250,13 @@ def request_remake_favorite(request):
 	list_favorite_product_unit_ = request.GET.get('list_favorite_product_unit', False)
 	list_favorite_product_category_ = request.GET.get('list_favorite_product_category', False)
 
-	favorite_product_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_).filter(user_favorite_list_product_index=1)
+	favorite_product_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_).filter(user_favorite_list_product_index=list_favorite_product_index_b_)
 
-	# favorite_product_.user_favorite_list_product_index = list_favorite_product_index_n_
-	# favorite_product_.user_favorite_list_product_name = list_favorite_product_name_
-	# favorite_product_.user_favorite_list_product_brand = list_favorite_product_brand_
-	# favorite_product_.user_favorite_list_product_unit = list_favorite_product_unit_
-	# favorite_product_.user_favorite_list_product_category = list_favorite_product_category_
-
-	favorite_product_.update()
-
-	# try:
-	# 	favorite_product_.save()
-	# except:
-	# 	json_data = json.dumps('fail update coupon')
-	# 	return HttpResponse(json_data, content_type='application/json')
+	try:
+		favorite_product_.update(user_favorite_list_product_index=list_favorite_product_index_n_, user_favorite_list_product_name=list_favorite_product_name_, user_favorite_list_product_brand=list_favorite_product_brand_, user_favorite_list_product_unit=list_favorite_product_unit_, user_favorite_list_product_category = list_favorite_product_category_)
+	except:
+		json_data = json.dumps('fail update coupon')
+		return HttpResponse(json_data, content_type='application/json')
 
 	datas = []
 	list_favorite_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_)
