@@ -188,22 +188,176 @@ def request_login_seller(request):
 #-------------------------------------------------------------------------------------------------------------------------
 @csrf_exempt
 def request_photo_upload(request):
-	page_title = 'test_photo_upload'
+	page_title = 'request_photo_upload'
 
-	coupon_daily_product_index_ = request.POST.get('coupon_daily_product_index')
-	coupon_daily_photo_index_ = request.POST.get('coupon_daily_photo_index')
-	coupon_daily_name_ = request.POST.get('coupon_daily_name')
+	coupon_category_index_ = request.POST.get('coupon_category_index')
+	coupon_product_index_ = request.POST.get('coupon_product_index')
+	coupon_index_ = request.POST.get('coupon_index_')
+
+	if coupon_category_index_ == '1':
+		coupon_category_index_k_ = 'm_daily'
+	elif coupon_category_index_ == '2':
+		coupon_category_index_k_ = 'm_greens'
+	elif coupon_category_index_ == '3':
+		coupon_category_index_k_ = 'm_fish'
+	elif coupon_category_index_ == '4':
+		coupon_category_index_k_ = 'm_rice'
+	elif coupon_category_index_ == '5':
+		coupon_category_index_k_ = 'm_meat'
+	elif coupon_category_index_ == '6':
+		coupon_category_index_k_ = 'm_egg'
+	elif coupon_category_index_ == '7':
+		coupon_category_index_k_ = 'm_ham'
+	elif coupon_category_index_ == '8':
+		coupon_category_index_k_ = 'm_side'
+	elif coupon_category_index_ == '9':
+		coupon_category_index_k_ = 'm_water'
+	elif coupon_category_index_ == '10':
+		coupon_category_index_k_ = 'm_instant'
+	elif coupon_category_index_ == '11':
+		coupon_category_index_k_ = 'm_ice'
+	elif coupon_category_index_ == '12':
+		coupon_category_index_k_ = 'm_bakery'
+	elif coupon_category_index_ == '13':
+		coupon_category_index_k_ = 'm_snack'
 
 	# have to change photo
 	if request.method == 'POST':
 		if 'file' in request.FILES:
 			file = request.FILES['file']
-			filename = '' + str(coupon_daily_product_index_ )+ '_' + str(coupon_daily_index_) + '_' + coupon_daily_name_
+			filename = '' + coupon_category_index_k_ + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
 			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
-				pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+			except:
+				# code1 : save photo fail
+				json_data = json.dumps('save photo fail')
+				return HttpResponse(json_data, content_type='application/json')	
+			pic_.save()
+
+			# get make photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_index_ = pic_now.sp_photo_index
+
+	if coupon_category_index_ == '1':
+		coupon_ = COUPON_DAILY.objects.get(coupon_daily_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_daily_index
+		coupon_.coupon_daily_index = coupon_index_
+
+	elif coupon_category_index_ == '2':
+		coupon_ = COUPON_GREENS.objects.get(coupon_greens_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_greens_index
+		coupon_.coupon_greens_index = coupon_index_
+
+	elif coupon_category_index_ == '3':
+		coupon_ = COUPON_FISH.objects.get(coupon_fish_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_fish_index
+		coupon_.coupon_fish_index = coupon_index_
+
+	elif coupon_category_index_ == '4':
+		coupon_ = COUPON_RICE.objects.get(coupon_rice_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_rice_index
+		coupon_.coupon_rice_index = coupon_index_
+
+	elif coupon_category_index_ == '5':
+		coupon_ = COUPON_MEAT.objects.get(coupon_meat_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_meat_index
+		coupon_.coupon_meat_index = coupon_index_
+
+	elif coupon_category_index_ == '6':
+		coupon_ = COUPON_EGG.objects.get(coupon_egg_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_egg_index
+		coupon_.coupon_egg_index = coupon_index_
+
+	elif coupon_category_index_ == '7':
+		coupon_ = COUPON_HAM.objects.get(coupon_ham_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_ham_index
+		coupon_.coupon_ham_index = coupon_index_
+
+	elif coupon_category_index_ == '8':
+		coupon_ = COUPON_SIDE.objects.get(coupon_side_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_side_index
+		coupon_.coupon_side_index = coupon_index_
+
+	elif coupon_category_index_ == '9':
+		coupon_ = COUPON_WATER.objects.get(coupon_water_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_water_index
+		coupon_.coupon_water_index = coupon_index_
+
+	elif coupon_category_index_ == '10':
+		coupon_ = COUPON_INSTANT.objects.get(coupon_instant_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_instant_index
+		coupon_.coupon_instant_index = coupon_index_
+
+	elif coupon_category_index_ == '11':
+		coupon_ = COUPON_ICE.objects.get(coupon_ice_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_ice_index
+		coupon_.coupon_ice_index = coupon_index_
+
+	elif coupon_category_index_ == '12':
+		coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_bakery_index
+		coupon_.coupon_bakery_index = coupon_index_
+
+	elif coupon_category_index_ == '13':
+		coupon_ = COUPON_SNACK.objects.get(coupon_snack_index=coupon_index_)
+		coupon_index_ = coupon_.coupon_snack_index
+		coupon_.coupon_snack_index = coupon_index_
+
+	# swich coupon photo index
+	coupon_.save()
+
+	json_data = json.dumps('success save photo')
+	return HttpResponse(json_data, content_type='application/json')	
+
+#not yet
+@csrf_exempt
+def request_photo_update(request):
+	page_title = 'request_photo_update'
+
+	coupon_category_index_ = request.POST.get('coupon_category_index')
+	coupon_product_index_ = request.POST.get('coupon_product_index')
+	coupon_photo_index_ = request.POST.get('coupon_product_index')
+
+	if coupon_category_index_ == '1':
+		coupon_category_index_k_ = 'm_daily'
+	elif coupon_category_index_ == '2':
+		coupon_category_index_k_ = 'm_greens'
+	elif coupon_category_index_ == '3':
+		coupon_category_index_k_ = 'm_fish'
+	elif coupon_category_index_ == '4':
+		coupon_category_index_k_ = 'm_rice'
+	elif coupon_category_index_ == '5':
+		coupon_category_index_k_ = 'm_meat'
+	elif coupon_category_index_ == '6':
+		coupon_category_index_k_ = 'm_egg'
+	elif coupon_category_index_ == '7':
+		coupon_category_index_k_ = 'm_ham'
+	elif coupon_category_index_ == '8':
+		coupon_category_index_k_ = 'm_side'
+	elif coupon_category_index_ == '9':
+		coupon_category_index_k_ = 'm_water'
+	elif coupon_category_index_ == '10':
+		coupon_category_index_k_ = 'm_instant'
+	elif coupon_category_index_ == '11':
+		coupon_category_index_k_ = 'm_ice'
+	elif coupon_category_index_ == '12':
+		coupon_category_index_k_ = 'm_bakery'
+	elif coupon_category_index_ == '13':
+		coupon_category_index_k_ = 'm_snack'
+
+	# have to change photo
+	if request.method == 'POST':
+		if 'file' in request.FILES:
+			file = request.FILES['file']
+			filename = '' + coupon_category_index_k_ + '_' + str(coupon_product_index_ )+ '_' + str(coupon_photo_index_)
+
+			try:
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
 			except:
 				# code1 : save photo fail
 				json_data = json.dumps('save photo fail')
@@ -224,32 +378,6 @@ def request_photo_upload(request):
 
 	json_data = json.dumps('success save photo')
 	return HttpResponse(json_data, content_type='application/json')	
-
-#not yet
-@csrf_exempt
-def request_photo_update(request):
-	page_title = 'request_photo_update'
-
-	if request.method == 'POST':
-		if 'file' in request.FILES:
-			file = request.FILES['file']
-			file_name_ = request.POST.get('file_name', 'False')
-			file_day_ = request.POST.get('file_day', '00000')
-			filename = file_name_ + '_' + file_day_
-
-			try:
-				pic_ = SP_PICTURE()
-				# pic_.sp_photo_index = 1
-				pic_.sp_name = filename
-				pic_.sp_picture.save(filename+'.jpg', File(file), save=True)	
-			except:
-				return HttpResponse(404)		
-			pic_.save()
-
-			# use for test
-			return HttpResponse('File Update')
-
-	return HttpResponse('Failed to Update File')
 
 
 # photo download---------------------------------------------------
