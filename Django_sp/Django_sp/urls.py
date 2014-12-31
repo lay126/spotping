@@ -43,6 +43,7 @@ urlpatterns = patterns('',
 
 	# product & coupon
 	#-------------------------------------------------------------------------------------------------------------------------
+	url(r'^request/product/all/', 'sp_app.views.request_product_all'),
 	url(r'^request/coupon/all/', 'sp_app.views.request_coupon_all'),
 
 	url(r'^request/coupon/daily/', 'sp_app.views.request_coupon_daily'),
@@ -106,8 +107,6 @@ urlpatterns = patterns('',
 	url(r'^request/make/favorite/', 'sp_app.views.request_make_favorite'),
 	url(r'^request/remake/favorite/', 'sp_app.views.request_remake_favorite'),
 	url(r'^request/delete/favorite/', 'sp_app.views.request_delete_favorite'),
-
-
 
 	# seller
 	#-------------------------------------------------------------------------------------------------------------------------

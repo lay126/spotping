@@ -301,7 +301,6 @@ def request_photo_upload(request):
 	json_data = json.dumps('success save photo')
 	return HttpResponse(json_data, content_type='application/json')	
 
-#not yet
 @csrf_exempt
 def request_photo_update(request):
 	page_title = 'request_photo_update'
@@ -426,7 +425,7 @@ def request_photo_update(request):
 	# swich coupon photo index
 	coupon_.save()
 
-	json_data = json.dumps('success save photo')
+	json_data = json.dumps('success update photo')
 	return HttpResponse(json_data, content_type='application/json')	
 
 
@@ -641,8 +640,22 @@ def request_photo_download_snack(request):
 	return HttpResponse(images, content_type="image/png")
 
 
-# all coupon data---------------------------------------------------
+# all data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+def request_product_all(request):
+   page_title = 'request_product_all'
+
+   coupon_data_= PRODUCT.objects.all()
+
+   datas = []
+   for d in coupon_data_:
+      data = model_to_dict(d)
+      datas.append(data)
+
+   json_data = json.dumps(datas)
+   return HttpResponse(json_data, content_type='application/json')
+
+
 def request_coupon_all(request):
 	page_title = 'request_coupon_all'
 
