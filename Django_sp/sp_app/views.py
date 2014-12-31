@@ -193,7 +193,7 @@ def request_photo_upload(request):
 
 	coupon_category_index_ = request.POST.get('coupon_category_index')
 	coupon_product_index_ = request.POST.get('coupon_product_index')
-	coupon_index_ = request.POST.get('coupon_index')
+	coupon_index_ = request.session['s_coupon_index'] 
 
 	if coupon_category_index_ == '1':
 		coupon_category_index_k_ = 'm_daily'
@@ -307,7 +307,7 @@ def request_photo_update(request):
 
 	coupon_category_index_ = request.POST.get('coupon_category_index')
 	coupon_product_index_ = request.POST.get('coupon_product_index')
-	coupon_index_ = request.POST.get('coupon_index')
+	coupon_index_ = request.session['s_coupon_index'] 
 
 
 	if coupon_category_index_ == '1':
@@ -950,6 +950,8 @@ def request_make_daily(request):
 	coupon_.coupon_daily_photo_index = coupon_daily_photo_index_
 	coupon_.save()
 
+	request.session['s_coupon_index'] = coupon_daily_index_
+
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
@@ -989,6 +991,8 @@ def request_make_greens(request):
 	# swich coupon photo index
 	coupon_.coupon_greens_photo_index = coupon_greens_photo_index_
 	coupon_.save()
+
+	request.session['s_coupon_index'] = coupon_greens_index_
 
 	# code0 : success
 	json_data = json.dumps(0)
@@ -1030,6 +1034,8 @@ def request_make_fish(request):
 	coupon_.coupon_fish_photo_index = coupon_fish_photo_index_
 	coupon_.save()
 
+	request.session['s_coupon_index'] = coupon_fish_index_
+
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
@@ -1066,6 +1072,8 @@ def request_make_rice(request):
 	# swich coupon photo index
 	coupon_.coupon_rice_photo_index = coupon_rice_photo_index_
 	coupon_.save()
+
+	request.session['s_coupon_index'] = coupon_rice_index_
 
 	# code0 : success
 	json_data = json.dumps(0)
@@ -1107,6 +1115,8 @@ def request_make_meat(request):
 	coupon_.coupon_meat_photo_index = coupon_meat_photo_index_
 	coupon_.save()
 
+	request.session['s_coupon_index'] = coupon_meat_index_
+
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
@@ -1147,6 +1157,8 @@ def request_make_egg(request):
 	coupon_.coupon_egg_photo_index = coupon_egg_photo_index_
 	coupon_.save()
 
+	request.session['s_coupon_index'] = coupon_egg_index_
+
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
@@ -1185,6 +1197,8 @@ def request_make_ham(request):
 	# swich coupon photo index
 	coupon_.coupon_ham_photo_index = coupon_ham_photo_index_
 	coupon_.save()
+
+	request.session['s_coupon_index'] = coupon_ham_index_
 
 	# code0 : success
 	json_data = json.dumps(0)
@@ -1225,6 +1239,8 @@ def request_make_side(request):
 	coupon_.coupon_side_photo_index = coupon_side_photo_index_
 	coupon_.save()
 
+	request.session['s_coupon_index'] = coupon_side_index_
+
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
@@ -1263,6 +1279,8 @@ def request_make_water(request):
 	# swich coupon photo index
 	coupon_.coupon_water_photo_index = coupon_water_photo_index_
 	coupon_.save()
+
+	request.session['s_coupon_index'] = coupon_water_index_
 
 	# code0 : success
 	json_data = json.dumps(0)
@@ -1303,6 +1321,8 @@ def request_make_instant(request):
 	coupon_.coupon_instant_photo_index = coupon_instant_photo_index_
 	coupon_.save()
 
+	request.session['s_coupon_index'] = coupon_instant_index_
+
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
@@ -1341,6 +1361,8 @@ def request_make_ice(request):
 	# swich coupon photo index
 	coupon_.coupon_ice_photo_index = coupon_ice_photo_index_
 	coupon_.save()
+
+	request.session['s_coupon_index'] = coupon_ice_index_
 
 	# code0 : success
 	json_data = json.dumps(0)
@@ -1381,6 +1403,8 @@ def request_make_bakery(request):
 	coupon_.coupon_bakery_photo_index = coupon_bakery_photo_index_
 	coupon_.save()
 
+	request.session['s_coupon_index'] = coupon_bakery_index_
+
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
@@ -1419,6 +1443,8 @@ def request_make_snack(request):
 	# swich coupon photo index
 	coupon_.coupon_snack_photo_index = coupon_snack_photo_index_
 	coupon_.save()
+
+	request.session['s_coupon_index'] = coupon_snack_index_
 
 	# code0 : success
 	json_data = json.dumps(0)
