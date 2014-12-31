@@ -1939,72 +1939,84 @@ def request_active_coupon(request):
 		for d_d in active_coupon_d_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_g_ = COUPON_GREENS.objects.filter(coupon_greens_name=product_name_)
 		for d_d in active_coupon_g_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_f_ = COUPON_FISH.objects.filter(coupon_fish_name=product_name_)
 		for d_d in active_coupon_f_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_r_ = COUPON_RICE.objects.filter(coupon_rice_name=product_name_)
 		for d_d in active_coupon_r_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_m_ = COUPON_MEAT.objects.filter(coupon_meat_name=product_name_)
 		for d_d in active_coupon_m_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_e_ = COUPON_EGG.objects.filter(coupon_egg_name=product_name_)
 		for d_d in active_coupon_e_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_h_ = COUPON_HAM.objects.filter(coupon_ham_name=product_name_)
 		for d_d in active_coupon_h_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_s_ = COUPON_SIDE.objects.filter(coupon_side_name=product_name_)
 		for d_d in active_coupon_s_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_w_ = COUPON_WATER.objects.filter(coupon_water_name=product_name_)
 		for d_d in active_coupon_w_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_i_ = COUPON_INSTANT.objects.filter(coupon_instant_name=product_name_)
 		for d_d in active_coupon_i_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_ice_ = COUPON_ICE.objects.filter(coupon_ice_name=product_name_)
 		for d_d in active_coupon_ice_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_b_ = COUPON_BAKERY.objects.filter(coupon_bakery_name=product_name_)
 		for d_d in active_coupon_b_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_s_ = COUPON_SNACK.objects.filter(coupon_snack_name=product_name_)
@@ -2032,72 +2044,84 @@ def request_reservation_coupon(request):
 		for d_d in active_coupon_d_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_g_ = COUPON_GREENS.objects.filter(coupon_greens_name=product_name_)
 		for d_d in active_coupon_g_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_f_ = COUPON_FISH.objects.filter(coupon_fish_name=product_name_)
 		for d_d in active_coupon_f_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_r_ = COUPON_RICE.objects.filter(coupon_rice_name=product_name_)
 		for d_d in active_coupon_r_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_m_ = COUPON_MEAT.objects.filter(coupon_meat_name=product_name_)
 		for d_d in active_coupon_m_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_e_ = COUPON_EGG.objects.filter(coupon_egg_name=product_name_)
 		for d_d in active_coupon_e_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_h_ = COUPON_HAM.objects.filter(coupon_ham_name=product_name_)
 		for d_d in active_coupon_h_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_s_ = COUPON_SIDE.objects.filter(coupon_side_name=product_name_)
 		for d_d in active_coupon_s_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_w_ = COUPON_WATER.objects.filter(coupon_water_name=product_name_)
 		for d_d in active_coupon_w_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_i_ = COUPON_INSTANT.objects.filter(coupon_instant_name=product_name_)
 		for d_d in active_coupon_i_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_ice_ = COUPON_ICE.objects.filter(coupon_ice_name=product_name_)
 		for d_d in active_coupon_ice_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_b_ = COUPON_BAKERY.objects.filter(coupon_bakery_name=product_name_)
 		for d_d in active_coupon_b_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_s_ = COUPON_SNACK.objects.filter(coupon_snack_name=product_name_)
@@ -2125,72 +2149,85 @@ def request_inactive_coupon(request):
 		for d_d in active_coupon_d_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_g_ = COUPON_GREENS.objects.filter(coupon_greens_name=product_name_)
 		for d_d in active_coupon_g_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_f_ = COUPON_FISH.objects.filter(coupon_fish_name=product_name_)
 		for d_d in active_coupon_f_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_r_ = COUPON_RICE.objects.filter(coupon_rice_name=product_name_)
 		for d_d in active_coupon_r_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_m_ = COUPON_MEAT.objects.filter(coupon_meat_name=product_name_)
 		for d_d in active_coupon_m_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_e_ = COUPON_EGG.objects.filter(coupon_egg_name=product_name_)
 		for d_d in active_coupon_e_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_h_ = COUPON_HAM.objects.filter(coupon_ham_name=product_name_)
 		for d_d in active_coupon_h_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_s_ = COUPON_SIDE.objects.filter(coupon_side_name=product_name_)
 		for d_d in active_coupon_s_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_w_ = COUPON_WATER.objects.filter(coupon_water_name=product_name_)
 		for d_d in active_coupon_w_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_i_ = COUPON_INSTANT.objects.filter(coupon_instant_name=product_name_)
 		for d_d in active_coupon_i_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_ice_ = COUPON_ICE.objects.filter(coupon_ice_name=product_name_)
 		for d_d in active_coupon_ice_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_b_ = COUPON_BAKERY.objects.filter(coupon_bakery_name=product_name_)
 		for d_d in active_coupon_b_:
 			data_d = model_to_dict(d_d)
 			datas.append(data_d)
+			
 	for d in active_coupon_p_:
 		product_name_ = d.product_name
 		active_coupon_s_ = COUPON_SNACK.objects.filter(coupon_snack_name=product_name_)
