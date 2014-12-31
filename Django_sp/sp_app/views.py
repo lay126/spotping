@@ -1576,7 +1576,7 @@ def request_remake_bakery(request):
 	coupon_bakery_name_ = request.POST.get('coupon_bakery_name')
 	coupon_bakery_brand_ = request.POST.get('coupon_bakery_brand')
 	coupon_bakery_unit_ = request.POST.get('coupon_bakery_unit')
-	coupon_bakery_pbakery_ = request.POST.get('coupon_bakery_pbakery')
+	coupon_bakery_price_ = request.POST.get('coupon_bakery_price')
 	coupon_bakery_start_ = request.POST.get('coupon_bakery_start')
 	coupon_bakery_finish_ = request.POST.get('coupon_bakery_finish')
 	coupon_bakery_detail_ = request.POST.get('coupon_bakery_detail')
@@ -1586,7 +1586,7 @@ def request_remake_bakery(request):
 	
 	# remake coupon
 	try:
-		coupon_bakery.update(coupon_bakery_photo_index = coupon_bakery_photo_index_, coupon_bakery_market_name = coupon_bakery_market_name_, coupon_bakery_name = coupon_bakery_name_, coupon_bakery_brand = coupon_bakery_brand_, coupon_bakery_unit = coupon_bakery_unit_, coupon_bakery_pbakery = coupon_bakery_pbakery_, coupon_bakery_start = coupon_bakery_start_, coupon_bakery_finish = coupon_bakery_finish_, coupon_bakery_times = 0, coupon_bakery_detail = coupon_bakery_detail_, coupon_bakery_type = coupon_bakery_type_,)
+		coupon_bakery.update(coupon_bakery_photo_index = coupon_bakery_photo_index_, coupon_bakery_market_name = coupon_bakery_market_name_, coupon_bakery_name = coupon_bakery_name_, coupon_bakery_brand = coupon_bakery_brand_, coupon_bakery_unit = coupon_bakery_unit_, coupon_bakery_price = coupon_bakery_price_, coupon_bakery_start = coupon_bakery_start_, coupon_bakery_finish = coupon_bakery_finish_, coupon_bakery_times = 0, coupon_bakery_detail = coupon_bakery_detail_, coupon_bakery_type = coupon_bakery_type_,)
 	except:
 		json_data = json.dumps('fail remake coupon')
 		return HttpResponse(json_data, content_type='application/json')
@@ -1607,7 +1607,7 @@ def request_remake_snack(request):
 	coupon_snack_name_ = request.POST.get('coupon_snack_name')
 	coupon_snack_brand_ = request.POST.get('coupon_snack_brand')
 	coupon_snack_unit_ = request.POST.get('coupon_snack_unit')
-	coupon_snack_psnack_ = request.POST.get('coupon_snack_psnack')
+	coupon_snack_price_ = request.POST.get('coupon_snack_price')
 	coupon_snack_start_ = request.POST.get('coupon_snack_start')
 	coupon_snack_finish_ = request.POST.get('coupon_snack_finish')
 	coupon_snack_detail_ = request.POST.get('coupon_snack_detail')
@@ -1617,7 +1617,7 @@ def request_remake_snack(request):
 	
 	# remake coupon
 	try:
-		coupon_snack.update(coupon_snack_photo_index = coupon_snack_photo_index_, coupon_snack_market_name = coupon_snack_market_name_, coupon_snack_name = coupon_snack_name_, coupon_snack_brand = coupon_snack_brand_, coupon_snack_unit = coupon_snack_unit_, coupon_snack_psnack = coupon_snack_psnack_, coupon_snack_start = coupon_snack_start_, coupon_snack_finish = coupon_snack_finish_, coupon_snack_times = 0, coupon_snack_detail = coupon_snack_detail_, coupon_snack_type = coupon_snack_type_,)
+		coupon_snack.update(coupon_snack_photo_index = coupon_snack_photo_index_, coupon_snack_market_name = coupon_snack_market_name_, coupon_snack_name = coupon_snack_name_, coupon_snack_brand = coupon_snack_brand_, coupon_snack_unit = coupon_snack_unit_, coupon_snack_price = coupon_snack_price_, coupon_snack_start = coupon_snack_start_, coupon_snack_finish = coupon_snack_finish_, coupon_snack_times = 0, coupon_snack_detail = coupon_snack_detail_, coupon_snack_type = coupon_snack_type_,)
 	except:
 		json_data = json.dumps('fail remake coupon')
 		return HttpResponse(json_data, content_type='application/json')
@@ -2066,6 +2066,7 @@ def request_delete_coupon(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+# ******************************************** ask index!!!
 # chanage coupones state-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 def request_inactive_change(request):

@@ -41,8 +41,6 @@ urlpatterns = patterns('',
 	url(r'^request/photo/download/bakery/', 'sp_app.views.request_photo_download_bakery'),
 	url(r'^request/photo/download/snack/', 'sp_app.views.request_photo_download_snack'),
 
-	request_photo_download_daily
-
 	# product & coupon
 	#-------------------------------------------------------------------------------------------------------------------------
 	url(r'^request/coupon/all/', 'sp_app.views.request_coupon_all'),
