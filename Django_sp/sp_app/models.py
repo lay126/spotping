@@ -134,6 +134,7 @@ class COUPON_FISH(models.Model):
 	coupon_fish_start = models.CharField(verbose_name=u'coupon_fish_start',  max_length='30',)
 	coupon_fish_finish = models.CharField(verbose_name=u'coupon_fish_finish', max_length='30',)
 	coupon_fish_times = models.IntegerField(verbose_name=u'coupon_fish_times', null=False, default=0,)
+	coupon_fish_detail = models.IntegerField(verbose_name=u'coupon_fish_detail', null=False, default=0,)
 	coupon_fish_type = models.IntegerField(verbose_name=u'coupon_fish_type',null=False, default=0,)
 	coupon_fish_active = models.IntegerField(verbose_name=u'coupon_fish_active',null=False, default=0,)
         
@@ -175,6 +176,7 @@ class COUPON_MEAT(models.Model):
 	coupon_meat_start = models.CharField(verbose_name=u'coupon_meat_start',  max_length='30',)
 	coupon_meat_finish = models.CharField(verbose_name=u'coupon_meat_finish', max_length='30',)
 	coupon_meat_times = models.IntegerField(verbose_name=u'coupon_meat_times', null=False, default=0,)
+	coupon_meat_detail = models.IntegerField(verbose_name=u'coupon_meat_detail', null=False, default=0,)
 	coupon_meat_type = models.IntegerField(verbose_name=u'coupon_meat_type',null=False, default=0,)
 	coupon_meat_active = models.IntegerField(verbose_name=u'coupon_meat_active',null=False, default=0,)
         
@@ -235,6 +237,7 @@ class COUPON_SIDE(models.Model):
 	coupon_side_start = models.CharField(verbose_name=u'coupon_side_start',  max_length='30',)
 	coupon_side_finish = models.CharField(verbose_name=u'coupon_side_finish', max_length='30',)
 	coupon_side_times = models.IntegerField(verbose_name=u'coupon_side_times', null=False, default=0,)
+	coupon_side_detail = models.IntegerField(verbose_name=u'coupon_side_detail', null=False, default=0,)
 	coupon_side_type = models.IntegerField(verbose_name=u'coupon_side_type',null=False, default=0,)
 	coupon_side_active = models.IntegerField(verbose_name=u'coupon_side_active',null=False, default=0,)
         
@@ -334,6 +337,7 @@ class COUPON_SNACK(models.Model):
 	coupon_snack_start = models.CharField(verbose_name=u'coupon_snack_start',  max_length='30',)
 	coupon_snack_finish = models.CharField(verbose_name=u'coupon_snack_finish', max_length='30',)
 	coupon_snack_times = models.IntegerField(verbose_name=u'coupon_snack_times', null=False, default=0,)
+	coupon_snack_detail = models.IntegerField(verbose_name=u'coupon_snack_detail', null=False, default=0,)
 	coupon_snack_type = models.IntegerField(verbose_name=u'coupon_snack_type',null=False, default=0,)
 	coupon_snack_active = models.IntegerField(verbose_name=u'coupon_snack_active',null=False, default=0,)
         
