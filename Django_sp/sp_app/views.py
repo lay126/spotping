@@ -14,6 +14,7 @@ from django.utils.simplejson import dumps, loads, JSONEncoder
 from django.core.files import File
 from django.core.context_processors import *
 from django.views.decorators.csrf import *
+from django.core.files.storage import default_storage
 
 from django.contrib.auth import *
 from django.contrib.auth.models import User, UserManager
@@ -192,7 +193,7 @@ def request_photo_upload(request):
 
 	coupon_category_index_ = request.POST.get('coupon_category_index')
 	coupon_product_index_ = request.POST.get('coupon_product_index')
-	coupon_index_ = request.POST.get('coupon_index_')
+	coupon_index_ = request.POST.get('coupon_index')
 
 	if coupon_category_index_ == '1':
 		coupon_category_index_k_ = 'm_daily'
@@ -243,43 +244,35 @@ def request_photo_upload(request):
 
 	if coupon_category_index_ == '1':
 		coupon_ = COUPON_DAILY.objects.get(coupon_daily_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_daily_index
 		coupon_.coupon_daily_index = coupon_index_
 
 	elif coupon_category_index_ == '2':
 		coupon_ = COUPON_GREENS.objects.get(coupon_greens_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_greens_index
 		coupon_.coupon_greens_index = coupon_index_
 
 	elif coupon_category_index_ == '3':
 		coupon_ = COUPON_FISH.objects.get(coupon_fish_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_fish_index
 		coupon_.coupon_fish_index = coupon_index_
 
 	elif coupon_category_index_ == '4':
 		coupon_ = COUPON_RICE.objects.get(coupon_rice_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_rice_index
 		coupon_.coupon_rice_index = coupon_index_
 
 	elif coupon_category_index_ == '5':
 		coupon_ = COUPON_MEAT.objects.get(coupon_meat_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_meat_index
 		coupon_.coupon_meat_index = coupon_index_
 
 	elif coupon_category_index_ == '6':
 		coupon_ = COUPON_EGG.objects.get(coupon_egg_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_egg_index
 		coupon_.coupon_egg_index = coupon_index_
 
 	elif coupon_category_index_ == '7':
 		coupon_ = COUPON_HAM.objects.get(coupon_ham_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_ham_index
 		coupon_.coupon_ham_index = coupon_index_
 
 	elif coupon_category_index_ == '8':
 		coupon_ = COUPON_SIDE.objects.get(coupon_side_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_side_index
-		coupon_.coupon_side_index = coupon_index_
+		coupon_.coupon_side_photo_index = coupon_index_
 
 	elif coupon_category_index_ == '9':
 		coupon_ = COUPON_WATER.objects.get(coupon_water_index=coupon_index_)
@@ -288,22 +281,18 @@ def request_photo_upload(request):
 
 	elif coupon_category_index_ == '10':
 		coupon_ = COUPON_INSTANT.objects.get(coupon_instant_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_instant_index
 		coupon_.coupon_instant_index = coupon_index_
 
 	elif coupon_category_index_ == '11':
 		coupon_ = COUPON_ICE.objects.get(coupon_ice_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_ice_index
 		coupon_.coupon_ice_index = coupon_index_
 
 	elif coupon_category_index_ == '12':
 		coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_bakery_index
 		coupon_.coupon_bakery_index = coupon_index_
 
 	elif coupon_category_index_ == '13':
 		coupon_ = COUPON_SNACK.objects.get(coupon_snack_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_snack_index
 		coupon_.coupon_snack_index = coupon_index_
 
 	# swich coupon photo index
@@ -319,7 +308,8 @@ def request_photo_update(request):
 
 	coupon_category_index_ = request.POST.get('coupon_category_index')
 	coupon_product_index_ = request.POST.get('coupon_product_index')
-	coupon_index_ = request.POST.get('coupon_index_')
+	coupon_index_ = request.POST.get('coupon_index')
+
 
 	if coupon_category_index_ == '1':
 		coupon_category_index_k_ = 'm_daily'
@@ -355,6 +345,20 @@ def request_photo_update(request):
 			filename = '' + coupon_category_index_k_ + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
 			try:
+				# default_storage
+				pic_ = SP_PICTURE.objects.get(sp_name=filename)
+				pic_.delete()
+
+				image_name = 'm_daily' + '_' +product_index_+ '_' +coupon_index_
+
+				link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
+				default_storage.delete(link)
+			except:
+				# code1 : save photo fail
+				json_data = json.dumps('delete photo fail')
+				return HttpResponse(json_data, content_type='application/json')	
+
+			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
@@ -370,43 +374,35 @@ def request_photo_update(request):
 
 	if coupon_category_index_ == '1':
 		coupon_ = COUPON_DAILY.objects.get(coupon_daily_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_daily_index
 		coupon_.coupon_daily_index = coupon_index_
 
 	elif coupon_category_index_ == '2':
 		coupon_ = COUPON_GREENS.objects.get(coupon_greens_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_greens_index
 		coupon_.coupon_greens_index = coupon_index_
 
 	elif coupon_category_index_ == '3':
 		coupon_ = COUPON_FISH.objects.get(coupon_fish_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_fish_index
 		coupon_.coupon_fish_index = coupon_index_
 
 	elif coupon_category_index_ == '4':
 		coupon_ = COUPON_RICE.objects.get(coupon_rice_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_rice_index
 		coupon_.coupon_rice_index = coupon_index_
 
 	elif coupon_category_index_ == '5':
 		coupon_ = COUPON_MEAT.objects.get(coupon_meat_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_meat_index
 		coupon_.coupon_meat_index = coupon_index_
 
 	elif coupon_category_index_ == '6':
 		coupon_ = COUPON_EGG.objects.get(coupon_egg_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_egg_index
 		coupon_.coupon_egg_index = coupon_index_
 
 	elif coupon_category_index_ == '7':
 		coupon_ = COUPON_HAM.objects.get(coupon_ham_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_ham_index
 		coupon_.coupon_ham_index = coupon_index_
 
 	elif coupon_category_index_ == '8':
 		coupon_ = COUPON_SIDE.objects.get(coupon_side_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_side_index
-		coupon_.coupon_side_index = coupon_index_
+		coupon_.coupon_side_photo_index = coupon_index_
 
 	elif coupon_category_index_ == '9':
 		coupon_ = COUPON_WATER.objects.get(coupon_water_index=coupon_index_)
@@ -415,29 +411,25 @@ def request_photo_update(request):
 
 	elif coupon_category_index_ == '10':
 		coupon_ = COUPON_INSTANT.objects.get(coupon_instant_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_instant_index
 		coupon_.coupon_instant_index = coupon_index_
 
 	elif coupon_category_index_ == '11':
 		coupon_ = COUPON_ICE.objects.get(coupon_ice_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_ice_index
 		coupon_.coupon_ice_index = coupon_index_
 
 	elif coupon_category_index_ == '12':
 		coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_bakery_index
 		coupon_.coupon_bakery_index = coupon_index_
 
 	elif coupon_category_index_ == '13':
 		coupon_ = COUPON_SNACK.objects.get(coupon_snack_index=coupon_index_)
-		coupon_index_ = coupon_.coupon_snack_index
 		coupon_.coupon_snack_index = coupon_index_
 
 	# swich coupon photo index
 	coupon_.save()
 
 	json_data = json.dumps('success save photo')
-	return HttpResponse(json_data, content_type='application/json')
+	return HttpResponse(json_data, content_type='application/json')	
 
 
 # photo download---------------------------------------------------
