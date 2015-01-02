@@ -729,10 +729,12 @@ def request_photo_download_bakery(request):
 def request_photo_download_snack(request):
 	page_title = 'request_photo_download_snack'
 
-	product_index_ = request.GET.get('product_index')
-	coupon_index_ = request.GET.get('coupon_index')
+	# 127.0.0.1:8000/request/photo/download/snack/?product_index=1&coupon_index=1
 
-	image_name = 'm_snack' + '_' +product_index_+ '_' +coupon_index_
+	product_index_ = request.POST.get('product_index')
+	coupon_index_ = request.POST.get('coupon_index')
+
+	image_name = 'm_snack' + '_' + product_index_+ '_' + coupon_index_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
