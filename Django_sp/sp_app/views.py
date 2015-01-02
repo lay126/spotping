@@ -31,11 +31,13 @@ from sp_app.models import *
 """
 
 
+@csrf_exempt
 def test_photo_open_t(request):
 	page_title = 'test_photo_open_t'
 
 	return render_to_response('imgForm_t.html')
 
+@csrf_exempt
 def test_photo_open_c(request):
 	page_title = 'test_photo_open_c'
 
@@ -79,6 +81,7 @@ def test_photo_upload(request):
 	return HttpResponse('Failed to Upload File')
 
 # android <- server (photos)
+@csrf_exempt
 def test_photo_download_s(request):
 	page_title = 'test_photo_download_s'
 
@@ -95,6 +98,7 @@ def test_photo_download_s(request):
 
 # seller join / login--------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def join_page_s(request):
 	page_title = 'join_page_s'
 
@@ -136,6 +140,7 @@ def request_join_seller(request):
 
 
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def login_page_s(request):
 	page_title = 'login_page_s'
 
@@ -508,6 +513,7 @@ def request_photo_update(request):
 
 # photo download---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_photo_download_daily(request):
 	page_title = 'request_photo_download_daily'
 
@@ -524,6 +530,7 @@ def request_photo_download_daily(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_greens(request):
 	page_title = 'request_photo_download_greens'
 
@@ -540,6 +547,7 @@ def request_photo_download_greens(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_fish(request):
 	page_title = 'request_photo_download_fish'
 
@@ -556,6 +564,7 @@ def request_photo_download_fish(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_rice(request):
 	page_title = 'request_photo_download_rice'
 
@@ -572,6 +581,7 @@ def request_photo_download_rice(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_meat(request):
 	page_title = 'request_photo_download_meat'
 
@@ -588,6 +598,7 @@ def request_photo_download_meat(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_egg(request):
 	page_title = 'request_photo_download_egg'
 
@@ -604,6 +615,7 @@ def request_photo_download_egg(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_ham(request):
 	page_title = 'request_photo_download_ham'
 
@@ -620,6 +632,7 @@ def request_photo_download_ham(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_side(request):
 	page_title = 'request_photo_download_side'
 
@@ -636,6 +649,7 @@ def request_photo_download_side(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_water(request):
 	page_title = 'request_photo_download_water'
 
@@ -652,6 +666,7 @@ def request_photo_download_water(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_instant(request):
 	page_title = 'request_photo_download_instant'
 
@@ -668,6 +683,7 @@ def request_photo_download_instant(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_ice(request):
 	page_title = 'request_photo_download_ice'
 
@@ -684,6 +700,7 @@ def request_photo_download_ice(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_bakery(request):
 	page_title = 'request_photo_download_bakery'
 
@@ -700,6 +717,7 @@ def request_photo_download_bakery(request):
 
 	return HttpResponse(images, content_type="image/png")
 
+@csrf_exempt
 def request_photo_download_snack(request):
 	page_title = 'request_photo_download_snack'
 
@@ -719,6 +737,7 @@ def request_photo_download_snack(request):
 
 # all data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_product_all(request):
    page_title = 'request_product_all'
 
@@ -733,6 +752,7 @@ def request_product_all(request):
    return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_all(request):
 	page_title = 'request_coupon_all'
 
@@ -809,6 +829,7 @@ def request_coupon_all(request):
 
 # each coupon data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_coupon_daily(request):
 	page_title = 'request_coupon_daily'
 
@@ -823,6 +844,7 @@ def request_coupon_daily(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_greens(request):
 	page_title = 'request_coupon_greens'
 
@@ -837,6 +859,7 @@ def request_coupon_greens(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_fish(request):
 	page_title = 'request_coupon_fish'
 
@@ -851,6 +874,7 @@ def request_coupon_fish(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_rice(request):
 	page_title = 'request_coupon_rice'
 
@@ -865,6 +889,7 @@ def request_coupon_rice(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_meat(request):
 	page_title = 'request_coupon_meat'
 
@@ -879,6 +904,7 @@ def request_coupon_meat(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_egg(request):
 	page_title = 'request_coupon_egg'
 
@@ -893,6 +919,7 @@ def request_coupon_egg(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_ham(request):
 	page_title = 'request_coupon_ham'
 
@@ -907,6 +934,7 @@ def request_coupon_ham(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_side(request):
 	page_title = 'request_coupon_side'
 
@@ -921,6 +949,7 @@ def request_coupon_side(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_water(request):
 	page_title = 'request_coupon_water'
 
@@ -935,6 +964,7 @@ def request_coupon_water(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_instant(request):
 	page_title = 'request_coupon_instant'
 
@@ -949,6 +979,7 @@ def request_coupon_instant(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_ice(request):
 	page_title = 'request_coupon_ice'
 
@@ -963,6 +994,7 @@ def request_coupon_ice(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_bakery(request):
 	page_title = 'request_coupon_bakery'
 
@@ -977,6 +1009,7 @@ def request_coupon_bakery(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_coupon_snack(request):
 	page_title = 'request_coupon_snack'
 
@@ -1057,6 +1090,7 @@ def request_make_daily(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_make_greens(request):
 	page_title = 'request_make_greens'
 	# /request/make/greens/?coupon_greens_product_index=0&coupon_greens_photo_index=1&coupon_greens_market_name=nabak&coupon_greens_name=milk&coupon_greens_brand=pul&coupon_greens_unit=0&coupon_greens_price=100&coupon_greens_start=0&coupon_greens_finish=0&coupon_greens_times=0&coupon_greens_detail=0&coupon_greens_type=0
@@ -1121,6 +1155,7 @@ def request_make_greens(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_fish(request):
 	page_title = 'request_make_fish'
 	# /request/make/fish/?coupon_fish_product_index=0&coupon_fish_photo_index=1&coupon_fish_market_name=nabak&coupon_fish_name=milk&coupon_fish_brand=pul&coupon_fish_unit=0&coupon_fish_price=100&coupon_fish_start=0&coupon_fish_finish=0&coupon_fish_times=0&coupon_fish_detail=0&coupon_fish_type=0
@@ -1186,6 +1221,7 @@ def request_make_fish(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_make_rice(request):
 	page_title = 'request_make_rice'
 	# /request/make/rice/?coupon_rice_product_index=0&coupon_rice_photo_index=1&coupon_rice_market_name=nabak&coupon_rice_name=milk&coupon_rice_brand=pul&coupon_rice_unit=0&coupon_rice_price=100&coupon_rice_start=0&coupon_rice_finish=0&coupon_rice_times=0&coupon_rice_detail=0&coupon_rice_type=0 
@@ -1251,6 +1287,7 @@ def request_make_rice(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_meat(request):
 	page_title = 'request_make_meat'
 	# /request/make/meat/?coupon_meat_product_index=0&coupon_meat_photo_index=1&coupon_meat_market_name=nabak&coupon_meat_name=milk&coupon_meat_brand=pul&coupon_meat_unit=0&coupon_meat_pmeat=100&coupon_meat_start=0&coupon_meat_finish=0&coupon_meat_times=0&coupon_meat_detail=0&coupon_meat_type=0
@@ -1316,6 +1353,7 @@ def request_make_meat(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_egg(request):
 	page_title = 'request_make_egg'
 	# /request/make/egg/?coupon_egg_product_index=0&coupon_egg_photo_index=1&coupon_egg_market_name=nabak&coupon_egg_name=milk&coupon_egg_brand=pul&coupon_egg_unit=0&coupon_egg_pegg=100&coupon_egg_start=0&coupon_egg_finish=0&coupon_egg_times=0&coupon_egg_detail=0&coupon_egg_type=0
@@ -1381,6 +1419,7 @@ def request_make_egg(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_ham(request):
 	page_title = 'request_make_ham'
 	# /request/make/ham/?coupon_ham_product_index=0&coupon_ham_photo_index=1&coupon_ham_market_name=nabak&coupon_ham_name=milk&coupon_ham_brand=pul&coupon_ham_unit=0&coupon_ham_pham=100&coupon_ham_start=0&coupon_ham_finish=0&coupon_ham_times=0&coupon_ham_detail=0&coupon_ham_type=0
@@ -1445,6 +1484,7 @@ def request_make_ham(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_side(request):
 	page_title = 'request_make_side'
 	# /request/make/side/?coupon_side_product_index=0&coupon_side_photo_index=1&coupon_side_market_name=nabak&coupon_side_name=milk&coupon_side_brand=pul&coupon_side_unit=0&coupon_side_pside=100&coupon_side_start=0&coupon_side_finish=0&coupon_side_times=0&coupon_side_detail=0&coupon_side_type=0
@@ -1509,6 +1549,7 @@ def request_make_side(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_make_water(request):
 	page_title = 'request_make_water'
 	# /request/make/water/?coupon_water_product_index=0&coupon_water_photo_index=1&coupon_water_market_name=nabak&coupon_water_name=milk&coupon_water_brand=pul&coupon_water_unit=0&coupon_water_pwater=100&coupon_water_start=0&coupon_water_finish=0&coupon_water_times=0&coupon_water_detail=0&coupon_water_type=0
@@ -1573,6 +1614,7 @@ def request_make_water(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_instant(request):
 	page_title = 'request_make_instant'
 	# /request/make/instant/?coupon_instant_product_index=0&coupon_instant_photo_index=1&coupon_instant_market_name=nabak&coupon_instant_name=milk&coupon_instant_brand=pul&coupon_instant_unit=0&coupon_instant_pinstant=100&coupon_instant_start=0&coupon_instant_finish=0&coupon_instant_times=0&coupon_instant_detail=0&coupon_instant_type=0
@@ -1637,6 +1679,7 @@ def request_make_instant(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_ice(request):
 	page_title = 'request_make_ice'
 	# /request/make/ice/?coupon_ice_product_index=0&coupon_ice_photo_index=1&coupon_ice_market_name=nabak&coupon_ice_name=milk&coupon_ice_brand=pul&coupon_ice_unit=0&coupon_ice_pice=100&coupon_ice_start=0&coupon_ice_finish=0&coupon_ice_times=0&coupon_ice_detail=0&coupon_ice_type=0
@@ -1701,6 +1744,7 @@ def request_make_ice(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_bakery(request):
 	page_title = 'request_make_bakery'
 	# /request/make/bakery/?coupon_bakery_product_index=0&coupon_bakery_photo_index=1&coupon_bakery_market_name=nabak&coupon_bakery_name=milk&coupon_bakery_brand=pul&coupon_bakery_unit=0&coupon_bakery_pbakery=100&coupon_bakery_start=0&coupon_bakery_finish=0&coupon_bakery_times=0&coupon_bakery_detail=0&coupon_bakery_type=0
@@ -1765,6 +1809,7 @@ def request_make_bakery(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_make_snack(request):
 	page_title = 'request_make_snack'
 	# /request/make/snack/?coupon_snack_product_index=0&coupon_snack_photo_index=1&coupon_snack_market_name=nabak&coupon_snack_name=milk&coupon_snack_brand=pul&coupon_snack_unit=0&coupon_snack_psnack=100&coupon_snack_start=0&coupon_snack_finish=0&coupon_snack_times=0&coupon_snack_detail=0&coupon_snack_type=0
@@ -1831,6 +1876,7 @@ def request_make_snack(request):
 
 # make coupon-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_remake_daily(request):
 	page_title = 'request_remake_daily'
 	# /request/remake/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_type=0
@@ -1905,6 +1951,7 @@ def request_remake_daily(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_remake_greens(request):
 	page_title = 'request_remake_greens'
 	# /request/remake/greens/?coupon_greens_product_index=0&coupon_greens_photo_index=1&coupon_greens_market_name=nabak&coupon_greens_name=milk&coupon_greens_brand=pul&coupon_greens_unit=0&coupon_greens_price=100&coupon_greens_start=0&coupon_greens_finish=0&coupon_greens_times=0&coupon_greens_detail=0&coupon_greens_type=0
@@ -1981,6 +2028,7 @@ def request_remake_greens(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_fish(request):
 	page_title = 'request_remake_fish'
 	# /request/remake/fish/?coupon_fish_product_index=0&coupon_fish_photo_index=1&coupon_fish_market_name=nabak&coupon_fish_name=milk&coupon_fish_brand=pul&coupon_fish_unit=0&coupon_fish_price=100&coupon_fish_start=0&coupon_fish_finish=0&coupon_fish_times=0&coupon_fish_detail=0&coupon_fish_type=0
@@ -2058,6 +2106,7 @@ def request_remake_fish(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_remake_rice(request):
 	page_title = 'request_remake_rice'
 	# /request/remake/rice/?coupon_rice_product_index=0&coupon_rice_photo_index=1&coupon_rice_market_name=nabak&coupon_rice_name=milk&coupon_rice_brand=pul&coupon_rice_unit=0&coupon_rice_price=100&coupon_rice_start=0&coupon_rice_finish=0&coupon_rice_times=0&coupon_rice_detail=0&coupon_rice_type=0 
@@ -2135,6 +2184,7 @@ def request_remake_rice(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_meat(request):
 	page_title = 'request_remake_meat'
 	# /request/remake/meat/?coupon_meat_product_index=0&coupon_meat_photo_index=1&coupon_meat_market_name=nabak&coupon_meat_name=milk&coupon_meat_brand=pul&coupon_meat_unit=0&coupon_meat_pmeat=100&coupon_meat_start=0&coupon_meat_finish=0&coupon_meat_times=0&coupon_meat_detail=0&coupon_meat_type=0
@@ -2212,6 +2262,7 @@ def request_remake_meat(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_egg(request):
 	page_title = 'request_remake_egg'
 	# /request/remake/egg/?coupon_egg_product_index=0&coupon_egg_photo_index=1&coupon_egg_market_name=nabak&coupon_egg_name=milk&coupon_egg_brand=pul&coupon_egg_unit=0&coupon_egg_pegg=100&coupon_egg_start=0&coupon_egg_finish=0&coupon_egg_times=0&coupon_egg_detail=0&coupon_egg_type=0
@@ -2289,6 +2340,7 @@ def request_remake_egg(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_ham(request):
 	page_title = 'request_remake_ham'
 	# /request/remake/ham/?coupon_ham_product_index=0&coupon_ham_photo_index=1&coupon_ham_market_name=nabak&coupon_ham_name=milk&coupon_ham_brand=pul&coupon_ham_unit=0&coupon_ham_pham=100&coupon_ham_start=0&coupon_ham_finish=0&coupon_ham_times=0&coupon_ham_detail=0&coupon_ham_type=0
@@ -2365,6 +2417,7 @@ def request_remake_ham(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_side(request):
 	page_title = 'request_remake_side'
 	# /request/remake/side/?coupon_side_product_index=0&coupon_side_photo_index=1&coupon_side_market_name=nabak&coupon_side_name=milk&coupon_side_brand=pul&coupon_side_unit=0&coupon_side_pside=100&coupon_side_start=0&coupon_side_finish=0&coupon_side_times=0&coupon_side_detail=0&coupon_side_type=0
@@ -2441,6 +2494,7 @@ def request_remake_side(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
 def request_remake_water(request):
 	page_title = 'request_remake_water'
 	# /request/remake/water/?coupon_water_product_index=0&coupon_water_photo_index=1&coupon_water_market_name=nabak&coupon_water_name=milk&coupon_water_brand=pul&coupon_water_unit=0&coupon_water_pwater=100&coupon_water_start=0&coupon_water_finish=0&coupon_water_times=0&coupon_water_detail=0&coupon_water_type=0
@@ -2517,6 +2571,7 @@ def request_remake_water(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_instant(request):
 	page_title = 'request_remake_instant'
 	# /request/remake/instant/?coupon_instant_product_index=0&coupon_instant_photo_index=1&coupon_instant_market_name=nabak&coupon_instant_name=milk&coupon_instant_brand=pul&coupon_instant_unit=0&coupon_instant_pinstant=100&coupon_instant_start=0&coupon_instant_finish=0&coupon_instant_times=0&coupon_instant_detail=0&coupon_instant_type=0
@@ -2593,6 +2648,7 @@ def request_remake_instant(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_ice(request):
 	page_title = 'request_remake_ice'
 	# /request/remake/ice/?coupon_ice_product_index=0&coupon_ice_photo_index=1&coupon_ice_market_name=nabak&coupon_ice_name=milk&coupon_ice_brand=pul&coupon_ice_unit=0&coupon_ice_pice=100&coupon_ice_start=0&coupon_ice_finish=0&coupon_ice_times=0&coupon_ice_detail=0&coupon_ice_type=0
@@ -2669,6 +2725,7 @@ def request_remake_ice(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_bakery(request):
 	page_title = 'request_remake_bakery'
 	# /request/remake/bakery/?coupon_bakery_product_index=0&coupon_bakery_photo_index=1&coupon_bakery_market_name=nabak&coupon_bakery_name=milk&coupon_bakery_brand=pul&coupon_bakery_unit=0&coupon_bakery_pbakery=100&coupon_bakery_start=0&coupon_bakery_finish=0&coupon_bakery_times=0&coupon_bakery_detail=0&coupon_bakery_type=0
@@ -2745,6 +2802,7 @@ def request_remake_bakery(request):
 	return HttpResponse(json_data, content_type='application/json')
  
 
+@csrf_exempt
 def request_remake_snack(request):
 	page_title = 'request_remake_snack'
 	# /request/remake/snack/?coupon_snack_product_index=0&coupon_snack_photo_index=1&coupon_snack_market_name=nabak&coupon_snack_name=milk&coupon_snack_brand=pul&coupon_snack_unit=0&coupon_snack_psnack=100&coupon_snack_start=0&coupon_snack_finish=0&coupon_snack_times=0&coupon_snack_detail=0&coupon_snack_type=0
@@ -2821,10 +2879,10 @@ def request_remake_snack(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
-
 # coupon-----------------------------------------------------
 # get coupones by state-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_active_coupon(request):
 	page_title = 'request_active_coupon'
 
@@ -2930,6 +2988,7 @@ def request_active_coupon(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_reservation_coupon(request):
 	page_title = 'request_reservation_coupon'
 
@@ -3035,6 +3094,7 @@ def request_reservation_coupon(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_inactive_coupon(request):
 	page_title = 'request_inactive_coupon'
 
@@ -3143,6 +3203,7 @@ def request_inactive_coupon(request):
 
 # controll coupones-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_delete_coupon(request):
 	page_title = 'request_delete_coupon'
 
@@ -3302,6 +3363,7 @@ def request_delete_coupon(request):
 # ******************************************** ask index!!!
 # chanage coupones state-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_inactive_change(request):
 	page_title = 'request_inactive_change'
 
@@ -3390,6 +3452,7 @@ def request_inactive_change(request):
 	return HttpResponse(json_data, content_type='application/json')
 	
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_active_change(request):
 	page_title = 'request_active_change'
 
@@ -3478,6 +3541,7 @@ def request_active_change(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_reservation_change(request):
 	page_title = 'request_reservation_change'
 
@@ -3568,6 +3632,7 @@ def request_reservation_change(request):
 
 # seller controll coupon *used*---------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_used_coupon(request):
 	page_title = 'request_used_coupon'
 
@@ -3584,6 +3649,7 @@ def request_used_coupon(request):
 
 # controll favorite---------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def request_list_favorite(request):
 	page_title = 'request_list_favorite'
 
@@ -3599,6 +3665,7 @@ def request_list_favorite(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
+@csrf_exempt
 def request_make_favorite(request):
 	page_title = 'request_make_favorite'
 	# /request/make/favorite/?list_favorite_userid=spotping&list_favorite_product_index=1&list_favorite_product_name=kimchi&list_favorite_product_brand=kk&list_favorite_product_unit=df&list_favorite_product_category=0
@@ -3628,6 +3695,7 @@ def request_make_favorite(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
+@csrf_exempt
 def request_remake_favorite(request):
 	page_title = 'request_remake_favorite'
 	# 127.0.0.1:8000/request/remake/favorite/?list_favorite_userid=spotping&list_favorite_product_index_b=1&list_favorite_product_index_n=10&list_favorite_product_name=milk&list_favorite_product_brand=kkk&list_favorite_product_unit=df&list_favorite_product_category=0
@@ -3659,6 +3727,7 @@ def request_remake_favorite(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
+@csrf_exempt
 def request_delete_favorite(request):
 	# page_ti127.0.0.1:8000/request/delete/favorite/?list_favorite_userid=spotping&list_favorite_product_index=2
 
@@ -3682,6 +3751,7 @@ def request_delete_favorite(request):
 
 # buyer join / login---------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def join_page_b(request):
 	page_title = 'join_page_b'
 
@@ -3719,6 +3789,7 @@ def request_join_buyer(request):
 	return HttpResponse('success join, %s' % join_buyer_id_)
 
 #-------------------------------------------------------------------------------------------------------------------------
+@csrf_exempt
 def login_page_b(request):
 	page_title = 'login_page_b'
 
