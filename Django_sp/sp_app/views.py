@@ -131,7 +131,13 @@ def request_join_seller(request):
 
 	try:
 		join_seller_.save()
-		join_seller_info_ = USER_SELLER(user_seller_id=join_seller_, user_seller_photo_index=join_seller_photo_index_, user_seller_market_name=join_seller_market_name_, user_seller_address=join_seller_address_, user_seller_latitude=user_seller_latitude_, user_seller_longitude=user_seller_longitude_, user_seller_phone=join_seller_phone_)
+		join_seller_info_ = USER_SELLER(user_seller_id=join_seller_, 
+										user_seller_photo_index=join_seller_photo_index_, 
+										user_seller_market_name=join_seller_market_name_, 
+										user_seller_address=join_seller_address_, 
+										user_seller_latitude=user_seller_latitude_, 
+										user_seller_longitude=user_seller_longitude_, 
+										user_seller_phone=join_seller_phone_)
 		join_seller_info_.save()
 	except:
 		return HttpResponse('fail join')
@@ -186,6 +192,8 @@ def request_login_seller(request):
 	datas.append(user_seller_info_.user_seller_market_name)
 	datas.append(user_seller_info_.user_seller_address)
 	datas.append(user_seller_info_.user_seller_phone)
+	datas.append(user_seller_info_.user_seller_longitude)
+	datas.append(user_seller_info_.user_seller_latitude)
 
 	json_data = json.dumps(datas, ensure_ascii=False)
 	return HttpResponse(json_data, content_type='application/json')
@@ -4119,7 +4127,10 @@ def request_join_buyer(request):
 
 	try:
 		join_buyer_.save()
-		join_buyer_info_ = USER_BUYER(user_buyer_id=join_buyer_, user_buyer_photo_index=join_buyer_photo_index_, user_buyer_address=join_buyer_address_, user_buyer_phone=join_buyer_phone_)
+		join_buyer_info_ = USER_BUYER(user_buyer_id=join_buyer_, 
+									  user_buyer_photo_index=join_buyer_photo_index_, 
+									  user_buyer_address=join_buyer_address_, 
+									  user_buyer_phone=join_buyer_phone_)
 		join_buyer_info_.save()
 	except:
 		return HttpResponse('fail join')

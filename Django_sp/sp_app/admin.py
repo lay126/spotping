@@ -24,6 +24,8 @@ class USER_SELLERAdmin(admin.ModelAdmin):
 					'user_seller_photo_index', 
 					'user_seller_market_name', 
 					'user_seller_address', 
+					'user_seller_latitude',
+					'user_seller_longitude',
 					'user_seller_phone',)
 
 class USER_BUYERAdmin(admin.ModelAdmin):
