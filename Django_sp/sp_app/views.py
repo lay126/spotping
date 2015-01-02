@@ -2520,20 +2520,20 @@ def request_remake_egg(request):
 
  
 	# remake coupon
-		coupon_egg = COUPON_EGG(coupon_egg_product_index = coupon_egg_product_index_, 
-						    coupon_egg_photo_index = coupon_egg_photo_index_, 
-						    coupon_egg_market_name = coupon_egg_market_name_, 
-						    coupon_egg_name = coupon_egg_name_, 
-						    coupon_egg_brand = coupon_egg_brand_, 
-						    coupon_egg_unit = coupon_egg_unit_, 
-						    coupon_egg_price = coupon_egg_price_, 
-						    coupon_egg_start = coupon_egg_start_, 
-						    coupon_egg_finish = coupon_egg_finish_, 
-						    coupon_egg_detail=coupon_egg_detail_, 
-						    coupon_egg_times = coupon_egg_times_, 
-						    coupon_egg_type = coupon_egg_type_, 
-						    coupon_egg_active = coupon_egg_active_,
-						    coupon_egg_making=coupon_egg_making_)
+	coupon_egg = COUPON_EGG(coupon_egg_product_index = coupon_egg_product_index_, 
+					    coupon_egg_photo_index = coupon_egg_photo_index_, 
+					    coupon_egg_market_name = coupon_egg_market_name_, 
+					    coupon_egg_name = coupon_egg_name_, 
+					    coupon_egg_brand = coupon_egg_brand_, 
+					    coupon_egg_unit = coupon_egg_unit_, 
+					    coupon_egg_price = coupon_egg_price_, 
+					    coupon_egg_start = coupon_egg_start_, 
+					    coupon_egg_finish = coupon_egg_finish_, 
+					    coupon_egg_detail=coupon_egg_detail_, 
+					    coupon_egg_times = coupon_egg_times_, 
+					    coupon_egg_type = coupon_egg_type_, 
+					    coupon_egg_active = coupon_egg_active_,
+					    coupon_egg_making=coupon_egg_making_)
 	coupon_egg.save()
 
 	coupon_ = COUPON_EGG.objects.get(coupon_egg_making=coupon_egg_making_)

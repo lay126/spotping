@@ -73,7 +73,6 @@ class PRODUCT(models.Model):
 	product_category_seller = models.IntegerField(verbose_name=u'product_category_seller', null=False, default=0)
 	product_category_buyer = models.IntegerField(verbose_name=u'product_category_buyer', null=False, default=0)
 	product_price = models.IntegerField(verbose_name=u'product_price', null=False, default=0,)
-	# product_coupon_active = models.IntegerField(verbose_name=u'product_coupon_active', null=False, default=0,)
 	product_coupon_times = models.IntegerField(verbose_name=u'product_coupon_times', null=False, default=0,)
 
 # 유제품 
@@ -85,7 +84,7 @@ class COUPON_DAILY(models.Model):
 	coupon_daily_product_index = models.IntegerField(verbose_name=u'coupon_daily_product_index', null=False,)
 	coupon_daily_photo_index = models.IntegerField(verbose_name=u'coupon_daily_photo_index', null=False,)
 	coupon_daily_market_name =  models.CharField(verbose_name=u'coupon_daily_market_name', max_length='20',)
-	coupon_daily_name = models.CharField(verbose_name=u'coupon_daily_name', unique=True, max_length='40',)
+	coupon_daily_name = models.CharField(verbose_name=u'coupon_daily_name', max_length='40',)
 	coupon_daily_brand = models.CharField(verbose_name=u'coupon_daily_brand', max_length='20',)
 	coupon_daily_unit = models.CharField(verbose_name=u'coupon_daily_unit', max_length='20',)
 	coupon_daily_price = models.IntegerField(verbose_name=u'coupon_daily_price', null=False, default=0,)
@@ -115,8 +114,8 @@ class COUPON_GREENS(models.Model):
 	coupon_greens_finish = models.CharField(verbose_name=u'coupon_greens_finish', max_length='30',)
 	coupon_greens_times = models.IntegerField(verbose_name=u'coupon_greens_times', null=False, default=0,)
 	coupon_greens_detail = models.IntegerField(verbose_name=u'coupon_greens_detail', null=False, default=0,)
-	coupon_greens_type = models.IntegerField(verbose_name=u'coupon_greens_type',null=False, default=0,)
-	coupon_greens_active = models.IntegerField(verbose_name=u'coupon_greens_active',null=False, default=0,)
+	coupon_greens_type = models.IntegerField(verbose_name=u'coupon_greens_type', null=False, default=0,)
+	coupon_greens_active = models.IntegerField(verbose_name=u'coupon_greens_active', null=False, default=0,)
 	coupon_greens_making = models.IntegerField(verbose_name=u'coupon_greens_making', null=False, default=0,)
         
 # 수산, 건어  
@@ -136,10 +135,10 @@ class COUPON_FISH(models.Model):
 	coupon_fish_start = models.CharField(verbose_name=u'coupon_fish_start',  max_length='30',)
 	coupon_fish_finish = models.CharField(verbose_name=u'coupon_fish_finish', max_length='30',)
 	coupon_fish_times = models.IntegerField(verbose_name=u'coupon_fish_times', null=False, default=0,)
-	coupon_fish_detail = models.IntegerField(verbose_name=u'coupon_fish_detail', null=False, default=0,)
+	coupon_fish_detail = models.IntegerField(verbose_name=u'coupon_fish_detail',null=False, default=0,)
 	coupon_fish_type = models.IntegerField(verbose_name=u'coupon_fish_type',null=False, default=0,)
 	coupon_fish_active = models.IntegerField(verbose_name=u'coupon_fish_active',null=False, default=0,)
-	coupon_fish_making = models.IntegerField(verbose_name=u'coupon_fish_making', null=False, default=0,)
+	coupon_fish_making = models.IntegerField(verbose_name=u'coupon_fish_making',null=False, default=0,)
         
 # 쌀, 견과  
 class COUPON_RICE(models.Model):
@@ -161,7 +160,7 @@ class COUPON_RICE(models.Model):
 	coupon_rice_detail = models.IntegerField(verbose_name=u'coupon_rice_detail', null=False, default=0,)
 	coupon_rice_type = models.IntegerField(verbose_name=u'coupon_rice_type',null=False, default=0,)
 	coupon_rice_active = models.IntegerField(verbose_name=u'coupon_rice_active',null=False, default=0,)
-	coupon_rice_making = models.IntegerField(verbose_name=u'coupon_rice_making', null=False, default=0,)
+	coupon_rice_making = models.IntegerField(verbose_name=u'coupon_rice_making',null=False, default=0,)
         
 # 정육
 class COUPON_MEAT(models.Model):
@@ -180,10 +179,10 @@ class COUPON_MEAT(models.Model):
 	coupon_meat_start = models.CharField(verbose_name=u'coupon_meat_start',  max_length='30',)
 	coupon_meat_finish = models.CharField(verbose_name=u'coupon_meat_finish', max_length='30',)
 	coupon_meat_times = models.IntegerField(verbose_name=u'coupon_meat_times', null=False, default=0,)
-	coupon_meat_detail = models.IntegerField(verbose_name=u'coupon_meat_detail', null=False, default=0,)
+	coupon_meat_detail = models.IntegerField(verbose_name=u'coupon_meat_detail',null=False, default=0,)
 	coupon_meat_type = models.IntegerField(verbose_name=u'coupon_meat_type',null=False, default=0,)
 	coupon_meat_active = models.IntegerField(verbose_name=u'coupon_meat_active',null=False, default=0,)
-	coupon_meat_making = models.IntegerField(verbose_name=u'coupon_meat_making', null=False, default=0,)
+	coupon_meat_making = models.IntegerField(verbose_name=u'coupon_meat_making',null=False, default=0,)
         
 # 두부,콩나물,달걀
 class COUPON_EGG(models.Model):
@@ -205,7 +204,7 @@ class COUPON_EGG(models.Model):
 	coupon_egg_detail = models.IntegerField(verbose_name=u'coupon_egg_detail', null=False, default=0,)
 	coupon_egg_type = models.IntegerField(verbose_name=u'coupon_egg_type',null=False, default=0,)
 	coupon_egg_active = models.IntegerField(verbose_name=u'coupon_egg_active',null=False, default=0,)
-	coupon_egg_making = models.IntegerField(verbose_name=u'coupon_egg_making', null=False, default=0,)
+	coupon_egg_making = models.IntegerField(verbose_name=u'coupon_egg_making',null=False, default=0,)
         
 # 햄, 소시지, 어묵
 class COUPON_HAM(models.Model):
@@ -244,10 +243,10 @@ class COUPON_SIDE(models.Model):
 	coupon_side_start = models.CharField(verbose_name=u'coupon_side_start',  max_length='30',)
 	coupon_side_finish = models.CharField(verbose_name=u'coupon_side_finish', max_length='30',)
 	coupon_side_times = models.IntegerField(verbose_name=u'coupon_side_times', null=False, default=0,)
-	coupon_side_detail = models.IntegerField(verbose_name=u'coupon_side_detail', null=False, default=0,)
+	coupon_side_detail = models.IntegerField(verbose_name=u'coupon_side_detail',null=False, default=0,)
 	coupon_side_type = models.IntegerField(verbose_name=u'coupon_side_type',null=False, default=0,)
 	coupon_side_active = models.IntegerField(verbose_name=u'coupon_side_active',null=False, default=0,)
-	coupon_side_making = models.IntegerField(verbose_name=u'coupon_side_making', null=False, default=0,)
+	coupon_side_making = models.IntegerField(verbose_name=u'coupon_side_making',null=False, default=0,)
         
 # 생수, 음료
 class COUPON_WATER(models.Model):
@@ -268,7 +267,7 @@ class COUPON_WATER(models.Model):
 	coupon_water_detail = models.IntegerField(verbose_name=u'coupon_water_detail', null=False, default=0,)
 	coupon_water_type = models.IntegerField(verbose_name=u'coupon_water_type',null=False, default=0,)
 	coupon_water_active = models.IntegerField(verbose_name=u'coupon_water_active',null=False, default=0,)
-	coupon_water_making = models.IntegerField(verbose_name=u'coupon_water_making', null=False, default=0,)
+	coupon_water_making = models.IntegerField(verbose_name=u'coupon_water_making',null=False, default=0,)
         
 # 라면, 통조림, 즉석식품
 class COUPON_INSTANT(models.Model):
@@ -289,7 +288,7 @@ class COUPON_INSTANT(models.Model):
 	coupon_instant_detail = models.IntegerField(verbose_name=u'coupon_instant_detail', null=False, default=0,)
 	coupon_instant_type = models.IntegerField(verbose_name=u'coupon_instant_type',null=False, default=0,)
 	coupon_instant_active = models.IntegerField(verbose_name=u'coupon_instant_active',null=False, default=0,)
-	coupon_instant_making = models.IntegerField(verbose_name=u'coupon_instant_making', null=False, default=0,)
+	coupon_instant_making = models.IntegerField(verbose_name=u'coupon_instant_making',null=False, default=0,)
     	
 # 냉동만두, 너겟, 빙과
 class COUPON_ICE(models.Model):
@@ -310,7 +309,7 @@ class COUPON_ICE(models.Model):
 	coupon_ice_detail = models.IntegerField(verbose_name=u'coupon_ice_detail', null=False, default=0,)
 	coupon_ice_type = models.IntegerField(verbose_name=u'coupon_ice_type',null=False, default=0,)
 	coupon_ice_active = models.IntegerField(verbose_name=u'coupon_ice_active',null=False, default=0,)
-	coupon_ice_making = models.IntegerField(verbose_name=u'coupon_ice_m3aking', null=False, default=0,)
+	coupon_ice_making = models.IntegerField(verbose_name=u'coupon_ice_making',null=False, default=0,)
         
 # 시리얼, 베이커리, 잼
 class COUPON_BAKERY(models.Model):
@@ -331,7 +330,7 @@ class COUPON_BAKERY(models.Model):
 	coupon_bakery_detail = models.IntegerField(verbose_name=u'coupon_bakery_detail', null=False, default=0,)
 	coupon_bakery_type = models.IntegerField(verbose_name=u'coupon_bakery_type',null=False, default=0,)
 	coupon_bakery_active = models.IntegerField(verbose_name=u'coupon_bakery_active',null=False, default=0,)
-	coupon_bakery_making = models.IntegerField(verbose_name=u'coupon_bakery_making', null=False, default=0,)
+	coupon_bakery_making = models.IntegerField(verbose_name=u'coupon_bakery_making',null=False, default=0,)
     	
 # 과자
 class COUPON_SNACK(models.Model):
@@ -348,11 +347,11 @@ class COUPON_SNACK(models.Model):
 	coupon_snack_price = models.IntegerField(verbose_name=u'coupon_snack_price', null=False, default=0,)
 	coupon_snack_start = models.CharField(verbose_name=u'coupon_snack_start',  max_length='30',)
 	coupon_snack_finish = models.CharField(verbose_name=u'coupon_snack_finish', max_length='30',)
+	coupon_snack_detail = models.IntegerField(verbose_name=u'coupon_snack_detail',null=False, default=0,)
 	coupon_snack_times = models.IntegerField(verbose_name=u'coupon_snack_times', null=False, default=0,)
-	coupon_snack_detail = models.IntegerField(verbose_name=u'coupon_snack_detail', null=False, default=0,)
 	coupon_snack_type = models.IntegerField(verbose_name=u'coupon_snack_type',null=False, default=0,)
 	coupon_snack_active = models.IntegerField(verbose_name=u'coupon_snack_active',null=False, default=0,)
-	coupon_snack_making = models.IntegerField(verbose_name=u'coupon_snack_making', null=False, default=0,)
+	coupon_snack_making = models.IntegerField(verbose_name=u'coupon_snack_making',null=False, default=0,)
         
 
 #-사용자 DB-----------------------------------------------------------------
