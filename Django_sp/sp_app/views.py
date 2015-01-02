@@ -1078,6 +1078,7 @@ def request_make_greens(request):
 	coupon_greens_detail_ = request.GET.get('coupon_greens_detail')
 	coupon_greens_type_ = request.GET.get('coupon_greens_type')
 	coupon_greens_active_ = request.GET.get('coupon_greens_active')
+	coupon_greens_making_ = request.GET.get('coupon_greens_making')
 
 #-making-----------------------
 	# make coupon
@@ -1143,6 +1144,7 @@ def request_make_fish(request):
 	coupon_fish_detail_ = request.GET.get('coupon_fish_detail')
 	coupon_fish_type_ = request.GET.get('coupon_fish_type')
 	coupon_fish_active_ = request.GET.get('coupon_fish_active')
+	coupon_fish_making_ = request.GET.get('coupon_fish_making')
 
 #-making-----------------------
 	# make coupon
@@ -1208,6 +1210,7 @@ def request_make_rice(request):
 	coupon_rice_detail_ = request.GET.get('coupon_rice_detail')
 	coupon_rice_type_ = request.GET.get('coupon_rice_type')
 	coupon_rice_active_ = request.GET.get('coupon_rice_active')
+	coupon_rice_making_ = request.GET.get('coupon_rice_making')
 
 #-making-----------------------
 	# make coupon
@@ -1273,6 +1276,7 @@ def request_make_meat(request):
 	coupon_meat_detail_ = request.GET.get('coupon_meat_detail')
 	coupon_meat_type_ = request.GET.get('coupon_meat_type')
 	coupon_meat_active_ = request.GET.get('coupon_meat_active')
+	coupon_meat_making_ = request.GET.get('coupon_meat_making')
 
 #-making-----------------------
 	# make coupon
@@ -1338,6 +1342,7 @@ def request_make_egg(request):
 	coupon_egg_detail_ = request.GET.get('coupon_egg_detail')
 	coupon_egg_type_ = request.GET.get('coupon_egg_type')
 	coupon_egg_active_ = request.GET.get('coupon_egg_active')
+	coupon_egg_making_ = request.GET.get('coupon_egg_making')
 
 #-making-----------------------
 	# make coupon
@@ -1402,6 +1407,7 @@ def request_make_ham(request):
 	coupon_ham_detail_ = request.GET.get('coupon_ham_detail')
 	coupon_ham_type_ = request.GET.get('coupon_ham_type')
 	coupon_ham_active_ = request.GET.get('coupon_ham_active')
+	coupon_ham_making_ = request.GET.get('coupon_ham_making')
 
 #-making-----------------------
 	# make coupon
@@ -1466,6 +1472,7 @@ def request_make_side(request):
 	coupon_side_detail_ = request.GET.get('coupon_side_detail')
 	coupon_side_type_ = request.GET.get('coupon_side_type')
 	coupon_side_active_ = request.GET.get('coupon_side_active')
+	coupon_side_making_ = request.GET.get('coupon_side_making')
 
 #-making-----------------------
 	# make coupon
@@ -1530,6 +1537,7 @@ def request_make_water(request):
 	coupon_water_detail_ = request.GET.get('coupon_water_detail')
 	coupon_water_type_ = request.GET.get('coupon_water_type')
 	coupon_water_active_ = request.GET.get('coupon_water_active')
+	coupon_water_making_ = request.GET.get('coupon_water_making')
 
 #-making-----------------------
 	# make coupon
@@ -1594,6 +1602,7 @@ def request_make_instant(request):
 	coupon_instant_detail_ = request.GET.get('coupon_instant_detail')
 	coupon_instant_type_ = request.GET.get('coupon_instant_type')
 	coupon_instant_active_ = request.GET.get('coupon_instant_active')
+	coupon_instant_making_ = request.GET.get('coupon_instant_making')
 
 #-making-----------------------
 	# make coupon
@@ -1658,6 +1667,7 @@ def request_make_ice(request):
 	coupon_ice_detail_ = request.GET.get('coupon_ice_detail')
 	coupon_ice_type_ = request.GET.get('coupon_ice_type')
 	coupon_ice_active_ = request.GET.get('coupon_ice_active')
+	coupon_ice_making_ = request.GET.get('coupon_ice_making')
 
 #-making-----------------------
 	# make coupon
@@ -1722,6 +1732,7 @@ def request_make_bakery(request):
 	coupon_bakery_detail_ = request.GET.get('coupon_bakery_detail')
 	coupon_bakery_type_ = request.GET.get('coupon_bakery_type')
 	coupon_bakery_active_ = request.GET.get('coupon_bakery_active')
+	coupon_bakery_making_ = request.GET.get('coupon_bakery_making')
 
 #-making-----------------------
 	# make coupon
@@ -1786,6 +1797,7 @@ def request_make_snack(request):
 	coupon_snack_detail_ = request.GET.get('coupon_snack_detail')
 	coupon_snack_type_ = request.GET.get('coupon_snack_type')
 	coupon_snack_active_ = request.GET.get('coupon_snack_active')
+	coupon_snack_making_ = request.GET.get('coupon_snack_making')
 
 #-making-----------------------
 	# make coupon
