@@ -1864,7 +1864,7 @@ def request_remake_daily(request):
 				file = request.FILES['file']
 				filename = 'm_daily' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -1886,9 +1886,9 @@ def request_remake_daily(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_daily_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_daily_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_daily_photo_index_ == '0':
@@ -1940,7 +1940,7 @@ def request_remake_greens(request):
 				file = request.FILES['file']
 				filename = 'm_greens' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -1962,9 +1962,9 @@ def request_remake_greens(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_greens_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_greens_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_greens_photo_index_ == '0':
@@ -2017,7 +2017,7 @@ def request_remake_fish(request):
 				file = request.FILES['file']
 				filename = 'm_fish' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2039,9 +2039,9 @@ def request_remake_fish(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_fish_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_fish_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_fish_photo_index_ == '0':
@@ -2094,7 +2094,7 @@ def request_remake_rice(request):
 				file = request.FILES['file']
 				filename = 'm_rice' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2116,9 +2116,9 @@ def request_remake_rice(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_rice_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_rice_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_rice_photo_index_ == '0':
@@ -2171,7 +2171,7 @@ def request_remake_meat(request):
 				file = request.FILES['file']
 				filename = 'm_meat' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2193,9 +2193,9 @@ def request_remake_meat(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_meat_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_meat_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_meat_photo_index_ == '0':
@@ -2248,7 +2248,7 @@ def request_remake_egg(request):
 				file = request.FILES['file']
 				filename = 'm_egg' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2270,9 +2270,9 @@ def request_remake_egg(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_egg_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_egg_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_egg_photo_index_ == '0':
@@ -2324,7 +2324,7 @@ def request_remake_ham(request):
 				file = request.FILES['file']
 				filename = 'm_ham' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2346,9 +2346,9 @@ def request_remake_ham(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_ham_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_ham_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_ham_photo_index_ == '0':
@@ -2400,7 +2400,7 @@ def request_remake_side(request):
 				file = request.FILES['file']
 				filename = 'm_side' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2422,9 +2422,9 @@ def request_remake_side(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_side_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_side_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_side_photo_index_ == '0':
@@ -2476,7 +2476,7 @@ def request_remake_water(request):
 				file = request.FILES['file']
 				filename = 'm_water' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2498,9 +2498,9 @@ def request_remake_water(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_water_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_water_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_water_photo_index_ == '0':
@@ -2552,7 +2552,7 @@ def request_remake_instant(request):
 				file = request.FILES['file']
 				filename = 'm_instant' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2574,9 +2574,9 @@ def request_remake_instant(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_instant_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_instant_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_instant_photo_index_ == '0':
@@ -2628,7 +2628,7 @@ def request_remake_ice(request):
 				file = request.FILES['file']
 				filename = 'm_ice' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2650,9 +2650,9 @@ def request_remake_ice(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_ice_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_ice_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_ice_photo_index_ == '0':
@@ -2704,7 +2704,7 @@ def request_remake_bakery(request):
 				file = request.FILES['file']
 				filename = 'm_bakery' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2726,9 +2726,9 @@ def request_remake_bakery(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_bakery_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_bakery_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_bakery_photo_index_ == '0':
@@ -2780,7 +2780,7 @@ def request_remake_snack(request):
 				file = request.FILES['file']
 				filename = 'm_snack' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
 
-				try:
+			try:
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
@@ -2802,9 +2802,9 @@ def request_remake_snack(request):
 				return HttpResponse(json_data, content_type='application/json')	
 			pic_.save()
 
-				# get remake photo index
-				pic_now = SP_PICTURE.objects.get(sp_name=filename)
-				coupon_snack_photo_index_ = pic_now.sp_photo_index
+			# get remake photo index
+			pic_now = SP_PICTURE.objects.get(sp_name=filename)
+			coupon_snack_photo_index_ = pic_now.sp_photo_index
 
 	# dont have to change photo
 	elif coupon_snack_photo_index_ == '0':
@@ -2820,7 +2820,7 @@ def request_remake_snack(request):
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
 
-	
+
 
 # coupon-----------------------------------------------------
 # get coupones by state-----------------------------------------------------
