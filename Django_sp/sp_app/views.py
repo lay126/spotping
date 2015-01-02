@@ -991,6 +991,7 @@ def request_coupon_snack(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+
 # make coupon-----------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 @csrf_exempt
@@ -1011,17 +1012,42 @@ def request_make_daily(request):
 	coupon_daily_detail_ = request.GET.get('coupon_daily_detail')
 	coupon_daily_type_ = request.GET.get('coupon_daily_type')
 	coupon_daily_active_ = request.GET.get('coupon_daily_active_')
+	coupon_daily_making_ = request.GET.get('coupon_daily_making')
 
+#-making-----------------------
 	# make coupon
-	coupon_daily = COUPON_DAILY(coupon_daily_product_index = coupon_daily_product_index_, coupon_daily_photo_index = coupon_daily_photo_index_, coupon_daily_market_name = coupon_daily_market_name_, coupon_daily_name = coupon_daily_name_, coupon_daily_brand = coupon_daily_brand_, coupon_daily_unit = coupon_daily_unit_, coupon_daily_price = coupon_daily_price_, coupon_daily_start = coupon_daily_start_, coupon_daily_finish = coupon_daily_finish_, coupon_daily_times = coupon_daily_times_, coupon_daily_detail = coupon_daily_detail_, coupon_daily_type = coupon_daily_type_, coupon_daily_active=coupon_daily_active_)
+	coupon_daily = COUPON_DAILY(coupon_daily_product_index = coupon_daily_product_index_, coupon_daily_photo_index = coupon_daily_photo_index_, coupon_daily_market_name = coupon_daily_market_name_, coupon_daily_name = coupon_daily_name_, coupon_daily_brand = coupon_daily_brand_, coupon_daily_unit = coupon_daily_unit_, coupon_daily_price = coupon_daily_price_, coupon_daily_start = coupon_daily_start_, coupon_daily_finish = coupon_daily_finish_, coupon_daily_times = coupon_daily_times_, coupon_daily_type = coupon_daily_type_, coupon_daily_making=coupon_daily_making_)
 	coupon_daily.save()
 
-	coupon_ = COUPON_DAILY.objects.get(coupon_daily_name=coupon_daily_name_)
+	coupon_ = COUPON_DAILY.objects.get(coupon_daily_making=coupon_daily_making_)
 	coupon_daily_index_ = coupon_.coupon_daily_index
-	
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
-	coupon_daily_photo_index_ = product_.product_photo_index	
+
+	# have to change photo
+	if coupon_daily_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_daily' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_daily_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_daily_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+		coupon_daily_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_daily_photo_index = coupon_daily_photo_index_
@@ -1030,6 +1056,7 @@ def request_make_daily(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_greens(request):
@@ -1052,16 +1079,40 @@ def request_make_greens(request):
 	coupon_greens_type_ = request.GET.get('coupon_greens_type')
 	coupon_greens_active_ = request.GET.get('coupon_greens_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_greens = COUPON_GREENS(coupon_greens_product_index = coupon_greens_product_index_, coupon_greens_photo_index = coupon_greens_photo_index_, coupon_greens_market_name = coupon_greens_market_name_, coupon_greens_name = coupon_greens_name_, coupon_greens_brand = coupon_greens_brand_, coupon_greens_unit = coupon_greens_unit_, coupon_greens_area=coupon_greens_area_, coupon_greens_price = coupon_greens_price_, coupon_greens_start = coupon_greens_start_, coupon_greens_finish = coupon_greens_finish_, coupon_greens_times = coupon_greens_times_, coupon_greens_detail = coupon_greens_detail_, coupon_greens_type = coupon_greens_type_, coupon_greens_active=coupon_greens_active_)
+	coupon_greens = COUPON_GREENS(coupon_greens_product_index = coupon_greens_product_index_, coupon_greens_photo_index = coupon_greens_photo_index_, coupon_greens_market_name = coupon_greens_market_name_, coupon_greens_name = coupon_greens_name_, coupon_greens_brand = coupon_greens_brand_, coupon_greens_unit = coupon_greens_unit_, coupon_greens_price = coupon_greens_price_, coupon_greens_start = coupon_greens_start_, coupon_greens_finish = coupon_greens_finish_, coupon_greens_times = coupon_greens_times_, coupon_greens_type = coupon_greens_type_, coupon_greens_making=coupon_greens_making_)
 	coupon_greens.save()
 
-	coupon_ = COUPON_GREENS.objects.get(coupon_greens_name=coupon_greens_name_)
+	coupon_ = COUPON_GREENS.objects.get(coupon_greens_making=coupon_greens_making_)
 	coupon_greens_index_ = coupon_.coupon_greens_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_greens_product_index_)
-	coupon_greens_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_greens_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_greens' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_greens_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_greens_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_greens_product_index_)
+		coupon_greens_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_greens_photo_index = coupon_greens_photo_index_
@@ -1070,6 +1121,7 @@ def request_make_greens(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_fish(request):
@@ -1092,16 +1144,40 @@ def request_make_fish(request):
 	coupon_fish_type_ = request.GET.get('coupon_fish_type')
 	coupon_fish_active_ = request.GET.get('coupon_fish_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_fish = COUPON_FISH(coupon_fish_product_index = coupon_fish_product_index_, coupon_fish_photo_index = coupon_fish_photo_index_, coupon_fish_market_name = coupon_fish_market_name_, coupon_fish_name = coupon_fish_name_, coupon_fish_brand = coupon_fish_brand_, coupon_fish_unit = coupon_fish_unit_, coupon_fish_area=coupon_fish_area_, coupon_fish_price = coupon_fish_price_, coupon_fish_start = coupon_fish_start_, coupon_fish_finish = coupon_fish_finish_, coupon_fish_times = coupon_fish_times_, coupon_fish_detail=coupon_fish_detail_, coupon_fish_type = coupon_fish_type_, coupon_fish_active=coupon_fish_active_)
+	coupon_fish = COUPON_FISH(coupon_fish_product_index = coupon_fish_product_index_, coupon_fish_photo_index = coupon_fish_photo_index_, coupon_fish_market_name = coupon_fish_market_name_, coupon_fish_name = coupon_fish_name_, coupon_fish_brand = coupon_fish_brand_, coupon_fish_unit = coupon_fish_unit_, coupon_fish_price = coupon_fish_price_, coupon_fish_start = coupon_fish_start_, coupon_fish_finish = coupon_fish_finish_, coupon_fish_times = coupon_fish_times_, coupon_fish_type = coupon_fish_type_, coupon_fish_making=coupon_fish_making_)
 	coupon_fish.save()
 
-	coupon_ = COUPON_FISH.objects.get(coupon_fish_name=coupon_fish_name_)
+	coupon_ = COUPON_FISH.objects.get(coupon_fish_making=coupon_fish_making_)
 	coupon_fish_index_ = coupon_.coupon_fish_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_fish_product_index_)
-	coupon_fish_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_fish_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_fish' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_fish_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_fish_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_fish_product_index_)
+		coupon_fish_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_fish_photo_index = coupon_fish_photo_index_
@@ -1110,6 +1186,7 @@ def request_make_fish(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_rice(request):
@@ -1132,13 +1209,40 @@ def request_make_rice(request):
 	coupon_rice_type_ = request.GET.get('coupon_rice_type')
 	coupon_rice_active_ = request.GET.get('coupon_rice_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_rice = COUPON_RICE(coupon_rice_product_index = coupon_rice_product_index_, coupon_rice_photo_index = coupon_rice_photo_index_, coupon_rice_market_name = coupon_rice_market_name_, coupon_rice_name = coupon_rice_name_, coupon_rice_brand = coupon_rice_brand_, coupon_rice_unit = coupon_rice_unit_, coupon_rice_area=coupon_rice_area_, coupon_rice_price = coupon_rice_price_, coupon_rice_start = coupon_rice_start_, coupon_rice_finish = coupon_rice_finish_, coupon_rice_times = coupon_rice_times_, coupon_rice_detail = coupon_rice_detail_, coupon_rice_type = coupon_rice_type_, coupon_rice_active=coupon_rice_active_)
+	coupon_rice = COUPON_RICE(coupon_rice_product_index = coupon_rice_product_index_, coupon_rice_photo_index = coupon_rice_photo_index_, coupon_rice_market_name = coupon_rice_market_name_, coupon_rice_name = coupon_rice_name_, coupon_rice_brand = coupon_rice_brand_, coupon_rice_unit = coupon_rice_unit_, coupon_rice_price = coupon_rice_price_, coupon_rice_start = coupon_rice_start_, coupon_rice_finish = coupon_rice_finish_, coupon_rice_times = coupon_rice_times_, coupon_rice_type = coupon_rice_type_, coupon_rice_making=coupon_rice_making_)
 	coupon_rice.save()
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_rice_product_index_)
-	coupon_rice_photo_index_ = product_.product_photo_index	
+	coupon_ = COUPON_RICE.objects.get(coupon_rice_making=coupon_rice_making_)
+	coupon_rice_index_ = coupon_.coupon_rice_index
+
+	# have to change photo
+	if coupon_rice_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_rice' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_rice_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_rice_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_rice_product_index_)
+		coupon_rice_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_rice_photo_index = coupon_rice_photo_index_
@@ -1147,6 +1251,7 @@ def request_make_rice(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_meat(request):
@@ -1169,16 +1274,40 @@ def request_make_meat(request):
 	coupon_meat_type_ = request.GET.get('coupon_meat_type')
 	coupon_meat_active_ = request.GET.get('coupon_meat_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_meat = COUPON_MEAT(coupon_meat_product_index = coupon_meat_product_index_, coupon_meat_photo_index = coupon_meat_photo_index_, coupon_meat_market_name = coupon_meat_market_name_, coupon_meat_name = coupon_meat_name_, coupon_meat_brand = coupon_meat_brand_, coupon_meat_unit = coupon_meat_unit_, coupon_meat_area=coupon_meat_area_, coupon_meat_price = coupon_meat_price_, coupon_meat_start = coupon_meat_start_, coupon_meat_finish = coupon_meat_finish_, coupon_meat_times = coupon_meat_times_, coupon_meat_detail=coupon_meat_detail_, coupon_meat_type = coupon_meat_type_, coupon_meat_active=coupon_meat_active_)
+	coupon_meat = COUPON_MEAT(coupon_meat_product_index = coupon_meat_product_index_, coupon_meat_photo_index = coupon_meat_photo_index_, coupon_meat_market_name = coupon_meat_market_name_, coupon_meat_name = coupon_meat_name_, coupon_meat_brand = coupon_meat_brand_, coupon_meat_unit = coupon_meat_unit_, coupon_meat_price = coupon_meat_price_, coupon_meat_start = coupon_meat_start_, coupon_meat_finish = coupon_meat_finish_, coupon_meat_times = coupon_meat_times_, coupon_meat_type = coupon_meat_type_, coupon_meat_making=coupon_meat_making_)
 	coupon_meat.save()
 
-	coupon_ = COUPON_MEAT.objects.get(coupon_meat_name=coupon_meat_name_)
+	coupon_ = COUPON_MEAT.objects.get(coupon_meat_making=coupon_meat_making_)
 	coupon_meat_index_ = coupon_.coupon_meat_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_meat_product_index_)
-	coupon_meat_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_meat_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_meat' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_meat_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_meat_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_meat_product_index_)
+		coupon_meat_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_meat_photo_index = coupon_meat_photo_index_
@@ -1187,6 +1316,7 @@ def request_make_meat(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_egg(request):
@@ -1209,16 +1339,40 @@ def request_make_egg(request):
 	coupon_egg_type_ = request.GET.get('coupon_egg_type')
 	coupon_egg_active_ = request.GET.get('coupon_egg_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_egg = COUPON_EGG(coupon_egg_product_index = coupon_egg_product_index_, coupon_egg_photo_index = coupon_egg_photo_index_, coupon_egg_market_name = coupon_egg_market_name_, coupon_egg_name = coupon_egg_name_, coupon_egg_brand = coupon_egg_brand_, coupon_egg_unit = coupon_egg_unit_, coupon_egg_area=coupon_egg_area_, coupon_egg_price = coupon_egg_price_, coupon_egg_start = coupon_egg_start_, coupon_egg_finish = coupon_egg_finish_, coupon_egg_times = coupon_egg_times_, coupon_egg_detail = coupon_egg_detail_, coupon_egg_type = coupon_egg_type_, coupon_egg_active=coupon_egg_active_)
+	coupon_egg = COUPON_EGG(coupon_egg_product_index = coupon_egg_product_index_, coupon_egg_photo_index = coupon_egg_photo_index_, coupon_egg_market_name = coupon_egg_market_name_, coupon_egg_name = coupon_egg_name_, coupon_egg_brand = coupon_egg_brand_, coupon_egg_unit = coupon_egg_unit_, coupon_egg_price = coupon_egg_price_, coupon_egg_start = coupon_egg_start_, coupon_egg_finish = coupon_egg_finish_, coupon_egg_times = coupon_egg_times_, coupon_egg_type = coupon_egg_type_, coupon_egg_making=coupon_egg_making_)
 	coupon_egg.save()
 
-	coupon_ = COUPON_EGG.objects.get(coupon_egg_name=coupon_egg_name_)
+	coupon_ = COUPON_EGG.objects.get(coupon_egg_making=coupon_egg_making_)
 	coupon_egg_index_ = coupon_.coupon_egg_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_egg_product_index_)
-	coupon_egg_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_egg_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_egg' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_egg_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_egg_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_egg_product_index_)
+		coupon_egg_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_egg_photo_index = coupon_egg_photo_index_
@@ -1227,6 +1381,7 @@ def request_make_egg(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_ham(request):
@@ -1248,16 +1403,40 @@ def request_make_ham(request):
 	coupon_ham_type_ = request.GET.get('coupon_ham_type')
 	coupon_ham_active_ = request.GET.get('coupon_ham_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_ham = COUPON_HAM(coupon_ham_product_index = coupon_ham_product_index_, coupon_ham_photo_index = coupon_ham_photo_index_, coupon_ham_market_name = coupon_ham_market_name_, coupon_ham_name = coupon_ham_name_, coupon_ham_brand = coupon_ham_brand_, coupon_ham_unit = coupon_ham_unit_, coupon_ham_price = coupon_ham_price_, coupon_ham_start = coupon_ham_start_, coupon_ham_finish = coupon_ham_finish_, coupon_ham_times = coupon_ham_times_, coupon_ham_detail = coupon_ham_detail_, coupon_ham_type = coupon_ham_type_, coupon_ham_active=coupon_ham_active_)
+	coupon_ham = COUPON_HAM(coupon_ham_product_index = coupon_ham_product_index_, coupon_ham_photo_index = coupon_ham_photo_index_, coupon_ham_market_name = coupon_ham_market_name_, coupon_ham_name = coupon_ham_name_, coupon_ham_brand = coupon_ham_brand_, coupon_ham_unit = coupon_ham_unit_, coupon_ham_price = coupon_ham_price_, coupon_ham_start = coupon_ham_start_, coupon_ham_finish = coupon_ham_finish_, coupon_ham_times = coupon_ham_times_, coupon_ham_type = coupon_ham_type_, coupon_ham_making=coupon_ham_making_)
 	coupon_ham.save()
 
-	coupon_ = COUPON_HAM.objects.get(coupon_ham_name=coupon_ham_name_)
+	coupon_ = COUPON_HAM.objects.get(coupon_ham_making=coupon_ham_making_)
 	coupon_ham_index_ = coupon_.coupon_ham_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_ham_product_index_)
-	coupon_ham_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_ham_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_ham' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_ham_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_ham_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_ham_product_index_)
+		coupon_ham_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_ham_photo_index = coupon_ham_photo_index_
@@ -1266,6 +1445,7 @@ def request_make_ham(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_side(request):
@@ -1287,16 +1467,40 @@ def request_make_side(request):
 	coupon_side_type_ = request.GET.get('coupon_side_type')
 	coupon_side_active_ = request.GET.get('coupon_side_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_side = COUPON_SIDE(coupon_side_product_index = coupon_side_product_index_, coupon_side_photo_index = coupon_side_photo_index_, coupon_side_market_name = coupon_side_market_name_, coupon_side_name = coupon_side_name_, coupon_side_brand = coupon_side_brand_, coupon_side_unit = coupon_side_unit_, coupon_side_price = coupon_side_price_, coupon_side_start = coupon_side_start_, coupon_side_finish = coupon_side_finish_, coupon_side_times = coupon_side_times_, coupon_side_detail=coupon_side_detail_, coupon_side_type = coupon_side_type_, coupon_side_active=coupon_side_active_)
+	coupon_side = COUPON_SIDE(coupon_side_product_index = coupon_side_product_index_, coupon_side_photo_index = coupon_side_photo_index_, coupon_side_market_name = coupon_side_market_name_, coupon_side_name = coupon_side_name_, coupon_side_brand = coupon_side_brand_, coupon_side_unit = coupon_side_unit_, coupon_side_price = coupon_side_price_, coupon_side_start = coupon_side_start_, coupon_side_finish = coupon_side_finish_, coupon_side_times = coupon_side_times_, coupon_side_type = coupon_side_type_, coupon_side_making=coupon_side_making_)
 	coupon_side.save()
 
-	coupon_ = COUPON_SIDE.objects.get(coupon_side_name=coupon_side_name_)
+	coupon_ = COUPON_SIDE.objects.get(coupon_side_making=coupon_side_making_)
 	coupon_side_index_ = coupon_.coupon_side_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_side_product_index_)
-	coupon_side_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_side_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_side' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_side_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_side_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_side_product_index_)
+		coupon_side_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_side_photo_index = coupon_side_photo_index_
@@ -1305,6 +1509,7 @@ def request_make_side(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_water(request):
@@ -1326,16 +1531,40 @@ def request_make_water(request):
 	coupon_water_type_ = request.GET.get('coupon_water_type')
 	coupon_water_active_ = request.GET.get('coupon_water_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_water = COUPON_WATER(coupon_water_product_index = coupon_water_product_index_, coupon_water_photo_index = coupon_water_photo_index_, coupon_water_market_name = coupon_water_market_name_, coupon_water_name = coupon_water_name_, coupon_water_brand = coupon_water_brand_, coupon_water_unit = coupon_water_unit_, coupon_water_price = coupon_water_price_, coupon_water_start = coupon_water_start_, coupon_water_finish = coupon_water_finish_, coupon_water_times = coupon_water_times_, coupon_water_detail = coupon_water_detail_, coupon_water_type = coupon_water_type_, coupon_water_active=coupon_water_active_)
+	coupon_water = COUPON_WATER(coupon_water_product_index = coupon_water_product_index_, coupon_water_photo_index = coupon_water_photo_index_, coupon_water_market_name = coupon_water_market_name_, coupon_water_name = coupon_water_name_, coupon_water_brand = coupon_water_brand_, coupon_water_unit = coupon_water_unit_, coupon_water_price = coupon_water_price_, coupon_water_start = coupon_water_start_, coupon_water_finish = coupon_water_finish_, coupon_water_times = coupon_water_times_, coupon_water_type = coupon_water_type_, coupon_water_making=coupon_water_making_)
 	coupon_water.save()
 
-	coupon_ = COUPON_WATER.objects.get(coupon_water_name=coupon_water_name_)
+	coupon_ = COUPON_WATER.objects.get(coupon_water_making=coupon_water_making_)
 	coupon_water_index_ = coupon_.coupon_water_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_water_product_index_)
-	coupon_water_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_water_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_water' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_water_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_water_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_water_product_index_)
+		coupon_water_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_water_photo_index = coupon_water_photo_index_
@@ -1344,6 +1573,7 @@ def request_make_water(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_instant(request):
@@ -1365,16 +1595,40 @@ def request_make_instant(request):
 	coupon_instant_type_ = request.GET.get('coupon_instant_type')
 	coupon_instant_active_ = request.GET.get('coupon_instant_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_instant = COUPON_INSTANT(coupon_instant_product_index = coupon_instant_product_index_, coupon_instant_photo_index = coupon_instant_photo_index_, coupon_instant_market_name = coupon_instant_market_name_, coupon_instant_name = coupon_instant_name_, coupon_instant_brand = coupon_instant_brand_, coupon_instant_unit = coupon_instant_unit_, coupon_instant_price = coupon_instant_price_, coupon_instant_start = coupon_instant_start_, coupon_instant_finish = coupon_instant_finish_, coupon_instant_times = coupon_instant_times_, coupon_instant_detail = coupon_instant_detail_, coupon_instant_type = coupon_instant_type_, coupon_instant_active=coupon_instant_active_)
+	coupon_instant = COUPON_INSTANT(coupon_instant_product_index = coupon_instant_product_index_, coupon_instant_photo_index = coupon_instant_photo_index_, coupon_instant_market_name = coupon_instant_market_name_, coupon_instant_name = coupon_instant_name_, coupon_instant_brand = coupon_instant_brand_, coupon_instant_unit = coupon_instant_unit_, coupon_instant_price = coupon_instant_price_, coupon_instant_start = coupon_instant_start_, coupon_instant_finish = coupon_instant_finish_, coupon_instant_times = coupon_instant_times_, coupon_instant_type = coupon_instant_type_, coupon_instant_making=coupon_instant_making_)
 	coupon_instant.save()
 
-	coupon_ = COUPON_INSTANT.objects.get(coupon_instant_name=coupon_instant_name_)
+	coupon_ = COUPON_INSTANT.objects.get(coupon_instant_making=coupon_instant_making_)
 	coupon_instant_index_ = coupon_.coupon_instant_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_instant_product_index_)
-	coupon_instant_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_instant_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_instant' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_instant_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_instant_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_instant_product_index_)
+		coupon_instant_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_instant_photo_index = coupon_instant_photo_index_
@@ -1383,6 +1637,7 @@ def request_make_instant(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_ice(request):
@@ -1404,16 +1659,40 @@ def request_make_ice(request):
 	coupon_ice_type_ = request.GET.get('coupon_ice_type')
 	coupon_ice_active_ = request.GET.get('coupon_ice_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_ice = COUPON_ICE(coupon_ice_product_index = coupon_ice_product_index_, coupon_ice_photo_index = coupon_ice_photo_index_, coupon_ice_market_name = coupon_ice_market_name_, coupon_ice_name = coupon_ice_name_, coupon_ice_brand = coupon_ice_brand_, coupon_ice_unit = coupon_ice_unit_, coupon_ice_price = coupon_ice_price_, coupon_ice_start = coupon_ice_start_, coupon_ice_finish = coupon_ice_finish_, coupon_ice_times = coupon_ice_times_, coupon_ice_detail = coupon_ice_detail_, coupon_ice_type = coupon_ice_type_, coupon_ice_active=coupon_ice_active_)
+	coupon_ice = COUPON_ICE(coupon_ice_product_index = coupon_ice_product_index_, coupon_ice_photo_index = coupon_ice_photo_index_, coupon_ice_market_name = coupon_ice_market_name_, coupon_ice_name = coupon_ice_name_, coupon_ice_brand = coupon_ice_brand_, coupon_ice_unit = coupon_ice_unit_, coupon_ice_price = coupon_ice_price_, coupon_ice_start = coupon_ice_start_, coupon_ice_finish = coupon_ice_finish_, coupon_ice_times = coupon_ice_times_, coupon_ice_type = coupon_ice_type_, coupon_ice_making=coupon_ice_making_)
 	coupon_ice.save()
 
-	coupon_ = COUPON_ICE.objects.get(coupon_ice_name=coupon_ice_name_)
+	coupon_ = COUPON_ICE.objects.get(coupon_ice_making=coupon_ice_making_)
 	coupon_ice_index_ = coupon_.coupon_ice_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_ice_product_index_)
-	coupon_ice_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_ice_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_ice' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_ice_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_ice_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_ice_product_index_)
+		coupon_ice_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_ice_photo_index = coupon_ice_photo_index_
@@ -1422,6 +1701,7 @@ def request_make_ice(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_bakery(request):
@@ -1443,16 +1723,40 @@ def request_make_bakery(request):
 	coupon_bakery_type_ = request.GET.get('coupon_bakery_type')
 	coupon_bakery_active_ = request.GET.get('coupon_bakery_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_bakery = COUPON_BAKERY(coupon_bakery_product_index = coupon_bakery_product_index_, coupon_bakery_photo_index = coupon_bakery_photo_index_, coupon_bakery_market_name = coupon_bakery_market_name_, coupon_bakery_name = coupon_bakery_name_, coupon_bakery_brand = coupon_bakery_brand_, coupon_bakery_unit = coupon_bakery_unit_, coupon_bakery_price = coupon_bakery_price_, coupon_bakery_start = coupon_bakery_start_, coupon_bakery_finish = coupon_bakery_finish_, coupon_bakery_times = coupon_bakery_times_, coupon_bakery_detail = coupon_bakery_detail_, coupon_bakery_type = coupon_bakery_type_, coupon_bakery_active=coupon_bakery_active_)
+	coupon_bakery = COUPON_BAKERY(coupon_bakery_product_index = coupon_bakery_product_index_, coupon_bakery_photo_index = coupon_bakery_photo_index_, coupon_bakery_market_name = coupon_bakery_market_name_, coupon_bakery_name = coupon_bakery_name_, coupon_bakery_brand = coupon_bakery_brand_, coupon_bakery_unit = coupon_bakery_unit_, coupon_bakery_price = coupon_bakery_price_, coupon_bakery_start = coupon_bakery_start_, coupon_bakery_finish = coupon_bakery_finish_, coupon_bakery_times = coupon_bakery_times_, coupon_bakery_type = coupon_bakery_type_, coupon_bakery_making=coupon_bakery_making_)
 	coupon_bakery.save()
 
-	coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_name=coupon_bakery_name_)
+	coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_making=coupon_bakery_making_)
 	coupon_bakery_index_ = coupon_.coupon_bakery_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_bakery_product_index_)
-	coupon_bakery_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_bakery_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_bakery' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_bakery_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_bakery_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_bakery_product_index_)
+		coupon_bakery_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_bakery_photo_index = coupon_bakery_photo_index_
@@ -1461,6 +1765,7 @@ def request_make_bakery(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 def request_make_snack(request):
@@ -1482,16 +1787,40 @@ def request_make_snack(request):
 	coupon_snack_type_ = request.GET.get('coupon_snack_type')
 	coupon_snack_active_ = request.GET.get('coupon_snack_active')
 
+#-making-----------------------
 	# make coupon
-	coupon_snack = COUPON_SNACK(coupon_snack_product_index = coupon_snack_product_index_, coupon_snack_photo_index = coupon_snack_photo_index_, coupon_snack_market_name = coupon_snack_market_name_, coupon_snack_name = coupon_snack_name_, coupon_snack_brand = coupon_snack_brand_, coupon_snack_unit = coupon_snack_unit_, coupon_snack_price = coupon_snack_price_, coupon_snack_start = coupon_snack_start_, coupon_snack_finish = coupon_snack_finish_, coupon_snack_times = coupon_snack_times_, coupon_snack_detail=coupon_snack_detail_, coupon_snack_type = coupon_snack_type_, coupon_snack_active=coupon_snack_active_)
+	coupon_snack = COUPON_SNACK(coupon_snack_product_index = coupon_snack_product_index_, coupon_snack_photo_index = coupon_snack_photo_index_, coupon_snack_market_name = coupon_snack_market_name_, coupon_snack_name = coupon_snack_name_, coupon_snack_brand = coupon_snack_brand_, coupon_snack_unit = coupon_snack_unit_, coupon_snack_price = coupon_snack_price_, coupon_snack_start = coupon_snack_start_, coupon_snack_finish = coupon_snack_finish_, coupon_snack_times = coupon_snack_times_, coupon_snack_type = coupon_snack_type_, coupon_snack_making=coupon_snack_making_)
 	coupon_snack.save()
 
-	coupon_ = COUPON_SNACK.objects.get(coupon_snack_name=coupon_snack_name_)
+	coupon_ = COUPON_SNACK.objects.get(coupon_snack_making=coupon_snack_making_)
 	coupon_snack_index_ = coupon_.coupon_snack_index
 
-	# get default photo index
-	product_ = PRODUCT.objects.get(product_index=coupon_snack_product_index_)
-	coupon_snack_photo_index_ = product_.product_photo_index	
+	# have to change photo
+	if coupon_snack_photo_index_ == '1':
+		if request.method == 'POST':
+			if 'file' in request.FILES:
+				file = request.FILES['file']
+				filename = 'm_snack' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+
+				try:
+					pic_ = SP_PICTURE()
+					pic_.sp_name = filename
+					pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				except:
+					# code1 : save photo fail
+					json_data = json.dumps('save photo fail')
+					return HttpResponse(json_data, content_type='application/json')	
+				pic_.save()
+
+				# get make photo index
+				pic_now = SP_PICTURE.objects.get(sp_name=filename)
+				coupon_snack_photo_index_ = pic_now.sp_photo_index
+
+	# dont have to change photo
+	elif coupon_snack_photo_index_ == '0':
+		# get default photo index
+		product_ = PRODUCT.objects.get(product_index=coupon_snack_product_index_)
+		coupon_snack_photo_index_ = product_.product_photo_index	
 
 	# swich coupon photo index
 	coupon_.coupon_snack_photo_index = coupon_snack_photo_index_
@@ -1500,6 +1829,7 @@ def request_make_snack(request):
 	# code0 : success
 	json_data = json.dumps(0)
 	return HttpResponse(json_data, content_type='application/json')
+#-making-----------------------
 
 
 # make coupon-----------------------------------------------------
