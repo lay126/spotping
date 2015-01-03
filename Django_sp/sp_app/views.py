@@ -4045,10 +4045,11 @@ def request_used_make(request):
 def request_list_favorite(request):
 	page_title = 'request_list_favorite'
 
-	list_favorite_userid_ = request.GET.get('list_favorite_userid', False)
+	# list_favorite_userid_ = request.GET.get('list_favorite_userid', False)
 
 	datas = []
-	list_favorite_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_)
+	# list_favorite_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_)
+	list_favorite_ = USER_FAVORITE_LIST.objects.all()
 
 	for d in list_favorite_:
 		data = model_to_dict(d)
