@@ -1082,7 +1082,7 @@ def request_make_daily(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_daily' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_daily' + '_' + str(coupon_daily_product_index_)+ '_' + str(coupon_daily_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1160,7 +1160,7 @@ def request_make_greens(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_greens' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_greens' + '_' + str(coupon_greens_product_index_ )+ '_' + str(coupon_greens_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1239,7 +1239,7 @@ def request_make_fish(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_fish' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_fish' + '_' + str(coupon_fish_product_index_ )+ '_' + str(coupon_fish_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1318,7 +1318,7 @@ def request_make_rice(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_rice' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_rice' + '_' + str(coupon_rice_product_index_)+ '_' + str(coupon_rice_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1397,7 +1397,7 @@ def request_make_meat(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_meat' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_meat' + '_' + str(coupon_meat_product_index_)+ '_' + str(coupon_meat_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1476,7 +1476,7 @@ def request_make_egg(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_egg' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_egg' + '_' + str(coupon_egg_product_index_)+ '_' + str(coupon_egg_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1554,7 +1554,7 @@ def request_make_ham(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_ham' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_ham' + '_' + str(coupon_ham_product_index_)+ '_' + str(coupon_ham_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1632,7 +1632,7 @@ def request_make_side(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_side' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_side' + '_' + str(coupon_side_product_index_)+ '_' + str(coupon_side_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1710,7 +1710,7 @@ def request_make_water(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_water' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_water' + '_' + str(coupon_water_product_index_)+ '_' + str(coupon_water_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1788,7 +1788,7 @@ def request_make_instant(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_instant' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_instant' + '_' + str(coupon_instant_product_index_)+ '_' + str(coupon_instant_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1866,7 +1866,7 @@ def request_make_ice(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_ice' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_ice' + '_' + str(coupon_ice_product_index_ )+ '_' + str(coupon_ice_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1944,7 +1944,7 @@ def request_make_bakery(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_bakery' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_bakery' + '_' + str(coupon_bakery_product_index_)+ '_' + str(coupon_bakery_index_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -2022,7 +2022,7 @@ def request_make_snack(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_snack' + '_' + str(coupon_product_index_ )+ '_' + str(coupon_index_)
+				filename = 'm_snack' + '_' + str(coupon_snack_product_index_)+ '_' + str(coupon_snack_index_)
 
 				try:
 					pic_ = SP_PICTURE()
