@@ -101,6 +101,7 @@ urlpatterns = patterns('',
 	url(r'^request/reservation/change/', 'sp_app.views.request_reservation_change'),
 
 	url(r'^request/used/coupon/', 'sp_app.views.request_used_coupon'),
+	url(r'^request/used/make/', 'sp_app.views.request_used_make'),
 
 
 	# give coupon

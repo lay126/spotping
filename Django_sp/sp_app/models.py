@@ -383,6 +383,7 @@ class USER_COUPON_USEDLIST(models.Model):
 	user_coupon_usedlist_product_unit = models.CharField(verbose_name=u'user_coupon_usedlist_product_unit',max_length='20',)
 	user_coupon_usedlist_product_category = models.IntegerField(verbose_name=u'user_coupon_usedlist_product_category', null=False, default=0,)
 	user_coupon_usedlist_type = models.IntegerField(verbose_name=u'user_coupon_usedlist_type',null=False, default=0,)
+	user_coupon_usedlist_when = models.CharField(verbose_name=u'user_coupon_usedlist_when',  max_length='30',)
         
 
 #----------------------------------------------------------------------------

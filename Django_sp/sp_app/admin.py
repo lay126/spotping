@@ -295,7 +295,8 @@ class USER_COUPON_USEDLISTAdmin(admin.ModelAdmin):
 					'user_coupon_usedlist_product_brand', 
 					'user_coupon_usedlist_product_unit',
 					'user_coupon_usedlist_product_category',
-					'user_coupon_usedlist_type',)
+					'user_coupon_usedlist_type',
+					'user_coupon_usedlist_when',)
 		
 
 #-picture-------------------------------------------

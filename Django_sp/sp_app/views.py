@@ -4008,6 +4008,36 @@ def request_used_coupon(request):
 	json_data = json.dumps(datas)
 	return HttpResponse(json_data, content_type='application/json')
 
+@csrf_exempt
+def request_used_make(request):
+	page_title = 'request_used_coupon'
+
+	used_make_coupon_index_ = request.GET.get('used_make_coupon_index', False)
+	used_make_userid_ = request.GET.get('used_make_userid', False)
+	used_make_product_index_ = request.GET.get('used_make_product_index', False)
+	used_make_product_name_ = request.GET.get('used_make_product_name', False)
+	used_make_product_brand_ = request.GET.get('used_make_product_brand', False)
+	used_make_product_unit_ = request.GET.get('used_make_product_unit', False)
+	used_make_product_category_ = request.GET.get('used_make_product_category', False)
+	used_make_type_ = request.GET.get('used_make_type', False)
+	used_make_when_ = request.GET.get('used_make_when', False)
+
+	used_make_ = USER_COUPON_USEDLIST()
+
+	datas = []
+	used_coupon_ = USER_COUPON_USEDLIST.objects.all(user_coupon_usedlist_coupon_index=used_make_coupon_index_,
+													user_coupon_usedlist_userid=used_make_userid_,
+													user_coupon_usedlist_product_index=used_make_product_index_,
+													user_coupon_usedlist_product_name=used_make_product_name_,
+													user_coupon_usedlist_product_brand=used_make_product_brand_,
+													user_coupon_usedlist_product_unit=used_make_product_unit_,
+													user_coupon_usedlist_product_category=used_make_product_category_,
+													user_coupon_usedlist_type=used_make_type_,
+													user_coupon_usedlist_when=used_make_when_,)
+	used_make_.save()
+
+	json_data = json.dumps('used_list save success')
+	return HttpResponse(json_data, content_type='application/json')
 
 # controll favorite---------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
