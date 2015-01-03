@@ -4025,7 +4025,12 @@ def request_make_favorite(request):
 	list_favorite_product_unit_ = request.GET.get('list_favorite_product_unit', False)
 	list_favorite_product_category_ = request.GET.get('list_favorite_product_category', False)
 
-	favorite_product_ = USER_FAVORITE_LIST(user_favorite_list_userid=list_favorite_userid_, user_favorite_list_product_index=list_favorite_product_index_, user_favorite_list_product_name=list_favorite_product_name_, user_favorite_list_product_brand=list_favorite_product_brand_, user_favorite_list_product_unit=list_favorite_product_unit_, user_favorite_list_product_category=list_favorite_product_category_)
+	favorite_product_ = USER_FAVORITE_LIST(user_favorite_list_userid=list_favorite_userid_, 
+										   user_favorite_list_product_index=list_favorite_product_index_, 
+										   user_favorite_list_product_name=list_favorite_product_name_, 
+										   user_favorite_list_product_brand=list_favorite_product_brand_, 
+										   user_favorite_list_product_unit=list_favorite_product_unit_, 
+										   user_favorite_list_product_category=list_favorite_product_category_)
 	
 	try:
 		favorite_product_.save()
@@ -4060,7 +4065,11 @@ def request_remake_favorite(request):
 	favorite_product_ = USER_FAVORITE_LIST.objects.filter(user_favorite_list_userid=list_favorite_userid_).filter(user_favorite_list_product_index=list_favorite_product_index_b_)
 
 	try:
-		favorite_product_.update(user_favorite_list_product_index=list_favorite_product_index_n_, user_favorite_list_product_name=list_favorite_product_name_, user_favorite_list_product_brand=list_favorite_product_brand_, user_favorite_list_product_unit=list_favorite_product_unit_, user_favorite_list_product_category = list_favorite_product_category_)
+		favorite_product_.update(user_favorite_list_product_index=list_favorite_product_index_n_, 
+								 user_favorite_list_product_name=list_favorite_product_name_, 
+								 user_favorite_list_product_brand=list_favorite_product_brand_, 
+								 user_favorite_list_product_unit=list_favorite_product_unit_, 
+								 user_favorite_list_product_category = list_favorite_product_category_)
 	except:
 		json_data = json.dumps('fail update coupon')
 		return HttpResponse(json_data, content_type='application/json')
