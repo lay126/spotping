@@ -27,6 +27,8 @@ urlpatterns = patterns('',
 	url(r'^request/photo/upload/', 'sp_app.views.request_photo_upload'),
 	url(r'^request/photo/update/', 'sp_app.views.request_photo_update'),
 
+	url(r'^request/market/list/', 'sp_app.views.request_market_list'),
+
 	url(r'^request/photo/download/daily/', 'sp_app.views.request_photo_download_daily'),
 	url(r'^request/photo/download/greens/', 'sp_app.views.request_photo_download_greens'),
 	url(r'^request/photo/download/fish/', 'sp_app.views.request_photo_download_fish'),

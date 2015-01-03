@@ -46,6 +46,7 @@ class USER_SELLER(models.Model):
 	user_seller_latitude = models.FloatField(verbose_name=u'user_seller_latitude', null=False, default=0,)
 	user_seller_longitude = models.FloatField(verbose_name=u'user_seller_longitude', null=False, default=0,)
 	user_seller_phone = models.CharField(verbose_name=u'user_seller_phone', max_length='100', null=False,)
+	user_seller_auto_login = models.IntegerField(verbose_name=u'user_seller_auto_login', null=False, default=0,)
 
 class USER_BUYER(models.Model):
 	class Meta:
@@ -56,6 +57,7 @@ class USER_BUYER(models.Model):
 	user_buyer_photo_index = models.IntegerField(verbose_name=u'user_buyer_photo_index', null=False, default=0,)
 	user_buyer_address = models.CharField(verbose_name=u'user_buyer_address', max_length='200', null=False,)
 	user_buyer_phone = models.CharField(verbose_name=u'user_buyer_phone', max_length='100', null=False,)
+	user_buyer_auto_login = models.IntegerField(verbose_name=u'user_buyer_auto_login', null=False, default=0,)
 
 
 #----------------------------------------------------------------------------

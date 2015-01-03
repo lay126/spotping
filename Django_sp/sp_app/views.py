@@ -518,6 +518,20 @@ def request_photo_update(request):
 	json_data = json.dumps('success update photo')
 	return HttpResponse(json_data, content_type='application/json')	
 
+@csrf_exempt
+def request_market_list(request):
+	page_title = 'request_market_list'
+
+	datas = []
+	list_market_ = USER_SELLER.objects.all()
+
+	for d in list_market_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
 
 # photo download---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------

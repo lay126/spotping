@@ -26,14 +26,16 @@ class USER_SELLERAdmin(admin.ModelAdmin):
 					'user_seller_address', 
 					'user_seller_latitude',
 					'user_seller_longitude',
-					'user_seller_phone',)
+					'user_seller_phone',
+					'user_seller_auto_login',)
 
 class USER_BUYERAdmin(admin.ModelAdmin):
 	list_display = ('user_buyer_id', 
 					'user_buyer_register_id' ,
 					'user_buyer_photo_index', 
 					'user_buyer_address', 
-					'user_buyer_phone',)
+					'user_buyer_phone',
+					'user_buyer_auto_login',)
 
 class PRODUCTAdmin(admin.ModelAdmin):
 	list_display = ('product_index',
