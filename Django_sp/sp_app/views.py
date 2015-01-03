@@ -745,8 +745,8 @@ def request_photo_download_snack(request):
 
 	# 127.0.0.1:8000/request/photo/download/snack/?product_index=1&coupon_index=1
 
-	product_index_ = request.POST.get('product_index')
-	coupon_index_ = request.POST.get('coupon_index')
+	product_index_ = request.GET.get('product_index')
+	coupon_index_ = request.GET.get('coupon_index')
 
 	image_name = 'm_snack' + '_' + product_index_+ '_' + coupon_index_
 
