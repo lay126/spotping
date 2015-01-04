@@ -2120,24 +2120,21 @@ def request_remake_daily(request):
 
 	# remake coupon
 	try:
-		coupon_daily.update(coupon_daily_market_name = coupon_daily_market_name_, 
-						  	coupon_daily_name = coupon_daily_name_, 
-						  	coupon_daily_brand = coupon_daily_brand_, 
-						   	coupon_daily_unit = coupon_daily_unit_, 
-						   	coupon_daily_price = coupon_daily_price_, 
-						   	coupon_daily_start = coupon_daily_start_, 
-						   	coupon_daily_finish = coupon_daily_finish_, 
-						   	coupon_daily_times = 0, 
-						   	coupon_daily_detail = coupon_daily_detail_, 
-						   	coupon_daily_type = coupon_daily_type_,
-						   	coupon_daily_active = coupon_daily_active_,
-						   	coupon_daily_making = coupon_daily_making_,)
+		coupon_daily_.update(coupon_daily_market_name = coupon_daily_market_name_, 
+					  		 coupon_daily_name = coupon_daily_name_, 
+							 coupon_daily_brand = coupon_daily_brand_, 
+						   	 coupon_daily_unit = coupon_daily_unit_, 
+						   	 coupon_daily_price = coupon_daily_price_, 
+						   	 coupon_daily_start = coupon_daily_start_, 
+						   	 coupon_daily_finish = coupon_daily_finish_, 
+						   	 coupon_daily_times = 0, 
+						   	 coupon_daily_detail = coupon_daily_detail_, 
+						   	 coupon_daily_type = coupon_daily_type_,
+						   	 coupon_daily_active = coupon_daily_active_,
+						   	 coupon_daily_making = coupon_daily_making_,)
 	except:
 		json_data = json.dumps('fail remake coupon')
 		return HttpResponse(json_data, content_type='application/json')
-
-	coupon_ = COUPON_DAILY.objects.get(coupon_daily_making=coupon_daily_making_)
-	coupon_daily_index_ = coupon_.coupon_daily_index
 
 	# have to change photo
 	if coupon_daily_photo_index_ == '1':
@@ -2175,7 +2172,7 @@ def request_remake_daily(request):
 	# change photo to default
 	elif coupon_daily_photo_index_ == '0':
 		product_ = PRODUCT.objects.get(product_index=coupon_snack_product_index_)
-		coupon_snack_photo_index_ = product_.product_photo_index
+		coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_daily_photo_index_ == '2':
