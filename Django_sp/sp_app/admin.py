@@ -300,14 +300,20 @@ class USER_FAVORITE_LISTAdmin(admin.ModelAdmin):
 					'user_favorite_list_product_brand', 
 					'user_favorite_list_product_unit',
 					'user_favorite_list_product_category',)
+	
 
 class USER_COUPON_USEDLISTAdmin(admin.ModelAdmin):
 	list_display = ('user_coupon_usedlist_index', 
 					'user_coupon_usedlist_userid', 
+					'user_coupon_usedlist_coupon_index',
+					'user_coupon_usedlist_photo_index',
+					'user_coupon_usedlist_product_index',
 					'user_coupon_usedlist_product_name', 
 					'user_coupon_usedlist_product_brand', 
 					'user_coupon_usedlist_product_unit',
 					'user_coupon_usedlist_product_category',
+					'user_coupon_usedlist_product_price',
+					'user_coupon_usedlist_product_disprice',
 					'user_coupon_usedlist_type',
 					'user_coupon_usedlist_when',)
 		

@@ -389,12 +389,15 @@ class USER_COUPON_USEDLIST(models.Model):
 		db_table = 'USER_COUPON_USEDLIST_DB'
 	user_coupon_usedlist_index = models.AutoField(verbose_name=u'user_coupon_usedlist_index', primary_key=True, unique=True, db_index=True,)
 	user_coupon_usedlist_coupon_index = models.IntegerField(verbose_name=u'user_coupon_usedlist_coupon_index', db_index=True,)
+	user_coupon_usedlist_photo_index = models.IntegerField(verbose_name=u'user_coupon_usedlist_photo_index', db_index=True,)
 	user_coupon_usedlist_userid = models.CharField(verbose_name=u'user_coupon_usedlist_userid', max_length='20',)
 	user_coupon_usedlist_product_index = models.CharField(verbose_name=u'user_coupon_usedlist_product_index', max_length='30',)
 	user_coupon_usedlist_product_name = models.CharField(verbose_name=u'user_coupon_usedlist_product_name', max_length='30',)
 	user_coupon_usedlist_product_brand = models.CharField(verbose_name=u'user_coupon_usedlist_product_brand', max_length='20',)
 	user_coupon_usedlist_product_unit = models.CharField(verbose_name=u'user_coupon_usedlist_product_unit',max_length='20',)
 	user_coupon_usedlist_product_category = models.IntegerField(verbose_name=u'user_coupon_usedlist_product_category', null=False, default=0,)
+	user_coupon_usedlist_product_price = models.IntegerField(verbose_name=u'user_coupon_usedlist_product_price', null=False, default=0,)
+	user_coupon_usedlist_product_disprice = models.IntegerField(verbose_name=u'user_coupon_usedlist_product_disprice', null=False, default=0,)
 	user_coupon_usedlist_type = models.IntegerField(verbose_name=u'user_coupon_usedlist_type',null=False, default=0,)
 	user_coupon_usedlist_when = models.CharField(verbose_name=u'user_coupon_usedlist_when',  max_length='30',)
         
