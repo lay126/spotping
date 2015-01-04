@@ -2181,7 +2181,7 @@ def request_remake_daily(request):
 	elif coupon_daily_photo_index_ == '2':
 		coupon_daily_photo_index_ = coupon_.coupon_daily_photo_index
 		
-
+		
 	# swich coupon photo index
 	coupon_.coupon_daily_photo_index = coupon_daily_photo_index_
 	coupon_.save()
