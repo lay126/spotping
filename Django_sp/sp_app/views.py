@@ -2125,20 +2125,22 @@ def request_remake_daily(request):
 
 	# remake coupon
 	try:
-		coupon_daily_.update(coupon_daily_product_index = coupon_daily_product_index_,
-							 coupon_daily_photo_index = coupon_daily_photo_index_,
-							 coupon_daily_market_name = coupon_daily_market_name_, 
-					  		 coupon_daily_name = coupon_daily_name_, 
-							 coupon_daily_brand = coupon_daily_brand_, 
-						   	 coupon_daily_unit = coupon_daily_unit_, 
-						   	 coupon_daily_price = coupon_daily_price_,
-						   	 coupon_daily_disprice = coupon_daily_disprice_, 
-						   	 coupon_daily_start = coupon_daily_start_, 
-						   	 coupon_daily_finish = coupon_daily_finish_, 
-						   	 coupon_daily_detail = coupon_daily_detail_, 
-						   	 coupon_daily_type = coupon_daily_type_,
-						   	 coupon_daily_active = coupon_daily_active_,
-						   	 coupon_daily_making = coupon_daily_making_)
+		coupon_daily_.coupon_daily_product_index = coupon_daily_product_index_
+		coupon_daily_.coupon_daily_photo_inde = coupon_daily_photo_index_
+		coupon_daily_.coupon_daxily_market_name = coupon_daxily_market_name_
+		coupon_daily_.coupon_daily_name = coupon_daily_name_
+		coupon_daily_.coupon_daily_brand = coupon_daily_brand_
+		coupon_daily_.coupon_daily_unit = coupon_daily_unit_
+		coupon_daily_.coupon_daily_price = coupon_daily_price_
+		coupon_daily_.coupon_daily_disprice = coupon_daily_disprice_
+		coupon_daily_.coupon_daily_start = coupon_daily_start_
+		coupon_daily_.coupon_daily_finish = coupon_daily_finish_ = coupon_daily_detail_
+		coupon_daily_.coupon_daily_detail = coupon_daily_finish_
+		coupon_daily_.coupon_daily_type = coupon_daily_type_
+		coupon_daily_.coupon_daily_making = coupon_daily_making_
+
+		coupon_daily_.save()
+	
 	except:
 		json_data = json.dumps('fail remake coupon')
 		return HttpResponse(json_data, content_type='application/json')
