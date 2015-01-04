@@ -1992,7 +1992,7 @@ def request_make_bakery(request):
 @csrf_exempt
 def request_make_snack(request):
 	page_title = 'request_make_snack'
-	# /request/make/snack/?coupon_snack_product_index=0&coupon_snack_photo_index=1&coupon_snack_market_name=nabak&coupon_snack_name=milk&coupon_snack_brand=pul&coupon_snack_unit=0&coupon_snack_psnack=100&coupon_snack_start=0&coupon_snack_finish=0&coupon_snack_times=0&coupon_snack_detail=0&coupon_snack_type=0
+	# /request/make/snack/?coupon_snack_product_index=1&coupon_snack_photo_index=1&coupon_snack_market_name=nabak&coupon_snack_name=milk&coupon_snack_brand=pul&coupon_snack_unit=0&coupon_snack_psnack=100&coupon_snack_start=0&coupon_snack_finish=0&coupon_snack_times=0&coupon_snack_detail=0&coupon_snack_type=0&coupon_snack_active=0&coupon_snack_making=0
 
 	coupon_snack_product_index_ = request.POST.get('coupon_snack_product_index')
 	# not change: 0 / change: 1
@@ -2074,6 +2074,7 @@ def request_remake_daily(request):
 	page_title = 'request_remake_daily'
 	# /request/remake/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_type=0
 
+	coupon_daily_index_ = request.POST.get('coupon_daily_index')
 	coupon_daily_product_index_ = request.POST.get('coupon_daily_product_index')
 	coupon_daily_photo_index_ = request.POST.get('coupon_daily_photo_index')
 	coupon_daily_market_name_ =  request.POST.get('coupon_daily_market_name')
@@ -2089,22 +2090,25 @@ def request_remake_daily(request):
 	coupon_daily_active_ = request.POST.get('coupon_daily_active_')
 	coupon_daily_making_ = request.POST.get('coupon_daily_making')
 
+	coupon_daily_ = COUPON_DAILY.objects.get(coupon_daily_index=coupon_daily_index)
+
 	# remake coupon
-	coupon_daily = COUPON_DAILY(coupon_daily_product_index = coupon_daily_product_index_, 
-								coupon_daily_photo_index = coupon_daily_photo_index_, 
-								coupon_daily_market_name = coupon_daily_market_name_, 
-								coupon_daily_name = coupon_daily_name_, 
-								coupon_daily_brand = coupon_daily_brand_, 
-								coupon_daily_unit = coupon_daily_unit_, 
-								coupon_daily_price = coupon_daily_price_, 
-								coupon_daily_start = coupon_daily_start_, 
-								coupon_daily_finish = coupon_daily_finish_, 
-								coupon_daily_times = coupon_daily_times_, 
-								coupon_daily_detail=coupon_daily_detail_, 
-								coupon_daily_type = coupon_daily_type_, 
-								coupon_daily_making=coupon_daily_making_, 
-								coupon_daily_active=coupon_daily_active_)
-	coupon_daily.save()
+	try:
+		coupon_daily.update(coupon_daily_market_name = coupon_daily_market_name_, 
+						  	coupon_daily_name = coupon_daily_name_, 
+						  	coupon_daily_brand = coupon_daily_brand_, 
+						   	coupon_daily_unit = coupon_daily_unit_, 
+						   	coupon_daily_price = coupon_daily_price_, 
+						   	coupon_daily_start = coupon_daily_start_, 
+						   	coupon_daily_finish = coupon_daily_finish_, 
+						   	coupon_daily_times = 0, 
+						   	coupon_daily_detail = coupon_daily_detail_, 
+						   	coupon_daily_type = coupon_daily_type_,
+						   	coupon_daily_active = coupon_daily_active_,
+						   	coupon_daily_making = coupon_daily_making_,)
+	except:
+		json_data = json.dumps('fail remake coupon')
+		return HttpResponse(json_data, content_type='application/json')
 
 	coupon_ = COUPON_DAILY.objects.get(coupon_daily_making=coupon_daily_making_)
 	coupon_daily_index_ = coupon_.coupon_daily_index
@@ -2142,11 +2146,15 @@ def request_remake_daily(request):
 			pic_now = SP_PICTURE.objects.get(sp_name=filename)
 			coupon_daily_photo_index_ = pic_now.sp_photo_index
 
-	# dont have to change photo
+	# change photo to default
 	elif coupon_daily_photo_index_ == '0':
-		# get default photo index
-		product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
-		coupon_daily_photo_index_ = product_.product_photo_index	
+		product_ = PRODUCT.objects.get(product_index=coupon_snack_product_index_)
+		coupon_snack_photo_index_ = product_.product_photo_index
+
+	# dont have to change photo
+	elif coupon_daily_photo_index_ == '2':
+		coupon_daily_photo_index_ = coupon_.coupon_daily_photo_index
+		
 
 	# swich coupon photo index
 	coupon_.coupon_daily_photo_index = coupon_daily_photo_index_
