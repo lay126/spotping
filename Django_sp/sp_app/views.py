@@ -2103,44 +2103,49 @@ def request_make_snack(request):
 @csrf_exempt
 def request_remake_daily(request):
 	page_title = 'request_remake_daily'
-	# /request/remake/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_type=0
+	
+	# /request/remake/daily/?coupon_daily_index=1&coupon_daily_product_index=1&coupon_daily_photo_index=2&coupon_daily_market_name=bkabka&coupon_daily_name=sfs&coupon_daily_brand=dfdf&coupon_daily_unit=plp&coupon_daily_price=10&coupon_daily_disprice=5&coupon_daily_start=1&coupon_daily_finish=3&coupon_daily_detail=0&coupon_daily_type=0&coupon_daily_active=0&coupon_daily_making=111
 
-	coupon_daily_index_ = request.POST.get('coupon_daily_index')
-	coupon_daily_product_index_ = request.POST.get('coupon_daily_product_index')
-	coupon_daily_photo_index_ = request.POST.get('coupon_daily_photo_index')
-	coupon_daily_market_name_ =  request.POST.get('coupon_daily_market_name')
-	coupon_daily_name_ = request.POST.get('coupon_daily_name')
-	coupon_daily_brand_ = request.POST.get('coupon_daily_brand')
-	coupon_daily_unit_ = request.POST.get('coupon_daily_unit')
-	coupon_daily_price_ = request.POST.get('coupon_daily_price')
-	coupon_daily_disprice_ = request.POST.get('coupon_daily_disprice')
-	coupon_daily_start_ = request.POST.get('coupon_daily_start')
-	coupon_daily_finish_ = request.POST.get('coupon_daily_finish')
-	coupon_daily_detail_ = request.POST.get('coupon_daily_detail')
-	coupon_daily_type_ = request.POST.get('coupon_daily_type')
-	coupon_daily_active_ = request.POST.get('coupon_daily_active')
-	coupon_daily_making_ = request.POST.get('coupon_daily_making')
+	coupon_daily_index_ = request.GET.get('coupon_daily_index')
+	coupon_daily_product_index_ = request.GET.get('coupon_daily_product_index')
+	coupon_daily_photo_index_ = request.GET.get('coupon_daily_photo_index')
+	coupon_daily_market_name_ =  request.GET.get('coupon_daily_market_name')
+	coupon_daily_name_ = request.GET.get('coupon_daily_name')
+	coupon_daily_brand_ = request.GET.get('coupon_daily_brand')
+	coupon_daily_unit_ = request.GET.get('coupon_daily_unit')
+	coupon_daily_price_ = request.GET.get('coupon_daily_price')
+	coupon_daily_disprice_ = request.GET.get('coupon_daily_disprice')
+	coupon_daily_start_ = request.GET.get('coupon_daily_start')
+	coupon_daily_finish_ = request.GET.get('coupon_daily_finish')
+	coupon_daily_detail_ = request.GET.get('coupon_daily_detail')
+	coupon_daily_type_ = request.GET.get('coupon_daily_type')
+	coupon_daily_active_ = request.GET.get('coupon_daily_active')
+	coupon_daily_making_ = request.GET.get('coupon_daily_making')
 
-	coupon_daily_ = COUPON_DAILY.objects.get(coupon_daily_index=coupon_daily_index_)
+	try:
+		coupon_daily_ = COUPON_DAILY.objects.get(coupon_daily_index=coupon_daily_index_)
+	except:
+		json_data = json.dumps(coupon_daily_index_)
+		return HttpResponse(json_data, content_type='application/json')
 
 	# remake coupon
 	try:
 		coupon_daily_.coupon_daily_product_index = coupon_daily_product_index_
-		coupon_daily_.coupon_daily_photo_inde = coupon_daily_photo_index_
-		coupon_daily_.coupon_daxily_market_name = coupon_daxily_market_name_
+		coupon_daily_.coupon_daily_photo_index = coupon_daily_photo_index_
+		coupon_daily_.coupon_daily_market_name = coupon_daily_market_name_
 		coupon_daily_.coupon_daily_name = coupon_daily_name_
 		coupon_daily_.coupon_daily_brand = coupon_daily_brand_
 		coupon_daily_.coupon_daily_unit = coupon_daily_unit_
 		coupon_daily_.coupon_daily_price = coupon_daily_price_
 		coupon_daily_.coupon_daily_disprice = coupon_daily_disprice_
 		coupon_daily_.coupon_daily_start = coupon_daily_start_
-		coupon_daily_.coupon_daily_finish = coupon_daily_finish_ = coupon_daily_detail_
-		coupon_daily_.coupon_daily_detail = coupon_daily_finish_
+		coupon_daily_.coupon_daily_finish = coupon_daily_finish_
+		coupon_daily_.coupon_daily_detail = coupon_daily_detail_
 		coupon_daily_.coupon_daily_type = coupon_daily_type_
 		coupon_daily_.coupon_daily_making = coupon_daily_making_
 
 		coupon_daily_.save()
-	
+
 	except:
 		json_data = json.dumps('fail remake coupon')
 		return HttpResponse(json_data, content_type='application/json')
@@ -2185,14 +2190,17 @@ def request_remake_daily(request):
 
 	# dont have to change photo
 	elif coupon_daily_photo_index_ == '2':
-		coupon_daily_photo_index_ = coupon_.coupon_daily_photo_index
+		coupon_daily_photo_index_ = coupon_daily_.coupon_daily_photo_index
 		
 	# swich coupon photo index
-	coupon_.coupon_daily_photo_index = coupon_daily_photo_index_
-	coupon_.save()
+	coupon_daily_ = COUPON_DAILY.objects.get(coupon_daily_index=coupon_daily_index_)
+
+	coupon_daily_.coupon_daily_photo_index = coupon_daily_photo_index_
+	coupon_daily_.save()
 
 	# code0 : success
-	json_data = json.dumps(0)
+	text = coupon_daily_.coupon_daily_name
+	json_data = json.dumps(text)
 	return HttpResponse(json_data, content_type='application/json')
 
 
