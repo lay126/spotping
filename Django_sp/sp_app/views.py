@@ -4022,18 +4022,15 @@ def request_used_make(request):
 	used_make_type_ = request.GET.get('used_make_type', False)
 	used_make_when_ = request.GET.get('used_make_when', False)
 
-	used_make_ = USER_COUPON_USEDLIST()
-
-	datas = []
-	used_coupon_ = USER_COUPON_USEDLIST.objects.all(user_coupon_usedlist_coupon_index=used_make_coupon_index_,
-													user_coupon_usedlist_userid=used_make_userid_,
-													user_coupon_usedlist_product_index=used_make_product_index_,
-													user_coupon_usedlist_product_name=used_make_product_name_,
-													user_coupon_usedlist_product_brand=used_make_product_brand_,
-													user_coupon_usedlist_product_unit=used_make_product_unit_,
-													user_coupon_usedlist_product_category=used_make_product_category_,
-													user_coupon_usedlist_type=used_make_type_,
-													user_coupon_usedlist_when=used_make_when_,)
+	used_make_ = USER_COUPON_USEDLIST(user_coupon_usedlist_coupon_index=used_make_coupon_index_,
+									  user_coupon_usedlist_userid=used_make_userid_,
+									  user_coupon_usedlist_product_index=used_make_product_index_,
+									  user_coupon_usedlist_product_name=used_make_product_name_,
+									  user_coupon_usedlist_product_brand=used_make_product_brand_,
+									  user_coupon_usedlist_product_unit=used_make_product_unit_,
+									  user_coupon_usedlist_product_category=used_make_product_category_,
+									  user_coupon_usedlist_type=used_make_type_,
+									  user_coupon_usedlist_when=used_make_when_,)
 	used_make_.save()
 
 	json_data = json.dumps('used_list save success')
