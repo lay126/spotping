@@ -1081,7 +1081,7 @@ def request_make_daily(request):
 	coupon_daily_finish_ = request.POST.get('coupon_daily_finish')
 	coupon_daily_times_ = request.POST.get('coupon_daily_times')
 	coupon_daily_detail_ = request.POST.get('coupon_daily_detail')
-	coupon_daily_detail_d_ = request.POST.get('coupon_daily_detail_d')
+	coupon_daily_detail_b_ = request.POST.get('coupon_daily_detail_b')
 	coupon_daily_type_ = request.POST.get('coupon_daily_type')
 	coupon_daily_active_ = request.POST.get('coupon_daily_active')
 	coupon_daily_making_ = request.POST.get('coupon_daily_making')
@@ -1099,7 +1099,7 @@ def request_make_daily(request):
 								coupon_daily_finish = coupon_daily_finish_, 
 								coupon_daily_times = coupon_daily_times_, 
 								coupon_daily_detail=coupon_daily_detail_, 
-								coupon_daily_detail_d=coupon_daily_detail_d_,
+								coupon_daily_detail_b=coupon_daily_detail_b_,
 								coupon_daily_type = coupon_daily_type_, 
 								coupon_daily_making=coupon_daily_making_, 
 								coupon_daily_active=coupon_daily_active_)
@@ -1163,7 +1163,7 @@ def request_make_greens(request):
 	coupon_greens_finish_ = request.POST.get('coupon_greens_finish')
 	coupon_greens_times_ = request.POST.get('coupon_greens_times')
 	coupon_greens_detail_ = request.POST.get('coupon_greens_detail')
-	coupon_greens_detail_d_ = request.POST.get('coupon_greens_detail_d')
+	coupon_greens_detail_b_ = request.POST.get('coupon_greens_detail_b')
 	coupon_greens_type_ = request.POST.get('coupon_greens_type')
 	coupon_greens_active_ = request.POST.get('coupon_greens_active')
 	coupon_greens_making_ = request.POST.get('coupon_greens_making')
@@ -1182,7 +1182,7 @@ def request_make_greens(request):
 								  coupon_greens_finish = coupon_greens_finish_, 
 								  coupon_greens_times = coupon_greens_times_, 
 								  coupon_greens_detail=coupon_greens_detail_, 
-								  coupon_greens_detail_d=coupon_greens_detail_d_,
+								  coupon_greens_detail_b=coupon_greens_detail_b_,
 								  coupon_greens_type = coupon_greens_type_, 
 								  coupon_greens_active=coupon_greens_active_, 
 								  coupon_greens_making=coupon_greens_making_)
@@ -1246,7 +1246,7 @@ def request_make_fish(request):
 	coupon_fish_finish_ = request.POST.get('coupon_fish_finish')
 	coupon_fish_times_ = request.POST.get('coupon_fish_times')
 	coupon_fish_detail_ = request.POST.get('coupon_fish_detail')
-	coupon_fish_detail_d_ = request.POST.get('coupon_fish_detail_d')
+	coupon_fish_detail_b_ = request.POST.get('coupon_fish_detail_b')
 	coupon_fish_type_ = request.POST.get('coupon_fish_type')
 	coupon_fish_active_ = request.POST.get('coupon_fish_active')
 	coupon_fish_making_ = request.POST.get('coupon_fish_making')
@@ -1266,7 +1266,7 @@ def request_make_fish(request):
 							  coupon_fish_finish = coupon_fish_finish_, 
 							  coupon_fish_times = coupon_fish_times_, 
 							  coupon_fish_detail=coupon_fish_detail_, 
-							  coupon_fish_detail_d=coupon_fish_detail_d_,
+							  coupon_fish_detail_b=coupon_fish_detail_b_,
 							  coupon_fish_type = coupon_fish_type_, 
 							  coupon_fish_active = coupon_fish_active_,
 							  coupon_fish_making=coupon_fish_making_)
@@ -1330,7 +1330,7 @@ def request_make_rice(request):
 	coupon_rice_finish_ = request.POST.get('coupon_rice_finish')
 	coupon_rice_times_ = request.POST.get('coupon_rice_times')
 	coupon_rice_detail_ = request.POST.get('coupon_rice_detail')
-	coupon_rice_detail_d_ = request.POST.get('coupon_rice_detail_d')
+	coupon_rice_detail_b_ = request.POST.get('coupon_rice_detail_b')
 	coupon_rice_type_ = request.POST.get('coupon_rice_type')
 	coupon_rice_active_ = request.POST.get('coupon_rice_active')
 	coupon_rice_making_ = request.POST.get('coupon_rice_making')
@@ -1349,7 +1349,7 @@ def request_make_rice(request):
 							  coupon_rice_start = coupon_rice_start_, 
 							  coupon_rice_finish = coupon_rice_finish_, 
 							  coupon_rice_detail=coupon_rice_detail_, 
-							  coupon_rice_detail_d=coupon_rice_detail_d_,
+							  coupon_rice_detail_b=coupon_rice_detail_b_,
 							  coupon_rice_times = coupon_rice_times_, 
 							  coupon_rice_type = coupon_rice_type_, 
 							  coupon_rice_active = coupon_rice_active_,
@@ -1414,7 +1414,7 @@ def request_make_meat(request):
 	coupon_meat_finish_ = request.POST.get('coupon_meat_finish')
 	coupon_meat_times_ = request.POST.get('coupon_meat_times')
 	coupon_meat_detail_ = request.POST.get('coupon_meat_detail')
-	coupon_meat_detail_d_ = request.POST.get('coupon_meat_detail_d')
+	coupon_meat_detail_b_ = request.POST.get('coupon_meat_detail_b')
 	coupon_meat_type_ = request.POST.get('coupon_meat_type')
 	coupon_meat_active_ = request.POST.get('coupon_meat_active')
 	coupon_meat_making_ = request.POST.get('coupon_meat_making')
@@ -1434,7 +1434,7 @@ def request_make_meat(request):
 							  coupon_meat_finish = coupon_meat_finish_, 
 							  coupon_meat_times = coupon_meat_times_, 
 							  coupon_meat_detail=coupon_meat_detail_,
-							  coupon_meat_detail_d=coupon_meat_detail_d_, 
+							  coupon_meat_detail_b=coupon_meat_detail_b_, 
 							  coupon_meat_type = coupon_meat_type_, 
 							  coupon_meat_active = coupon_meat_active_,
 							  coupon_meat_making=coupon_meat_making_)
@@ -1498,7 +1498,7 @@ def request_make_egg(request):
 	coupon_egg_finish_ = request.POST.get('coupon_egg_finish')
 	coupon_egg_times_ = request.POST.get('coupon_egg_times')
 	coupon_egg_detail_ = request.POST.get('coupon_egg_detail')
-	coupon_egg_detail_d_ = request.POST.get('coupon_egg_detail_d')
+	coupon_egg_detail_b_ = request.POST.get('coupon_egg_detail_b')
 	coupon_egg_type_ = request.POST.get('coupon_egg_type')
 	coupon_egg_active_ = request.POST.get('coupon_egg_active')
 	coupon_egg_making_ = request.POST.get('coupon_egg_making')
@@ -1517,7 +1517,7 @@ def request_make_egg(request):
 						    coupon_egg_start = coupon_egg_start_, 
 						    coupon_egg_finish = coupon_egg_finish_, 
 						    coupon_egg_detail=coupon_egg_detail_, 
-						    coupon_egg_detail_d=coupon_egg_detail_d_,
+						    coupon_egg_detail_b=coupon_egg_detail_b_,
 						    coupon_egg_times = coupon_egg_times_, 
 						    coupon_egg_type = coupon_egg_type_, 
 						    coupon_egg_active = coupon_egg_active_,
@@ -1581,7 +1581,7 @@ def request_make_ham(request):
 	coupon_ham_finish_ = request.POST.get('coupon_ham_finish')
 	coupon_ham_times_ = request.POST.get('coupon_ham_times')
 	coupon_ham_detail_ = request.POST.get('coupon_ham_detail')
-	coupon_ham_detail_d_ = request.POST.get('coupon_ham_detail_d')
+	coupon_ham_detail_b_ = request.POST.get('coupon_ham_detail_b')
 	coupon_ham_type_ = request.POST.get('coupon_ham_type')
 	coupon_ham_active_ = request.POST.get('coupon_ham_active')
 	coupon_ham_making_ = request.POST.get('coupon_ham_making')
@@ -1599,7 +1599,7 @@ def request_make_ham(request):
 						    coupon_ham_start = coupon_ham_start_, 
 						    coupon_ham_finish = coupon_ham_finish_, 
 						    coupon_ham_detail=coupon_ham_detail_, 
-						    coupon_ham_detail_d=coupon_ham_detail_d_,
+						    coupon_ham_detail_b=coupon_ham_detail_b_,
 						    coupon_ham_times = coupon_ham_times_, 
 						    coupon_ham_type = coupon_ham_type_, 
 						    coupon_ham_active = coupon_ham_active_,
@@ -1663,7 +1663,7 @@ def request_make_side(request):
 	coupon_side_finish_ = request.POST.get('coupon_side_finish')
 	coupon_side_times_ = request.POST.get('coupon_side_times')
 	coupon_side_detail_ = request.POST.get('coupon_side_detail')
-	coupon_side_detail_d_ = request.POST.get('coupon_side_detail_d')
+	coupon_side_detail_b_ = request.POST.get('coupon_side_detail_b')
 	coupon_side_type_ = request.POST.get('coupon_side_type')
 	coupon_side_active_ = request.POST.get('coupon_side_active')
 	coupon_side_making_ = request.POST.get('coupon_side_making')
@@ -1681,7 +1681,7 @@ def request_make_side(request):
 							  coupon_side_start = coupon_side_start_, 
 							  coupon_side_finish = coupon_side_finish_, 
 							  coupon_side_detail=coupon_side_detail_, 
-							  coupon_side_detail_d=coupon_side_detail_d_,
+							  coupon_side_detail_b=coupon_side_detail_b_,
 							  coupon_side_times = coupon_side_times_,
 							  coupon_side_active = coupon_side_active_, 
 							  coupon_side_type = coupon_side_type_, 
@@ -1745,7 +1745,7 @@ def request_make_water(request):
 	coupon_water_finish_ = request.POST.get('coupon_water_finish')
 	coupon_water_times_ = request.POST.get('coupon_water_times')
 	coupon_water_detail_ = request.POST.get('coupon_water_detail')
-	coupon_water_detail_d_ = request.POST.get('coupon_water_detail_d')
+	coupon_water_detail_b_ = request.POST.get('coupon_water_detail_b')
 	coupon_water_type_ = request.POST.get('coupon_water_type')
 	coupon_water_active_ = request.POST.get('coupon_water_active')
 	coupon_water_making_ = request.POST.get('coupon_water_making')
@@ -1765,7 +1765,7 @@ def request_make_water(request):
 								coupon_water_times = coupon_water_times_, 
 								coupon_water_type = coupon_water_type_, 
 								coupon_water_detail=coupon_water_detail_, 
-								coupon_water_detail_d=coupon_water_detail_d_,
+								coupon_water_detail_b=coupon_water_detail_b_,
 								coupon_water_active=coupon_water_active_,
 								coupon_water_making=coupon_water_making_)
 	coupon_water.save()
@@ -1827,7 +1827,7 @@ def request_make_instant(request):
 	coupon_instant_finish_ = request.POST.get('coupon_instant_finish')
 	coupon_instant_times_ = request.POST.get('coupon_instant_times')
 	coupon_instant_detail_ = request.POST.get('coupon_instant_detail')
-	coupon_instant_detail_d_ = request.POST.get('coupon_instant_detail_d')
+	coupon_instant_detail_b_ = request.POST.get('coupon_instant_detail_b')
 	coupon_instant_type_ = request.POST.get('coupon_instant_type')
 	coupon_instant_active_ = request.POST.get('coupon_instant_active')
 	coupon_instant_making_ = request.POST.get('coupon_instant_making')
@@ -1847,7 +1847,7 @@ def request_make_instant(request):
 									coupon_instant_times = coupon_instant_times_, 
 									coupon_instant_type = coupon_instant_type_, 
 									coupon_instant_detail=coupon_instant_detail_,
-									coupon_instant_detail_d=coupon_instant_detail_d_, 
+									coupon_instant_detail_b=coupon_instant_detail_b_, 
 									coupon_instant_active = coupon_instant_active_,
 									coupon_instant_making=coupon_instant_making_)
 	coupon_instant.save()
@@ -1909,7 +1909,7 @@ def request_make_ice(request):
 	coupon_ice_finish_ = request.POST.get('coupon_ice_finish')
 	coupon_ice_times_ = request.POST.get('coupon_ice_times')
 	coupon_ice_detail_ = request.POST.get('coupon_ice_detail')
-	coupon_ice_detail_d_ = request.POST.get('coupon_ice_detail_d')
+	coupon_ice_detail_b_ = request.POST.get('coupon_ice_detail_b')
 	coupon_ice_type_ = request.POST.get('coupon_ice_type')
 	coupon_ice_active_ = request.POST.get('coupon_ice_active')
 	coupon_ice_making_ = request.POST.get('coupon_ice_making')
@@ -1927,7 +1927,7 @@ def request_make_ice(request):
 							coupon_ice_start = coupon_ice_start_, 
 							coupon_ice_finish = coupon_ice_finish_, 
 							coupon_ice_detail=coupon_ice_detail_, 
-							coupon_ice_detail_d=coupon_ice_detail_d_,
+							coupon_ice_detail_b=coupon_ice_detail_b_,
 							coupon_ice_times = coupon_ice_times_, 
 							coupon_ice_type = coupon_ice_type_, 
 							coupon_ice_active = coupon_ice_active_,
@@ -1991,7 +1991,7 @@ def request_make_bakery(request):
 	coupon_bakery_finish_ = request.POST.get('coupon_bakery_finish')
 	coupon_bakery_times_ = request.POST.get('coupon_bakery_times')
 	coupon_bakery_detail_ = request.POST.get('coupon_bakery_detail')
-	coupon_bakery_detail_d_ = request.POST.get('coupon_bakery_detail_d')
+	coupon_bakery_detail_b_ = request.POST.get('coupon_bakery_detail_b')
 	coupon_bakery_type_ = request.POST.get('coupon_bakery_type')
 	coupon_bakery_active_ = request.POST.get('coupon_bakery_active')
 	coupon_bakery_making_ = request.POST.get('coupon_bakery_making')
@@ -2010,7 +2010,7 @@ def request_make_bakery(request):
 								  coupon_bakery_finish = coupon_bakery_finish_, 
 								  coupon_bakery_times = coupon_bakery_times_, 
 								  coupon_bakery_detail=coupon_bakery_detail_, 
-								  coupon_bakery_detail_d=coupon_bakery_detail_d_,
+								  coupon_bakery_detail_b=coupon_bakery_detail_b_,
 								  coupon_bakery_type = coupon_bakery_type_, 
 								  coupon_bakery_active = coupon_bakery_active_,
 								  coupon_bakery_making=coupon_bakery_making_)
@@ -2073,7 +2073,7 @@ def request_make_snack(request):
 	coupon_snack_finish_ = request.POST.get('coupon_snack_finish')
 	coupon_snack_times_ = request.POST.get('coupon_snack_times')
 	coupon_snack_detail_ = request.POST.get('coupon_snack_detail')
-	coupon_snack_detail_d_ = request.POST.get('coupon_snack_detail_d')
+	coupon_snack_detail_b_ = request.POST.get('coupon_snack_detail_b')
 	coupon_snack_type_ = request.POST.get('coupon_snack_type')
 	coupon_snack_active_ = request.POST.get('coupon_snack_active')
 	coupon_snack_making_ = request.POST.get('coupon_snack_making')
@@ -2091,7 +2091,7 @@ def request_make_snack(request):
 								coupon_snack_start = coupon_snack_start_, 
 								coupon_snack_finish = coupon_snack_finish_, 
 								coupon_snack_detail=coupon_snack_detail_, 
-								coupon_snack_detail_d=coupon_snack_detail_d_,
+								coupon_snack_detail_b=coupon_snack_detail_b_,
 								coupon_snack_times = coupon_snack_times_, 
 								coupon_snack_type = coupon_snack_type_, 
 								coupon_snack_active = coupon_snack_active_, 
@@ -2157,6 +2157,7 @@ def request_remake_daily(request):
 	coupon_daily_start_ = request.POST.get('coupon_daily_start')
 	coupon_daily_finish_ = request.POST.get('coupon_daily_finish')
 	coupon_daily_detail_ = request.POST.get('coupon_daily_detail')
+	coupon_daily_detail_b_ = request.POST.get('coupon_daily_detail_b')
 	coupon_daily_type_ = request.POST.get('coupon_daily_type')
 	coupon_daily_active_ = request.POST.get('coupon_daily_active')
 	coupon_daily_making_ = request.POST.get('coupon_daily_making')
@@ -2180,6 +2181,7 @@ def request_remake_daily(request):
 		coupon_daily_.coupon_daily_start = coupon_daily_start_
 		coupon_daily_.coupon_daily_finish = coupon_daily_finish_
 		coupon_daily_.coupon_daily_detail = coupon_daily_detail_
+		coupon_daily_.coupon_daily_detail_b = coupon_daily_detail_b_
 		coupon_daily_.coupon_daily_type = coupon_daily_type_
 		coupon_daily_.coupon_daily_making = coupon_daily_making_
 
@@ -2261,6 +2263,7 @@ def request_remake_greens(request):
 	coupon_greens_start_ = request.POST.get('coupon_greens_start')
 	coupon_greens_finish_ = request.POST.get('coupon_greens_finish')
 	coupon_greens_detail_ = request.POST.get('coupon_greens_detail')
+	coupon_greens_detail_b_ = request.POST.get('coupon_greens_detail_b')
 	coupon_greens_type_ = request.POST.get('coupon_greens_type')
 	coupon_greens_active_ = request.POST.get('coupon_greens_active')
 	coupon_greens_making_ = request.POST.get('coupon_greens_making')
@@ -2285,6 +2288,7 @@ def request_remake_greens(request):
 		coupon_greens_.coupon_greens_start = coupon_greens_start_
 		coupon_greens_.coupon_greens_finish = coupon_greens_finish_
 		coupon_greens_.coupon_greens_detail = coupon_greens_detail_
+		coupon_greens_.coupon_greens_detail_b = coupon_greens_detail_b_
 		coupon_greens_.coupon_greens_type = coupon_greens_type_
 		coupon_greens_.coupon_greens_making = coupon_greens_making_
 
@@ -2366,6 +2370,7 @@ def request_remake_fish(request):
 	coupon_fish_start_ = request.POST.get('coupon_fish_start')
 	coupon_fish_finish_ = request.POST.get('coupon_fish_finish')
 	coupon_fish_detail_ = request.POST.get('coupon_fish_detail')
+	coupon_fish_detail_b_ = request.POST.get('coupon_fish_detail_b')
 	coupon_fish_type_ = request.POST.get('coupon_fish_type')
 	coupon_fish_active_ = request.POST.get('coupon_fish_active')
 	coupon_fish_making_ = request.POST.get('coupon_fish_making')
@@ -2390,6 +2395,7 @@ def request_remake_fish(request):
 		coupon_fish_.coupon_fish_start = coupon_fish_start_
 		coupon_fish_.coupon_fish_finish = coupon_fish_finish_
 		coupon_fish_.coupon_fish_detail = coupon_fish_detail_
+		coupon_fish_.coupon_fish_detail_b = coupon_fish_detail_b_
 		coupon_fish_.coupon_fish_type = coupon_fish_type_
 		coupon_fish_.coupon_fish_making = coupon_fish_making_
 
@@ -2471,6 +2477,7 @@ def request_remake_rice(request):
 	coupon_rice_start_ = request.POST.get('coupon_rice_start')
 	coupon_rice_finish_ = request.POST.get('coupon_rice_finish')
 	coupon_rice_detail_ = request.POST.get('coupon_rice_detail')
+	coupon_rice_detail_b_ = request.POST.get('coupon_rice_detail_b')
 	coupon_rice_type_ = request.POST.get('coupon_rice_type')
 	coupon_rice_active_ = request.POST.get('coupon_rice_active')
 	coupon_rice_making_ = request.POST.get('coupon_rice_making')
@@ -2495,6 +2502,7 @@ def request_remake_rice(request):
 		coupon_rice_.coupon_rice_start = coupon_rice_start_
 		coupon_rice_.coupon_rice_finish = coupon_rice_finish_
 		coupon_rice_.coupon_rice_detail = coupon_rice_detail_
+		coupon_rice_.coupon_rice_detail_b = coupon_rice_detail_b_
 		coupon_rice_.coupon_rice_type = coupon_rice_type_
 		coupon_rice_.coupon_rice_making = coupon_rice_making_
 
@@ -2576,6 +2584,7 @@ def request_remake_meat(request):
 	coupon_meat_start_ = request.POST.get('coupon_meat_start')
 	coupon_meat_finish_ = request.POST.get('coupon_meat_finish')
 	coupon_meat_detail_ = request.POST.get('coupon_meat_detail')
+	coupon_meat_detail_b_ = request.POST.get('coupon_meat_detail_b')
 	coupon_meat_type_ = request.POST.get('coupon_meat_type')
 	coupon_meat_active_ = request.POST.get('coupon_meat_active')
 	coupon_meat_making_ = request.POST.get('coupon_meat_making')
@@ -2600,6 +2609,7 @@ def request_remake_meat(request):
 		coupon_meat_.coupon_meat_start = coupon_meat_start_
 		coupon_meat_.coupon_meat_finish = coupon_meat_finish_
 		coupon_meat_.coupon_meat_detail = coupon_meat_detail_
+		coupon_meat_.coupon_meat_detail_b = coupon_meat_detail_b_
 		coupon_meat_.coupon_meat_type = coupon_meat_type_
 		coupon_meat_.coupon_meat_making = coupon_meat_making_
 
@@ -2681,6 +2691,7 @@ def request_remake_egg(request):
 	coupon_egg_start_ = request.POST.get('coupon_egg_start')
 	coupon_egg_finish_ = request.POST.get('coupon_egg_finish')
 	coupon_egg_detail_ = request.POST.get('coupon_egg_detail')
+	coupon_egg_detail_b_ = request.POST.get('coupon_egg_detail_b')
 	coupon_egg_type_ = request.POST.get('coupon_egg_type')
 	coupon_egg_active_ = request.POST.get('coupon_egg_active')
 	coupon_egg_making_ = request.POST.get('coupon_egg_making')
@@ -2705,6 +2716,7 @@ def request_remake_egg(request):
 		coupon_egg_.coupon_egg_start = coupon_egg_start_
 		coupon_egg_.coupon_egg_finish = coupon_egg_finish_
 		coupon_egg_.coupon_egg_detail = coupon_egg_detail_
+		coupon_egg_.coupon_egg_detail_b = coupon_egg_detail_b_
 		coupon_egg_.coupon_egg_type = coupon_egg_type_
 		coupon_egg_.coupon_egg_making = coupon_egg_making_
 
@@ -2785,6 +2797,7 @@ def request_remake_ham(request):
 	coupon_ham_start_ = request.POST.get('coupon_ham_start')
 	coupon_ham_finish_ = request.POST.get('coupon_ham_finish')
 	coupon_ham_detail_ = request.POST.get('coupon_ham_detail')
+	coupon_ham_detail_b_ = request.POST.get('coupon_ham_detail_b')
 	coupon_ham_type_ = request.POST.get('coupon_ham_type')
 	coupon_ham_active_ = request.POST.get('coupon_ham_active')
 	coupon_ham_making_ = request.POST.get('coupon_ham_making')
@@ -2808,6 +2821,7 @@ def request_remake_ham(request):
 		coupon_ham_.coupon_ham_start = coupon_ham_start_
 		coupon_ham_.coupon_ham_finish = coupon_ham_finish_
 		coupon_ham_.coupon_ham_detail = coupon_ham_detail_
+		coupon_ham_.coupon_ham_detail_b = coupon_ham_detail_b_
 		coupon_ham_.coupon_ham_type = coupon_ham_type_
 		coupon_ham_.coupon_ham_making = coupon_ham_making_
 
@@ -2888,6 +2902,7 @@ def request_remake_side(request):
 	coupon_side_start_ = request.POST.get('coupon_side_start')
 	coupon_side_finish_ = request.POST.get('coupon_side_finish')
 	coupon_side_detail_ = request.POST.get('coupon_side_detail')
+	coupon_side_detail_b_ = request.POST.get('coupon_side_detail_b')
 	coupon_side_type_ = request.POST.get('coupon_side_type')
 	coupon_side_active_ = request.POST.get('coupon_side_active')
 	coupon_side_making_ = request.POST.get('coupon_side_making')
@@ -2911,6 +2926,7 @@ def request_remake_side(request):
 		coupon_side_.coupon_side_start = coupon_side_start_
 		coupon_side_.coupon_side_finish = coupon_side_finish_
 		coupon_side_.coupon_side_detail = coupon_side_detail_
+		coupon_side_.coupon_side_detail_b = coupon_side_detail_b_
 		coupon_side_.coupon_side_type = coupon_side_type_
 		coupon_side_.coupon_side_making = coupon_side_making_
 
@@ -2991,6 +3007,7 @@ def request_remake_water(request):
 	coupon_water_start_ = request.POST.get('coupon_water_start')
 	coupon_water_finish_ = request.POST.get('coupon_water_finish')
 	coupon_water_detail_ = request.POST.get('coupon_water_detail')
+	coupon_water_detail_b_ = request.POST.get('coupon_water_detail_b')
 	coupon_water_type_ = request.POST.get('coupon_water_type')
 	coupon_water_active_ = request.POST.get('coupon_water_active')
 	coupon_water_making_ = request.POST.get('coupon_water_making')
@@ -3014,6 +3031,7 @@ def request_remake_water(request):
 		coupon_water_.coupon_water_start = coupon_water_start_
 		coupon_water_.coupon_water_finish = coupon_water_finish_
 		coupon_water_.coupon_water_detail = coupon_water_detail_
+		coupon_water_.coupon_water_detail_b = coupon_water_detail_b_
 		coupon_water_.coupon_water_type = coupon_water_type_
 		coupon_water_.coupon_water_making = coupon_water_making_
 
@@ -3094,6 +3112,7 @@ def request_remake_instant(request):
 	coupon_instant_start_ = request.POST.get('coupon_instant_start')
 	coupon_instant_finish_ = request.POST.get('coupon_instant_finish')
 	coupon_instant_detail_ = request.POST.get('coupon_instant_detail')
+	coupon_instant_detail_b_ = request.POST.get('coupon_instant_detail_b')
 	coupon_instant_type_ = request.POST.get('coupon_instant_type')
 	coupon_instant_active_ = request.POST.get('coupon_instant_active')
 	coupon_instant_making_ = request.POST.get('coupon_instant_making')
@@ -3117,6 +3136,7 @@ def request_remake_instant(request):
 		coupon_instant_.coupon_instant_start = coupon_instant_start_
 		coupon_instant_.coupon_instant_finish = coupon_instant_finish_
 		coupon_instant_.coupon_instant_detail = coupon_instant_detail_
+		coupon_instant_.coupon_instant_detail_b = coupon_instant_detail_b_
 		coupon_instant_.coupon_instant_type = coupon_instant_type_
 		coupon_instant_.coupon_instant_making = coupon_instant_making_
 
@@ -3197,6 +3217,7 @@ def request_remake_ice(request):
 	coupon_ice_start_ = request.POST.get('coupon_ice_start')
 	coupon_ice_finish_ = request.POST.get('coupon_ice_finish')
 	coupon_ice_detail_ = request.POST.get('coupon_ice_detail')
+	coupon_ice_detail_b_ = request.POST.get('coupon_ice_detail_b')
 	coupon_ice_type_ = request.POST.get('coupon_ice_type')
 	coupon_ice_active_ = request.POST.get('coupon_ice_active')
 	coupon_ice_making_ = request.POST.get('coupon_ice_making')
@@ -3220,6 +3241,7 @@ def request_remake_ice(request):
 		coupon_ice_.coupon_ice_start = coupon_ice_start_
 		coupon_ice_.coupon_ice_finish = coupon_ice_finish_
 		coupon_ice_.coupon_ice_detail = coupon_ice_detail_
+		coupon_ice_.coupon_ice_detail_b = coupon_ice_detail_b_
 		coupon_ice_.coupon_ice_type = coupon_ice_type_
 		coupon_ice_.coupon_ice_making = coupon_ice_making_
 
@@ -3300,6 +3322,7 @@ def request_remake_bakery(request):
 	coupon_bakery_start_ = request.POST.get('coupon_bakery_start')
 	coupon_bakery_finish_ = request.POST.get('coupon_bakery_finish')
 	coupon_bakery_detail_ = request.POST.get('coupon_bakery_detail')
+	coupon_bakery_detail_b_ = request.POST.get('coupon_bakery_detail_b')
 	coupon_bakery_type_ = request.POST.get('coupon_bakery_type')
 	coupon_bakery_active_ = request.POST.get('coupon_bakery_active')
 	coupon_bakery_making_ = request.POST.get('coupon_bakery_making')
@@ -3323,6 +3346,7 @@ def request_remake_bakery(request):
 		coupon_bakery_.coupon_bakery_start = coupon_bakery_start_
 		coupon_bakery_.coupon_bakery_finish = coupon_bakery_finish_
 		coupon_bakery_.coupon_bakery_detail = coupon_bakery_detail_
+		coupon_bakery_.coupon_bakery_detail_b = coupon_bakery_detail_b_
 		coupon_bakery_.coupon_bakery_type = coupon_bakery_type_
 		coupon_bakery_.coupon_bakery_making = coupon_bakery_making_
 
@@ -3403,6 +3427,7 @@ def request_remake_snack(request):
 	coupon_snack_start_ = request.POST.get('coupon_snack_start')
 	coupon_snack_finish_ = request.POST.get('coupon_snack_finish')
 	coupon_snack_detail_ = request.POST.get('coupon_snack_detail')
+	coupon_snack_detail_b_ = request.POST.get('coupon_snack_detail_b')
 	coupon_snack_type_ = request.POST.get('coupon_snack_type')
 	coupon_snack_active_ = request.POST.get('coupon_snack_active')
 	coupon_snack_making_ = request.POST.get('coupon_snack_making')
@@ -3426,6 +3451,7 @@ def request_remake_snack(request):
 		coupon_snack_.coupon_snack_start = coupon_snack_start_
 		coupon_snack_.coupon_snack_finish = coupon_snack_finish_
 		coupon_snack_.coupon_snack_detail = coupon_snack_detail_
+		coupon_snack_.coupon_snack_detail_b = coupon_snack_detail_b_
 		coupon_snack_.coupon_snack_type = coupon_snack_type_
 		coupon_snack_.coupon_snack_making = coupon_snack_making_
 
