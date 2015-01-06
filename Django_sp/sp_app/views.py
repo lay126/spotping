@@ -685,8 +685,9 @@ def request_photo_download_water(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_water' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_water' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -1080,6 +1081,7 @@ def request_make_daily(request):
 	coupon_daily_finish_ = request.POST.get('coupon_daily_finish')
 	coupon_daily_times_ = request.POST.get('coupon_daily_times')
 	coupon_daily_detail_ = request.POST.get('coupon_daily_detail')
+	coupon_daily_detail_d_ = request.POST.get('coupon_daily_detail_d')
 	coupon_daily_type_ = request.POST.get('coupon_daily_type')
 	coupon_daily_active_ = request.POST.get('coupon_daily_active')
 	coupon_daily_making_ = request.POST.get('coupon_daily_making')
@@ -1097,6 +1099,7 @@ def request_make_daily(request):
 								coupon_daily_finish = coupon_daily_finish_, 
 								coupon_daily_times = coupon_daily_times_, 
 								coupon_daily_detail=coupon_daily_detail_, 
+								coupon_daily_detail_d=coupon_daily_detail_d_,
 								coupon_daily_type = coupon_daily_type_, 
 								coupon_daily_making=coupon_daily_making_, 
 								coupon_daily_active=coupon_daily_active_)
@@ -1110,7 +1113,7 @@ def request_make_daily(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_daily' + '_' + str(coupon_daily_product_index_)+ '_' + str(coupon_daily_index_)
+				filename = 'm_daily' + '_' + str(coupon_daily_product_index_)+ '_' + str(coupon_daily_index_) + '_' + str(coupon_daily_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1160,6 +1163,7 @@ def request_make_greens(request):
 	coupon_greens_finish_ = request.POST.get('coupon_greens_finish')
 	coupon_greens_times_ = request.POST.get('coupon_greens_times')
 	coupon_greens_detail_ = request.POST.get('coupon_greens_detail')
+	coupon_greens_detail_d_ = request.POST.get('coupon_greens_detail_d')
 	coupon_greens_type_ = request.POST.get('coupon_greens_type')
 	coupon_greens_active_ = request.POST.get('coupon_greens_active')
 	coupon_greens_making_ = request.POST.get('coupon_greens_making')
@@ -1178,6 +1182,7 @@ def request_make_greens(request):
 								  coupon_greens_finish = coupon_greens_finish_, 
 								  coupon_greens_times = coupon_greens_times_, 
 								  coupon_greens_detail=coupon_greens_detail_, 
+								  coupon_greens_detail_d=coupon_greens_detail_d_,
 								  coupon_greens_type = coupon_greens_type_, 
 								  coupon_greens_active=coupon_greens_active_, 
 								  coupon_greens_making=coupon_greens_making_)
@@ -1191,7 +1196,7 @@ def request_make_greens(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_greens' + '_' + str(coupon_greens_product_index_)+ '_' + str(coupon_greens_index_)
+				filename = 'm_greens' + '_' + str(coupon_greens_product_index_)+ '_' + str(coupon_greens_index_) + '_' + str(coupon_greens_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1241,6 +1246,7 @@ def request_make_fish(request):
 	coupon_fish_finish_ = request.POST.get('coupon_fish_finish')
 	coupon_fish_times_ = request.POST.get('coupon_fish_times')
 	coupon_fish_detail_ = request.POST.get('coupon_fish_detail')
+	coupon_fish_detail_d_ = request.POST.get('coupon_fish_detail_d')
 	coupon_fish_type_ = request.POST.get('coupon_fish_type')
 	coupon_fish_active_ = request.POST.get('coupon_fish_active')
 	coupon_fish_making_ = request.POST.get('coupon_fish_making')
@@ -1260,6 +1266,7 @@ def request_make_fish(request):
 							  coupon_fish_finish = coupon_fish_finish_, 
 							  coupon_fish_times = coupon_fish_times_, 
 							  coupon_fish_detail=coupon_fish_detail_, 
+							  coupon_fish_detail_d=coupon_fish_detail_d_,
 							  coupon_fish_type = coupon_fish_type_, 
 							  coupon_fish_active = coupon_fish_active_,
 							  coupon_fish_making=coupon_fish_making_)
@@ -1273,7 +1280,7 @@ def request_make_fish(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_fish' + '_' + str(coupon_fish_product_index_)+ '_' + str(coupon_fish_index_)
+				filename = 'm_fish' + '_' + str(coupon_fish_product_index_)+ '_' + str(coupon_fish_index_) + '_' + str(coupon_fish_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1323,6 +1330,7 @@ def request_make_rice(request):
 	coupon_rice_finish_ = request.POST.get('coupon_rice_finish')
 	coupon_rice_times_ = request.POST.get('coupon_rice_times')
 	coupon_rice_detail_ = request.POST.get('coupon_rice_detail')
+	coupon_rice_detail_d_ = request.POST.get('coupon_rice_detail_d')
 	coupon_rice_type_ = request.POST.get('coupon_rice_type')
 	coupon_rice_active_ = request.POST.get('coupon_rice_active')
 	coupon_rice_making_ = request.POST.get('coupon_rice_making')
@@ -1341,6 +1349,7 @@ def request_make_rice(request):
 							  coupon_rice_start = coupon_rice_start_, 
 							  coupon_rice_finish = coupon_rice_finish_, 
 							  coupon_rice_detail=coupon_rice_detail_, 
+							  coupon_rice_detail_d=coupon_rice_detail_d_,
 							  coupon_rice_times = coupon_rice_times_, 
 							  coupon_rice_type = coupon_rice_type_, 
 							  coupon_rice_active = coupon_rice_active_,
@@ -1355,7 +1364,7 @@ def request_make_rice(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_rice' + '_' + str(coupon_rice_product_index_)+ '_' + str(coupon_rice_index_)
+				filename = 'm_rice' + '_' + str(coupon_rice_product_index_)+ '_' + str(coupon_rice_index_) + '_' + str(coupon_rice_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1405,6 +1414,7 @@ def request_make_meat(request):
 	coupon_meat_finish_ = request.POST.get('coupon_meat_finish')
 	coupon_meat_times_ = request.POST.get('coupon_meat_times')
 	coupon_meat_detail_ = request.POST.get('coupon_meat_detail')
+	coupon_meat_detail_d_ = request.POST.get('coupon_meat_detail_d')
 	coupon_meat_type_ = request.POST.get('coupon_meat_type')
 	coupon_meat_active_ = request.POST.get('coupon_meat_active')
 	coupon_meat_making_ = request.POST.get('coupon_meat_making')
@@ -1423,7 +1433,8 @@ def request_make_meat(request):
 							  coupon_meat_start = coupon_meat_start_, 
 							  coupon_meat_finish = coupon_meat_finish_, 
 							  coupon_meat_times = coupon_meat_times_, 
-							  coupon_meat_detail=coupon_meat_detail_, 
+							  coupon_meat_detail=coupon_meat_detail_,
+							  coupon_meat_detail_d=coupon_meat_detail_d_, 
 							  coupon_meat_type = coupon_meat_type_, 
 							  coupon_meat_active = coupon_meat_active_,
 							  coupon_meat_making=coupon_meat_making_)
@@ -1437,7 +1448,7 @@ def request_make_meat(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_meat' + '_' + str(coupon_meat_product_index_)+ '_' + str(coupon_meat_index_)
+				filename = 'm_meat' + '_' + str(coupon_meat_product_index_)+ '_' + str(coupon_meat_index_) + '_' + str(coupon_meat_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1487,6 +1498,7 @@ def request_make_egg(request):
 	coupon_egg_finish_ = request.POST.get('coupon_egg_finish')
 	coupon_egg_times_ = request.POST.get('coupon_egg_times')
 	coupon_egg_detail_ = request.POST.get('coupon_egg_detail')
+	coupon_egg_detail_d_ = request.POST.get('coupon_egg_detail_d')
 	coupon_egg_type_ = request.POST.get('coupon_egg_type')
 	coupon_egg_active_ = request.POST.get('coupon_egg_active')
 	coupon_egg_making_ = request.POST.get('coupon_egg_making')
@@ -1505,6 +1517,7 @@ def request_make_egg(request):
 						    coupon_egg_start = coupon_egg_start_, 
 						    coupon_egg_finish = coupon_egg_finish_, 
 						    coupon_egg_detail=coupon_egg_detail_, 
+						    coupon_egg_detail_d=coupon_egg_detail_d_,
 						    coupon_egg_times = coupon_egg_times_, 
 						    coupon_egg_type = coupon_egg_type_, 
 						    coupon_egg_active = coupon_egg_active_,
@@ -1519,7 +1532,7 @@ def request_make_egg(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_egg' + '_' + str(coupon_egg_product_index_)+ '_' + str(coupon_egg_index_)
+				filename = 'm_egg' + '_' + str(coupon_egg_product_index_)+ '_' + str(coupon_egg_index_) + '_' + str(coupon_egg_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1568,6 +1581,7 @@ def request_make_ham(request):
 	coupon_ham_finish_ = request.POST.get('coupon_ham_finish')
 	coupon_ham_times_ = request.POST.get('coupon_ham_times')
 	coupon_ham_detail_ = request.POST.get('coupon_ham_detail')
+	coupon_ham_detail_d_ = request.POST.get('coupon_ham_detail_d')
 	coupon_ham_type_ = request.POST.get('coupon_ham_type')
 	coupon_ham_active_ = request.POST.get('coupon_ham_active')
 	coupon_ham_making_ = request.POST.get('coupon_ham_making')
@@ -1585,6 +1599,7 @@ def request_make_ham(request):
 						    coupon_ham_start = coupon_ham_start_, 
 						    coupon_ham_finish = coupon_ham_finish_, 
 						    coupon_ham_detail=coupon_ham_detail_, 
+						    coupon_ham_detail_d=coupon_ham_detail_d_,
 						    coupon_ham_times = coupon_ham_times_, 
 						    coupon_ham_type = coupon_ham_type_, 
 						    coupon_ham_active = coupon_ham_active_,
@@ -1599,7 +1614,7 @@ def request_make_ham(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_ham' + '_' + str(coupon_ham_product_index_)+ '_' + str(coupon_ham_index_)
+				filename = 'm_ham' + '_' + str(coupon_ham_product_index_)+ '_' + str(coupon_ham_index_) + '_' + str(coupon_ham_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1648,6 +1663,7 @@ def request_make_side(request):
 	coupon_side_finish_ = request.POST.get('coupon_side_finish')
 	coupon_side_times_ = request.POST.get('coupon_side_times')
 	coupon_side_detail_ = request.POST.get('coupon_side_detail')
+	coupon_side_detail_d_ = request.POST.get('coupon_side_detail_d')
 	coupon_side_type_ = request.POST.get('coupon_side_type')
 	coupon_side_active_ = request.POST.get('coupon_side_active')
 	coupon_side_making_ = request.POST.get('coupon_side_making')
@@ -1665,6 +1681,7 @@ def request_make_side(request):
 							  coupon_side_start = coupon_side_start_, 
 							  coupon_side_finish = coupon_side_finish_, 
 							  coupon_side_detail=coupon_side_detail_, 
+							  coupon_side_detail_d=coupon_side_detail_d_,
 							  coupon_side_times = coupon_side_times_,
 							  coupon_side_active = coupon_side_active_, 
 							  coupon_side_type = coupon_side_type_, 
@@ -1679,7 +1696,7 @@ def request_make_side(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_side' + '_' + str(coupon_side_product_index_)+ '_' + str(coupon_side_index_)
+				filename = 'm_side' + '_' + str(coupon_side_product_index_)+ '_' + str(coupon_side_index_) + '_' + str(coupon_side_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1728,6 +1745,7 @@ def request_make_water(request):
 	coupon_water_finish_ = request.POST.get('coupon_water_finish')
 	coupon_water_times_ = request.POST.get('coupon_water_times')
 	coupon_water_detail_ = request.POST.get('coupon_water_detail')
+	coupon_water_detail_d_ = request.POST.get('coupon_water_detail_d')
 	coupon_water_type_ = request.POST.get('coupon_water_type')
 	coupon_water_active_ = request.POST.get('coupon_water_active')
 	coupon_water_making_ = request.POST.get('coupon_water_making')
@@ -1747,6 +1765,7 @@ def request_make_water(request):
 								coupon_water_times = coupon_water_times_, 
 								coupon_water_type = coupon_water_type_, 
 								coupon_water_detail=coupon_water_detail_, 
+								coupon_water_detail_d=coupon_water_detail_d_,
 								coupon_water_active=coupon_water_active_,
 								coupon_water_making=coupon_water_making_)
 	coupon_water.save()
@@ -1759,7 +1778,7 @@ def request_make_water(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_water' + '_' + str(coupon_water_product_index_)+ '_' + str(coupon_water_index_)
+				filename = 'm_water' + '_' + str(coupon_water_product_index_)+ '_' + str(coupon_water_index_) + '_' + str(coupon_water_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1808,6 +1827,7 @@ def request_make_instant(request):
 	coupon_instant_finish_ = request.POST.get('coupon_instant_finish')
 	coupon_instant_times_ = request.POST.get('coupon_instant_times')
 	coupon_instant_detail_ = request.POST.get('coupon_instant_detail')
+	coupon_instant_detail_d_ = request.POST.get('coupon_instant_detail_d')
 	coupon_instant_type_ = request.POST.get('coupon_instant_type')
 	coupon_instant_active_ = request.POST.get('coupon_instant_active')
 	coupon_instant_making_ = request.POST.get('coupon_instant_making')
@@ -1826,7 +1846,8 @@ def request_make_instant(request):
 									coupon_instant_finish = coupon_instant_finish_, 
 									coupon_instant_times = coupon_instant_times_, 
 									coupon_instant_type = coupon_instant_type_, 
-									coupon_instant_detail=coupon_instant_detail_, 
+									coupon_instant_detail=coupon_instant_detail_,
+									coupon_instant_detail_d=coupon_instant_detail_d_, 
 									coupon_instant_active = coupon_instant_active_,
 									coupon_instant_making=coupon_instant_making_)
 	coupon_instant.save()
@@ -1839,7 +1860,7 @@ def request_make_instant(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_instant' + '_' + str(coupon_instant_product_index_)+ '_' + str(coupon_instant_index_)
+				filename = 'm_instant' + '_' + str(coupon_instant_product_index_)+ '_' + str(coupon_instant_index_) + '_' + str(coupon_instant_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1888,6 +1909,7 @@ def request_make_ice(request):
 	coupon_ice_finish_ = request.POST.get('coupon_ice_finish')
 	coupon_ice_times_ = request.POST.get('coupon_ice_times')
 	coupon_ice_detail_ = request.POST.get('coupon_ice_detail')
+	coupon_ice_detail_d_ = request.POST.get('coupon_ice_detail_d')
 	coupon_ice_type_ = request.POST.get('coupon_ice_type')
 	coupon_ice_active_ = request.POST.get('coupon_ice_active')
 	coupon_ice_making_ = request.POST.get('coupon_ice_making')
@@ -1905,6 +1927,7 @@ def request_make_ice(request):
 							coupon_ice_start = coupon_ice_start_, 
 							coupon_ice_finish = coupon_ice_finish_, 
 							coupon_ice_detail=coupon_ice_detail_, 
+							coupon_ice_detail_d=coupon_ice_detail_d_,
 							coupon_ice_times = coupon_ice_times_, 
 							coupon_ice_type = coupon_ice_type_, 
 							coupon_ice_active = coupon_ice_active_,
@@ -1919,7 +1942,7 @@ def request_make_ice(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_ice' + '_' + str(coupon_ice_product_index_)+ '_' + str(coupon_ice_index_)
+				filename = 'm_ice' + '_' + str(coupon_ice_product_index_)+ '_' + str(coupon_ice_index_) + '_' + str(coupon_ice_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -1968,6 +1991,7 @@ def request_make_bakery(request):
 	coupon_bakery_finish_ = request.POST.get('coupon_bakery_finish')
 	coupon_bakery_times_ = request.POST.get('coupon_bakery_times')
 	coupon_bakery_detail_ = request.POST.get('coupon_bakery_detail')
+	coupon_bakery_detail_d_ = request.POST.get('coupon_bakery_detail_d')
 	coupon_bakery_type_ = request.POST.get('coupon_bakery_type')
 	coupon_bakery_active_ = request.POST.get('coupon_bakery_active')
 	coupon_bakery_making_ = request.POST.get('coupon_bakery_making')
@@ -1986,6 +2010,7 @@ def request_make_bakery(request):
 								  coupon_bakery_finish = coupon_bakery_finish_, 
 								  coupon_bakery_times = coupon_bakery_times_, 
 								  coupon_bakery_detail=coupon_bakery_detail_, 
+								  coupon_bakery_detail_d=coupon_bakery_detail_d_,
 								  coupon_bakery_type = coupon_bakery_type_, 
 								  coupon_bakery_active = coupon_bakery_active_,
 								  coupon_bakery_making=coupon_bakery_making_)
@@ -1999,7 +2024,7 @@ def request_make_bakery(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_bakery' + '_' + str(coupon_bakery_product_index_)+ '_' + str(coupon_bakery_index_)
+				filename = 'm_bakery' + '_' + str(coupon_bakery_product_index_)+ '_' + str(coupon_bakery_index_) + '_' + str(coupon_bakery_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -2048,6 +2073,7 @@ def request_make_snack(request):
 	coupon_snack_finish_ = request.POST.get('coupon_snack_finish')
 	coupon_snack_times_ = request.POST.get('coupon_snack_times')
 	coupon_snack_detail_ = request.POST.get('coupon_snack_detail')
+	coupon_snack_detail_d_ = request.POST.get('coupon_snack_detail_d')
 	coupon_snack_type_ = request.POST.get('coupon_snack_type')
 	coupon_snack_active_ = request.POST.get('coupon_snack_active')
 	coupon_snack_making_ = request.POST.get('coupon_snack_making')
@@ -2065,6 +2091,7 @@ def request_make_snack(request):
 								coupon_snack_start = coupon_snack_start_, 
 								coupon_snack_finish = coupon_snack_finish_, 
 								coupon_snack_detail=coupon_snack_detail_, 
+								coupon_snack_detail_d=coupon_snack_detail_d_,
 								coupon_snack_times = coupon_snack_times_, 
 								coupon_snack_type = coupon_snack_type_, 
 								coupon_snack_active = coupon_snack_active_, 
@@ -2079,7 +2106,7 @@ def request_make_snack(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_snack' + '_' + str(coupon_snack_product_index_)+ '_' + str(coupon_snack_index_)
+				filename = 'm_snack' + '_' + str(coupon_snack_product_index_)+ '_' + str(coupon_snack_index_) + '_' + str(coupon_snack_market_name_)
 
 				try:
 					pic_ = SP_PICTURE()
@@ -2167,7 +2194,7 @@ def request_remake_daily(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_daily' + '_' + str(coupon_daily_product_index_)+ '_' + str(coupon_daily_index_)
+				filename = 'm_daily' + '_' + str(coupon_daily_product_index_)+ '_' + str(coupon_daily_index_) + '_' + str(coupon_daily_market_name_)
 
 			try:
 				# default_storage
@@ -2272,7 +2299,7 @@ def request_remake_greens(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_greens' + '_' + str(coupon_greens_product_index_)+ '_' + str(coupon_greens_index_)
+				filename = 'm_greens' + '_' + str(coupon_greens_product_index_)+ '_' + str(coupon_greens_index_) + '_' + str(coupon_greens_market_name_)
 
 			try:
 				# default_storage
@@ -2377,7 +2404,7 @@ def request_remake_fish(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_fish' + '_' + str(coupon_fish_product_index_)+ '_' + str(coupon_fish_index_)
+				filename = 'm_fish' + '_' + str(coupon_fish_product_index_)+ '_' + str(coupon_fish_index_) + '_' + str(coupon_fish_market_name_)
 
 			try:
 				# default_storage
@@ -2482,7 +2509,7 @@ def request_remake_rice(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_rice' + '_' + str(coupon_rice_product_index_)+ '_' + str(coupon_rice_index_)
+				filename = 'm_rice' + '_' + str(coupon_rice_product_index_)+ '_' + str(coupon_rice_index_) + '_' + str(coupon_rice_market_name_)
 
 			try:
 				# default_storage
@@ -2587,7 +2614,7 @@ def request_remake_meat(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_meat' + '_' + str(coupon_meat_product_index_)+ '_' + str(coupon_meat_index_)
+				filename = 'm_meat' + '_' + str(coupon_meat_product_index_)+ '_' + str(coupon_meat_index_) + '_' + str(coupon_meat_market_name_)
 
 			try:
 				# default_storage
@@ -2692,7 +2719,7 @@ def request_remake_egg(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_egg' + '_' + str(coupon_egg_product_index_)+ '_' + str(coupon_egg_index_)
+				filename = 'm_egg' + '_' + str(coupon_egg_product_index_)+ '_' + str(coupon_egg_index_) + '_' + str(coupon_egg_market_name_)
 
 			try:
 				# default_storage
@@ -2795,7 +2822,7 @@ def request_remake_ham(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_ham' + '_' + str(coupon_ham_product_index_)+ '_' + str(coupon_ham_index_)
+				filename = 'm_ham' + '_' + str(coupon_ham_product_index_)+ '_' + str(coupon_ham_index_) + '_' + str(coupon_ham_market_name_)
 
 			try:
 				# default_storage
@@ -2898,7 +2925,7 @@ def request_remake_side(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_side' + '_' + str(coupon_side_product_index_)+ '_' + str(coupon_side_index_)
+				filename = 'm_side' + '_' + str(coupon_side_product_index_)+ '_' + str(coupon_side_index_) + '_' + str(coupon_side_market_name_)
 
 			try:
 				# default_storage
@@ -3001,7 +3028,7 @@ def request_remake_water(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_water' + '_' + str(coupon_water_product_index_)+ '_' + str(coupon_water_index_)
+				filename = 'm_water' + '_' + str(coupon_water_product_index_)+ '_' + str(coupon_water_index_) + '_' + str(coupon_water_market_name_)
 
 			try:
 				# default_storage
@@ -3104,7 +3131,7 @@ def request_remake_instant(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_instant' + '_' + str(coupon_instant_product_index_)+ '_' + str(coupon_instant_index_)
+				filename = 'm_instant' + '_' + str(coupon_instant_product_index_)+ '_' + str(coupon_instant_index_) + '_' + str(coupon_instant_market_name_)
 
 			try:
 				# default_storage
@@ -3207,7 +3234,7 @@ def request_remake_ice(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_ice' + '_' + str(coupon_ice_product_index_)+ '_' + str(coupon_ice_index_)
+				filename = 'm_ice' + '_' + str(coupon_ice_product_index_)+ '_' + str(coupon_ice_index_) + '_' + str(coupon_ice_market_name_)
 
 			try:
 				# default_storage
@@ -3310,7 +3337,7 @@ def request_remake_bakery(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_bakery' + '_' + str(coupon_bakery_product_index_)+ '_' + str(coupon_bakery_index_)
+				filename = 'm_bakery' + '_' + str(coupon_bakery_product_index_)+ '_' + str(coupon_bakery_index_) + '_' + str(coupon_bakery_market_name_)
 
 			try:
 				# default_storage
@@ -3413,7 +3440,7 @@ def request_remake_snack(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
-				filename = 'm_snack' + '_' + str(coupon_snack_product_index_)+ '_' + str(coupon_snack_index_)
+				filename = 'm_snack' + '_' + str(coupon_snack_product_index_)+ '_' + str(coupon_snack_index_) + '_' + str(coupon_snack_market_name_)
 
 			try:
 				# default_storage
@@ -4135,31 +4162,31 @@ def request_reservation_change(request):
 	if reservation_coupon_category_ == '1':
 		reservation_coupon_category = 'daily'
 		reservation_coupon_ = COUPON_DAILY.objects.get(coupon_daily_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_daily_active = 0
+		reservation_coupon_.coupon_daily_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '2':
 		reservation_coupon_category = 'greens'
 		reservation_coupon_ = COUPON_GREENS.objects.get(coupon_greens_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_greens_active = 0
+		reservation_coupon_.coupon_greens_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '3':
 		reservation_coupon_category = 'fish'
 		reservation_coupon_ = COUPON_FISH.objects.get(coupon_fish_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_fish_active = 0
+		reservation_coupon_.coupon_fish_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '4':
 		reservation_coupon_category = 'rice'
 		reservation_coupon_ = COUPON_RICE.objects.get(coupon_rice_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_rice_active = 0
+		reservation_coupon_.coupon_rice_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '5':
 		reservation_coupon_category = 'meat'
 		reservation_coupon_ = COUPON_MEAT.objects.get(coupon_meat_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_meat_active = 0
+		reservation_coupon_.coupon_meat_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '6':
@@ -4171,43 +4198,43 @@ def request_reservation_change(request):
 	elif reservation_coupon_category_ == '7':
 		reservation_coupon_category = 'ham'
 		reservation_coupon_ = COUPON_HAM.objects.get(coupon_ham_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_ham_active = 0
+		reservation_coupon_.coupon_ham_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '8':
 		reservation_coupon_category = 'side'
 		reservation_coupon_ = COUPON_SIDE.objects.get(coupon_side_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_side_active = 0
+		reservation_coupon_.coupon_side_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '9':
 		reservation_coupon_category = 'water'
 		reservation_coupon_ = COUPON_WATER.objects.get(coupon_water_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_water_active = 0
+		reservation_coupon_.coupon_water_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '10':
 		reservation_coupon_category = 'instant'
 		reservation_coupon_ = COUPON_INSTANT.objects.get(coupon_instant_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_instant_active = 0
+		reservation_coupon_.coupon_instant_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '11':
 		reservation_coupon_category = 'ice'
 		reservation_coupon_ = COUPON_ICE.objects.get(coupon_ice_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_ice_active = 0
+		reservation_coupon_.coupon_ice_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '12':
 		reservation_coupon_category = 'bakery'
 		reservation_coupon_ = COUPON_BAKERY.objects.get(coupon_bakery_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_bakery_active = 0
+		reservation_coupon_.coupon_bakery_active = 2
 		reservation_coupon_.save()
 
 	elif reservation_coupon_category_ == '13':
 		reservation_coupon_category = 'snack'
 		reservation_coupon_ = COUPON_SNACK.objects.get(coupon_snack_index=reservation_coupon_index_)
-		reservation_coupon_.coupon_snack_active = 0
+		reservation_coupon_.coupon_snack_active = 2
 		reservation_coupon_.save()
 
 	json_data = json.dumps('success')
