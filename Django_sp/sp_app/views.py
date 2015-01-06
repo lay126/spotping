@@ -541,8 +541,9 @@ def request_photo_download_daily(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_daily' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_daily' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -558,8 +559,9 @@ def request_photo_download_greens(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_greens' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_greens' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -575,8 +577,9 @@ def request_photo_download_fish(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_fish' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_fish' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -592,8 +595,9 @@ def request_photo_download_rice(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_rice' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_rice' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -609,8 +613,9 @@ def request_photo_download_meat(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_meat' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_meat' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -626,8 +631,9 @@ def request_photo_download_egg(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_egg' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_egg' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -643,8 +649,9 @@ def request_photo_download_ham(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_ham' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_ham' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -660,8 +667,9 @@ def request_photo_download_side(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_side' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_side' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -694,8 +702,9 @@ def request_photo_download_instant(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_instant' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_instant' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -711,8 +720,9 @@ def request_photo_download_ice(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_ice' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_ice' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -728,8 +738,9 @@ def request_photo_download_bakery(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_bakery' + '_' +product_index_+ '_' +coupon_index_
+	image_name = 'm_bakery' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
@@ -747,8 +758,9 @@ def request_photo_download_snack(request):
 
 	product_index_ = request.GET.get('product_index')
 	coupon_index_ = request.GET.get('coupon_index')
+	marketname_ = request.GET.get('marketname')
 
-	image_name = 'm_snack' + '_' + product_index_+ '_' + coupon_index_
+	image_name = 'm_snack' + '_' +product_index_+ '_' +coupon_index_ + '_' + marketname_
 
 	link = 'sp_app/sp_pictures/sp_pictures/' + image_name + '.png'
 
