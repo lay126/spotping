@@ -48,6 +48,9 @@ urlpatterns = patterns('',
 	url(r'^request/product/all/', 'sp_app.views.request_product_all'),
 	url(r'^request/coupon/all/', 'sp_app.views.request_coupon_all'),
 
+	url(r'^request/product/market/', 'sp_app.views.request_product_market'),
+	url(r'^request/coupon/market/', 'sp_app.views.request_coupon_market'),
+
 	url(r'^request/coupon/daily/', 'sp_app.views.request_coupon_daily'),
 	url(r'^request/coupon/greens/', 'sp_app.views.request_coupon_greens'),
 	url(r'^request/coupon/fish/', 'sp_app.views.request_coupon_fish'),

@@ -864,6 +864,99 @@ def request_coupon_all(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 
+@csrf_exempt
+def request_product_market(request):
+   page_title = 'request_product_market'
+
+   market_name_ = request.GET.get('market_name')
+
+   coupon_data_= PRODUCT.objects.filter(product_market_name=market_name_)
+
+   datas = []
+   for d in coupon_data_:
+      data = model_to_dict(d)
+      datas.append(data)
+
+   json_data = json.dumps(datas)
+   return HttpResponse(json_data, content_type='application/json')
+
+
+@csrf_exempt
+def request_coupon_market(request):
+	page_title = 'request_coupon_market'
+
+	datas = []
+
+	coupon_data_= COUPON_DAILY.objects.filter(coupon_daily_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_GREENS.objects.filter(coupon_greens_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_FISH.objects.filter(coupon_fish_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_RICE.objects.filter(coupon_rice_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_MEAT.objects.filter(coupon_meat_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_EGG.objects.filter(coupon_egg_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_HAM.objects.filter(coupon_ham_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SIDE.objects.filter(coupon_side_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_WATER.objects.filter(coupon_water_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_INSTANT.objects.filter(coupon_instant_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_ICE.objects.filter(coupon_ice_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_BAKERY.objects.filter(coupon_bakery_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	coupon_data_= COUPON_SNACK.objects.filter(coupon_snack_market_name=market_name_)
+	for d in coupon_data_:
+		data = model_to_dict(d)
+		datas.append(data)
+
+	json_data = json.dumps(datas)
+	return HttpResponse(json_data, content_type='application/json')
+
+
+
 # each coupon data---------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------
 @csrf_exempt
