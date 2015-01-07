@@ -172,10 +172,12 @@ def request_login_seller(request):
 			login(request, login_seller_)
 		else:
 			#disabled account
-			return HttpResponse('disabled account')
+			json_data = json.dumps('0', ensure_ascii=False)
+			return HttpResponse(json_data, content_type='application/json')
 	else:
 		#invaild login
-		return HttpResponse('invaild login %s, %s' %(login_seller_id_, login_seller_pwd_))
+		json_data = json.dumps('0', ensure_ascii=False)
+		return HttpResponse(json_data, content_type='application/json')
 
 	#get userInfo
 	user_seller_ = User.objects.get(username=login_seller_id_)
@@ -4607,10 +4609,12 @@ def request_login_buyer(request):
 			login(request, login_buyer_)
 		else:
 			#disabled account
-			return HttpResponse('disabled account')
+			json_data = json.dumps('0', ensure_ascii=False)
+			return HttpResponse(json_data, content_type='application/json')
 	else:
 		#invaild login
-		return HttpResponse('invaild login %s, %s' %(login_buyer_id_, login_buyer_pwd_))
+		json_data = json.dumps('0', ensure_ascii=False)
+		return HttpResponse(json_data, content_type='application/json')
 
 	#get userInfo
 	user_buyer_ = User.objects.get(username=login_buyer_id_)
