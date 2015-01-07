@@ -4575,9 +4575,12 @@ def request_join_buyer(request):
 									  user_buyer_auto_login = user_buyer_auto_login_)
 		join_buyer_info_.save()
 	except:
-		return HttpResponse('fail join')
+		json_data = json.dumps('0', ensure_ascii=False)
+		return HttpResponse(json_data, content_type='application/json')
 
-	return HttpResponse('success join, %s' % join_buyer_id_)
+	json_data = json.dumps('1', ensure_ascii=False)
+	return HttpResponse(json_data, content_type='application/json')
+
 
 #-------------------------------------------------------------------------------------------------------------------------
 @csrf_exempt
