@@ -160,6 +160,8 @@ def request_login_seller(request):
 	callback = request.GET.get('callback')
 	page_title = 'request_login_seller'
 
+	# /request/login/seller/?login_seller_id_=spopting&login_seller_pwd_=1234
+
 	login_seller_id_ = request.GET.get('seller_id', False)
 	login_seller_pwd_ = request.GET.get('seller_pwd', False)
 
@@ -188,12 +190,15 @@ def request_login_seller(request):
 	datas.append(user_seller_.username) 	#id
 	datas.append(user_seller_.first_name) 	#name
 	datas.append(user_seller_.email)
+	datas.append(user_seller_info_.user_seller_register_id)
 	datas.append(user_seller_info_.user_seller_photo_index)
 	datas.append(user_seller_info_.user_seller_market_name)
 	datas.append(user_seller_info_.user_seller_address)
 	datas.append(user_seller_info_.user_seller_phone)
 	datas.append(user_seller_info_.user_seller_longitude)
 	datas.append(user_seller_info_.user_seller_latitude)
+	datas.append(user_seller_info_.user_seller_auto_login)
+
 
 	json_data = json.dumps(datas, ensure_ascii=False)
 	return HttpResponse(json_data, content_type='application/json')
@@ -885,6 +890,8 @@ def request_product_market(request):
 def request_coupon_market(request):
 	page_title = 'request_coupon_market'
 
+	market_name_ = request.GET.get('market_name')
+	
 	datas = []
 
 	coupon_data_= COUPON_DAILY.objects.filter(coupon_daily_market_name=market_name_)
@@ -4548,20 +4555,24 @@ def request_join_buyer(request):
 	join_buyer_name_ = request.GET.get('join_buyer_name', False)
 	join_buyer_email_ = request.GET.get('join_buyer_email', False)
 
+	user_buyer_register_id_ = request.GET.get('user_buyer_register_id', False)
 	join_buyer_photo_index_ = 1
 	join_buyer_address_ = request.GET.get('join_buyer_address', False)
 	join_buyer_phone_ = request.GET.get('join_buyer_phone', False)
+	user_buyer_auto_login_ = 0
 
-	join_buyer_ = User.objects.create_user(join_buyer_id_, join_buyer_email_, join_buyer_pwd_)
+	join_buyer_ = User.objects.create_user(username=join_buyer_id_, email=join_buyer_email_, password=join_buyer_pwd_)
 	join_buyer_.first_name = join_buyer_name_
 	join_buyer_.is_staff = False
 
 	try:
 		join_buyer_.save()
 		join_buyer_info_ = USER_BUYER(user_buyer_id=join_buyer_, 
+									  user_buyer_register_id = user_buyer_register_id_,
 									  user_buyer_photo_index=join_buyer_photo_index_, 
 									  user_buyer_address=join_buyer_address_, 
-									  user_buyer_phone=join_buyer_phone_)
+									  user_buyer_phone=join_buyer_phone_,
+									  user_buyer_auto_login = user_buyer_auto_login_)
 		join_buyer_info_.save()
 	except:
 		return HttpResponse('fail join')
@@ -4610,9 +4621,11 @@ def request_login_buyer(request):
 	datas.append(user_buyer_.username) 		#id
 	datas.append(user_buyer_.first_name) 	#name
 	datas.append(user_buyer_.email)
+	datas.append(user_buyer_info_.user_buyer_register_id)
 	datas.append(user_buyer_info_.user_buyer_photo_index)
 	datas.append(user_buyer_info_.user_buyer_address)
 	datas.append(user_buyer_info_.user_buyer_phone)
+	datas.append(user_buyer_info_.user_buyer_auto_login)
 
 	json_data = json.dumps(datas, ensure_ascii=False)
 	return HttpResponse(json_data, content_type='application/json')
