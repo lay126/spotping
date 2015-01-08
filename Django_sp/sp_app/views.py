@@ -201,9 +201,9 @@ def request_login_seller(request):
 	datas.append(user_seller_info_.user_seller_latitude)
 	datas.append(user_seller_info_.user_seller_auto_login)
 
-
-	json_data = json.dumps(datas, ensure_ascii=False)
+	json_data = json.dumps('1', ensure_ascii=False)
 	return HttpResponse(json_data, content_type='application/json')
+
 
 
 # photo upload/update [post]---------------------------------------------------
@@ -4634,8 +4634,9 @@ def request_login_buyer(request):
 	datas.append(user_buyer_info_.user_buyer_phone)
 	datas.append(user_buyer_info_.user_buyer_auto_login)
 
-	json_data = json.dumps(datas, ensure_ascii=False)
+	json_data = json.dumps('1', ensure_ascii=False)
 	return HttpResponse(json_data, content_type='application/json')
+
 
 
 
