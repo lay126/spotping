@@ -1594,7 +1594,7 @@ def request_make_egg(request):
 	coupon_egg_brand_ = request.POST.get('coupon_egg_brand')
 	coupon_egg_unit_ = request.POST.get('coupon_egg_unit')
 	coupon_egg_area_ =  request.POST.get('coupon_egg_area')
-	coupon_egg_price_ = request.POST.get('coupon_egg_price_')
+	coupon_egg_price_ = request.POST.get('coupon_egg_price')
 	coupon_egg_disprice_ = request.POST.get('coupon_egg_disprice')
 	coupon_egg_start_ = request.POST.get('coupon_egg_start')
 	coupon_egg_finish_ = request.POST.get('coupon_egg_finish')
