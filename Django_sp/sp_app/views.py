@@ -2301,25 +2301,24 @@ def request_remake_daily(request):
 				filename = 'm_daily' + '_' + str(coupon_daily_product_index_)+ '_' + str(coupon_daily_index_) + '_' + str(coupon_daily_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -2408,25 +2407,24 @@ def request_remake_greens(request):
 				filename = 'm_greens' + '_' + str(coupon_greens_product_index_)+ '_' + str(coupon_greens_index_) + '_' + str(coupon_greens_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -2515,25 +2513,24 @@ def request_remake_fish(request):
 				filename = 'm_fish' + '_' + str(coupon_fish_product_index_)+ '_' + str(coupon_fish_index_) + '_' + str(coupon_fish_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -2622,25 +2619,24 @@ def request_remake_rice(request):
 				filename = 'm_rice' + '_' + str(coupon_rice_product_index_)+ '_' + str(coupon_rice_index_) + '_' + str(coupon_rice_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -2729,25 +2725,24 @@ def request_remake_meat(request):
 				filename = 'm_meat' + '_' + str(coupon_meat_product_index_)+ '_' + str(coupon_meat_index_) + '_' + str(coupon_meat_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -2836,25 +2831,24 @@ def request_remake_egg(request):
 				filename = 'm_egg' + '_' + str(coupon_egg_product_index_)+ '_' + str(coupon_egg_index_) + '_' + str(coupon_egg_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -2941,25 +2935,24 @@ def request_remake_ham(request):
 				filename = 'm_ham' + '_' + str(coupon_ham_product_index_)+ '_' + str(coupon_ham_index_) + '_' + str(coupon_ham_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -3046,25 +3039,24 @@ def request_remake_side(request):
 				filename = 'm_side' + '_' + str(coupon_side_product_index_)+ '_' + str(coupon_side_index_) + '_' + str(coupon_side_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -3151,25 +3143,24 @@ def request_remake_water(request):
 				filename = 'm_water' + '_' + str(coupon_water_product_index_)+ '_' + str(coupon_water_index_) + '_' + str(coupon_water_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -3256,25 +3247,24 @@ def request_remake_instant(request):
 				filename = 'm_instant' + '_' + str(coupon_instant_product_index_)+ '_' + str(coupon_instant_index_) + '_' + str(coupon_instant_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -3361,25 +3351,24 @@ def request_remake_ice(request):
 				filename = 'm_ice' + '_' + str(coupon_ice_product_index_)+ '_' + str(coupon_ice_index_) + '_' + str(coupon_ice_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -3466,25 +3455,24 @@ def request_remake_bakery(request):
 				filename = 'm_bakery' + '_' + str(coupon_bakery_product_index_)+ '_' + str(coupon_bakery_index_) + '_' + str(coupon_bakery_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			pic_.save()
 
 			# get remake photo index
@@ -3571,25 +3559,24 @@ def request_remake_snack(request):
 				filename = 'm_snack' + '_' + str(coupon_snack_product_index_)+ '_' + str(coupon_snack_index_) + '_' + str(coupon_snack_market_name_)
 
 			try:
+				# photo -> photo
 				# default_storage
 				pic_ = SP_PICTURE.objects.get(sp_name=filename)
 				pic_.delete()
 
 				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 				default_storage.delete(link)
-			except:
-				# code1 : save photo fail
-				json_data = json.dumps(filename)
-				return HttpResponse(json_data, content_type='application/json')	
 
-			try:
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
 				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+
 			except:
-				# code1 : save photo fail
-				json_data = json.dumps('save photo fail')
-				return HttpResponse(json_data, content_type='application/json')	
+				# default -> photo
+				pic_ = SP_PICTURE()
+				pic_.sp_name = filename
+				pic_.sp_picture.save(filename+'.png', File(file), save=True)	
+				
 			pic_.save()
 
 			# get remake photo index
