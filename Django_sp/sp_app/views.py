@@ -2329,16 +2329,19 @@ def request_remake_daily(request):
 
 	# change photo to default
 	elif coupon_daily_photo_index_ == '0':
-			try:
-				# default_storage
-				pic_ = SP_PICTURE.objects.get(sp_name=filename)
-				pic_.delete()
+		try:
+			# default_storage
+			pic_ = SP_PICTURE.objects.get(sp_name=filename)
+			pic_.delete()
 
-				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
-				default_storage.delete(link)
-				
-		product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
-		coupon_daily_photo_index_ = product_.product_photo_index
+			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
+			default_storage.delete(link)
+
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_daily_photo_index_ == '2':
@@ -2452,8 +2455,11 @@ def request_remake_greens(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_greens_product_index_)
-		coupon_greens_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_greens_photo_index_ == '2':
@@ -2566,8 +2572,12 @@ def request_remake_fish(request):
 
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
-		product_ = PRODUCT.objects.get(product_index=coupon_fish_product_index_)
-		coupon_fish_photo_index_ = product_.product_photo_index
+
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_fish_photo_index_ == '2':
@@ -2681,8 +2691,11 @@ def request_remake_rice(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_rice_product_index_)
-		coupon_rice_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_rice_photo_index_ == '2':
@@ -2796,8 +2809,11 @@ def request_remake_meat(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_meat_product_index_)
-		coupon_meat_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_meat_photo_index_ == '2':
@@ -2911,8 +2927,11 @@ def request_remake_egg(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_egg_product_index_)
-		coupon_egg_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_egg_photo_index_ == '2':
@@ -3023,8 +3042,12 @@ def request_remake_ham(request):
 
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
-		product_ = PRODUCT.objects.get(product_index=coupon_ham_product_index_)
-		coupon_ham_photo_index_ = product_.product_photo_index
+
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_ham_photo_index_ == '2':
@@ -3136,8 +3159,11 @@ def request_remake_side(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_side_product_index_)
-		coupon_side_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_side_photo_index_ == '2':
@@ -3249,8 +3275,11 @@ def request_remake_water(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_water_product_index_)
-		coupon_water_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_water_photo_index_ == '2':
@@ -3362,8 +3391,11 @@ def request_remake_instant(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_instant_product_index_)
-		coupon_instant_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_instant_photo_index_ == '2':
@@ -3475,8 +3507,11 @@ def request_remake_ice(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_ice_product_index_)
-		coupon_ice_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_ice_photo_index_ == '2':
@@ -3578,8 +3613,11 @@ def request_remake_bakery(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-		product_ = PRODUCT.objects.get(product_index=coupon_bakery_product_index_)
-		coupon_bakery_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
+		except:
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_bakery_photo_index_ == '2':
@@ -3691,12 +3729,11 @@ def request_remake_snack(request):
 			link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
 			default_storage.delete(link)
 
-			product_ = PRODUCT.objects.get(product_index=coupon_snack_product_index_)
-			coupon_snack_photo_index_ = product_.product_photo_index
-
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 		except:
-			product_ = PRODUCT.objects.get(product_index=coupon_snack_product_index_)
-			coupon_snack_photo_index_ = product_.product_photo_index
+			product_ = PRODUCT.objects.get(product_index=coupon_daily_product_index_)
+			coupon_daily_photo_index_ = product_.product_photo_index
 
 	# dont have to change photo
 	elif coupon_snack_photo_index_ == '2':
