@@ -23,6 +23,7 @@ from django.contrib.auth.models import User, UserManager
 from sp_app.models import *
 
 
+
 """
 과일 : 1, 채소 : 2, 두부 : 3, 콩나물 : 4, 달걀 : 5, 
 수산 : 6 ,정육 : 7, 햄 : 8, 어묵 : 9 , 반찬 : 10,
