@@ -3587,6 +3587,14 @@ def request_remake_bakery(request):
 		if request.method == 'POST':
 			if 'file' in request.FILES:
 				file = request.FILES['file']
+			try:
+				# photo -> photo
+				# default_storage
+				pic_ = SP_PICTURE.objects.get(sp_name=filename)
+				pic_.delete()
+
+				link = 'sp_app/sp_pictures/sp_pictures/' + filename + '.png'
+				default_storage.delete(link)
 
 				pic_ = SP_PICTURE()
 				pic_.sp_name = filename
