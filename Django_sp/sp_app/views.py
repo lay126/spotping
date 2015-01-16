@@ -1170,24 +1170,42 @@ def request_coupon_snack(request):
 @csrf_exempt
 def request_make_daily(request):
 	page_title = 'request_make_daily'
-	# /request/make/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_type=0
+	# /request/make/daily/?
+	# coupon_daily_product_index=0
+	# &coupon_daily_photo_index=1
+	# &coupon_daily_market_name=nabak
+	# &coupon_daily_name=milk
+	# &coupon_daily_brand=pul
+	# &coupon_daily_unit=0
+	# &coupon_daily_price=100
+	# &coupon_daily_start=0
+	# &coupon_daily_finish=0
+	# &coupon_daily_times=0
+	# &coupon_daily_detail=0
+	# coupon_daily_detail_d=0
+	# &coupon_daily_type=0
+	# &coupon_daily_making=0
+	# &coupon_daily_active=0
 
-	coupon_daily_product_index_ = request.POST.get('coupon_daily_product_index')
-	coupon_daily_photo_index_ = request.POST.get('coupon_daily_photo_index')
-	coupon_daily_market_name_ =  request.POST.get('coupon_daily_market_name')
-	coupon_daily_name_ = request.POST.get('coupon_daily_name')
-	coupon_daily_brand_ = request.POST.get('coupon_daily_brand')
-	coupon_daily_unit_ = request.POST.get('coupon_daily_unit')
-	coupon_daily_price_ = request.POST.get('coupon_daily_price')
-	coupon_daily_disprice_ = request.POST.get('coupon_daily_disprice')
-	coupon_daily_start_ = request.POST.get('coupon_daily_start')
-	coupon_daily_finish_ = request.POST.get('coupon_daily_finish')
-	coupon_daily_times_ = request.POST.get('coupon_daily_times')
-	coupon_daily_detail_ = request.POST.get('coupon_daily_detail')
-	coupon_daily_detail_b_ = request.POST.get('coupon_daily_detail_b')
-	coupon_daily_type_ = request.POST.get('coupon_daily_type')
-	coupon_daily_active_ = request.POST.get('coupon_daily_active')
-	coupon_daily_making_ = request.POST.get('coupon_daily_making')
+	# /request/make/daily/?coupon_daily_product_index=0&coupon_daily_photo_index=1&coupon_daily_market_name=nabak&coupon_daily_name=milk&coupon_daily_brand=pul&coupon_daily_unit=0&coupon_daily_price=100&coupon_daily_start=0&coupon_daily_finish=0&coupon_daily_times=0&coupon_daily_detail=0&coupon_daily_detail_d=0&coupon_daily_type=0&coupon_daily_making=0&coupon_daily_active=0
+
+
+	coupon_daily_product_index_ = request.GET.get('coupon_daily_product_index')
+	coupon_daily_photo_index_ = request.GET.get('coupon_daily_photo_index')
+	coupon_daily_market_name_ =  request.GET.get('coupon_daily_market_name')
+	coupon_daily_name_ = request.GET.get('coupon_daily_name')
+	coupon_daily_brand_ = request.GET.get('coupon_daily_brand')
+	coupon_daily_unit_ = request.GET.get('coupon_daily_unit')
+	coupon_daily_price_ = request.GET.get('coupon_daily_price')
+	coupon_daily_disprice_ = request.GET.get('coupon_daily_disprice')
+	coupon_daily_start_ = request.GET.get('coupon_daily_start')
+	coupon_daily_finish_ = request.GET.get('coupon_daily_finish')
+	coupon_daily_times_ = request.GET.get('coupon_daily_times')
+	coupon_daily_detail_ = request.GET.get('coupon_daily_detail')
+	coupon_daily_detail_d_ = request.GET.get('coupon_daily_detail_d')
+	coupon_daily_type_ = request.GET.get('coupon_daily_type')
+	coupon_daily_active_ = request.GET.get('coupon_daily_active')
+	coupon_daily_making_ = request.GET.get('coupon_daily_making')
 
 	# make coupon
 	coupon_daily = COUPON_DAILY(coupon_daily_product_index = coupon_daily_product_index_, 
@@ -1202,7 +1220,7 @@ def request_make_daily(request):
 								coupon_daily_finish = coupon_daily_finish_, 
 								coupon_daily_times = coupon_daily_times_, 
 								coupon_daily_detail=coupon_daily_detail_, 
-								coupon_daily_detail_b=coupon_daily_detail_b_,
+								coupon_daily_detail_d=coupon_daily_detail_d_,
 								coupon_daily_type = coupon_daily_type_, 
 								coupon_daily_making=coupon_daily_making_, 
 								coupon_daily_active=coupon_daily_active_)
@@ -2260,7 +2278,7 @@ def request_remake_daily(request):
 	coupon_daily_start_ = request.POST.get('coupon_daily_start')
 	coupon_daily_finish_ = request.POST.get('coupon_daily_finish')
 	coupon_daily_detail_ = request.POST.get('coupon_daily_detail')
-	coupon_daily_detail_b_ = request.POST.get('coupon_daily_detail_b')
+	coupon_daily_detail_d_ = request.POST.get('coupon_daily_detail_d')
 	coupon_daily_type_ = request.POST.get('coupon_daily_type')
 	coupon_daily_active_ = request.POST.get('coupon_daily_active')
 	coupon_daily_making_ = request.POST.get('coupon_daily_making')
@@ -2284,7 +2302,7 @@ def request_remake_daily(request):
 		coupon_daily_.coupon_daily_start = coupon_daily_start_
 		coupon_daily_.coupon_daily_finish = coupon_daily_finish_
 		coupon_daily_.coupon_daily_detail = coupon_daily_detail_
-		coupon_daily_.coupon_daily_detail_b = coupon_daily_detail_b_
+		coupon_daily_.coupon_daily_detail_d = coupon_daily_detail_d_
 		coupon_daily_.coupon_daily_type = coupon_daily_type_
 		coupon_daily_.coupon_daily_making = coupon_daily_making_
 
